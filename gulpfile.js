@@ -1,4 +1,4 @@
-//gulp libs
+
 import gulp from "gulp";
 import rename from "gulp-rename";
 import terser from "gulp-terser";
@@ -10,21 +10,17 @@ import plumber from "gulp-plumber";
 import twig from "gulp-twig";
 import htmlmin from "gulp-htmlmin";
 
-//postCss libs
 import postUrl from "postcss-url";
 import postImport from "postcss-import";
 import postScss from "postcss-scss";
 import postMediaMinMax from "postcss-media-minmax";
 import postCustomMedia from "postcss-custom-media";
 import csso from "postcss-csso";
-import postImport from "postcss-import";
 
-//other libs
 import autoprefixer from "autoprefixer";
 import browser from "browser-sync";
 import del from "del";
 
-//data import
 import data from "./source/templates/data.js";
 
 
@@ -50,13 +46,13 @@ export function validateMarkup () {
 }
 
 export function processStyles () {
-  return src("./source/sass/*.scss", { sourcemaps: true })
+  return src("./source/css/*.css", { sourcemaps: true })
     .pipe(plumber())
     .pipe(postcss([
       postImport(),
-      postUrl()
-    ], { syntax: postScss }))
-    .pipe(sass().on("error", sass.logError))
+      postUrl()],))
+    // ], { syntax: css } ))
+    // .pipe(css().on("error", style.logError))
     .pipe(postcss([
       postMediaMinMax(),
       postCustomMedia(),
@@ -134,7 +130,8 @@ export function copyAssets (done) {
     "./source/*.ico",
     "./source/img/**/*.svg",
     "./source/favicons/*",
-    "./source/*.webmanifest"
+    "./source/*.webmanifest",
+    "./source/php/*.php"
   ], {
     base: "./source"
   })
@@ -164,9 +161,10 @@ function reloadServer (done) {
 }
 
 function watchFiles () {
-  watch("./source/sass/**/*.scss", series(processStyles));
+  watch("./source/css/**/*.css", series(processStyles));
   watch("./source/js/*.js", series(processScripts, reloadServer));
   watch(["./source/**/*.{html,twig}", "./source/templates/data.js"], series(processMarkup, reloadServer));
+  watch(["./source/php/*.php"], series(reloadServer));
   watch("./source/icons/**/*.svg", series(createSprite, reloadServer));
 }
 
@@ -180,9 +178,9 @@ export const build = series(
     processStyles,
     processMarkup,
     processScripts,
-    createSprite,
+    //createSprite,
     createWebp,
-    createAvif
+    //createAvif
   )
 );
 
@@ -196,9 +194,9 @@ export default series(
     processStyles,
     processMarkup,
     processScripts,
-    createSprite,
+    //createSprite,
     createWebp,
-    createAvif
+    //createAvif
   ),
   series(
     startServer,
