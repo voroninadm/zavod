@@ -33,7 +33,7 @@
   },
   "scripts": {
     "editorconfig": "editorconfig-cli",
-    "stylelint": "stylelint \"source/sass/**/*.scss\"",
+    "stylelint": "stylelint \"source/css/**/*.css\"",
     "test": "npm run editorconfig && npm run stylelint && gulp validateMarkup",
     "build": "gulp build",
     "start": "gulp"

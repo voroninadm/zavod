@@ -1,0 +1,23 @@
+{% set pageId = 1 %}
+{% set permalink = pages[pageId].path %}
+{% extends "../templates/layout.twig" %}
+
+{% block page__main %}
+
+<section class="forms">
+  <ul class="add-list reset-list">
+    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_operator_form.html">Добавить
+        оператора</a></li>
+    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_master_form.html">Добавить мастера</a>
+    </li>
+    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_customer_form.html">Добавить
+        заказчика</a></li>
+    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_client_order.phtml">Добавить заказ</a>
+    </li>
+  </ul>
+</section>
+<div class="main-nav">
+  <a class="back-button" href="index.html">Вернуться на главную</a>
+</div>
+
+{% endblock %}

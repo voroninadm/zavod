@@ -5,7 +5,7 @@
   line-height: 40px;
   text-align: center;
   color: rgba(153, 12, 37, 0.57);
-  font-family: Lato, Arial, sans-serif;
+  font-family: "Lato", "Arial", sans-serif;
   font-weight: 500;
   font-size: 45px;
 }
@@ -17,7 +17,7 @@
   line-height: 30px;
   text-align: center;
   color: rgba(153, 12, 37, 0.57);
-  font-family: Montserrat, Arial, sans-serif;
+  font-family: "Montserrat", "Arial", sans-serif;
   font-weight: 400;
   font-size: 23px;
 }
