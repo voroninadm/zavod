@@ -12,7 +12,6 @@ import htmlmin from "gulp-htmlmin";
 
 import postUrl from "postcss-url";
 import postImport from "postcss-import";
-import postScss from "postcss-scss";
 import postMediaMinMax from "postcss-media-minmax";
 import postCustomMedia from "postcss-custom-media";
 import csso from "postcss-csso";
@@ -50,10 +49,10 @@ export function processStyles () {
     .pipe(plumber())
     .pipe(postcss([
       postImport(),
-      postUrl()],))
-    // ], { syntax: css } ))
+      postUrl(),
+    // ], { syntax: css } )) - for sass files
     // .pipe(css().on("error", style.logError))
-    .pipe(postcss([
+    //.pipe(postcss([
       postMediaMinMax(),
       postCustomMedia(),
       autoprefixer(),
