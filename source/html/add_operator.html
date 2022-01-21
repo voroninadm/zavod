@@ -1,0 +1,24 @@
+{% extends "../templates/layout.twig" %}
+
+{% block page__main %}
+
+<section class="page__centerer add-form">
+  <h2>Добавление нового оператора</h2>
+  <form action="../../php/create_operator.php" method="post">
+    <label>Ф.И.О оператора</label>
+    <input type="text" name="name" placeholder="ИвановИИ" required>
+    <br><br>
+    <label> Логин </label>
+    <input type="text" name="login" placeholder="ИвановИИ" required>
+    <br><br>
+    <label> Пароль </label>
+    <input type="text" name="password">
+    <br><br>
+    <br>
+    <button type="submit">Добавить нового оператора</button>
+  </form>
+  <br>
+</section>
+<a class="back-button" href="../../index.html">Вернуться на главную</a>
+
+{% endblock %}

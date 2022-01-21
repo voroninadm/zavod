@@ -1,4 +1,4 @@
-.main-title {
+.machines__title {
   width: 400px;
   margin: 0 auto;
   padding: 10px;
@@ -10,7 +10,7 @@
   font-size: 45px;
 }
 
-.main-add__title {
+.machines__subtitle {
   width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -20,6 +20,10 @@
   font-family: "Montserrat", "Arial", sans-serif;
   font-weight: 400;
   font-size: 23px;
+}
+
+.machines__item {
+  position: relative;
 }
 
 .machines__list {
@@ -35,35 +39,32 @@
   align-items: center;
   min-width: 200px;
   min-height: 50px;
+  color: var(--color__black);
   padding: 10px;
   text-align: center;
   font-size: 25px;
   background-color: #b4b2b2;
   border-radius: 10px;
   transition: 0.3s;
+  text-decoration: none;
+
+  &--solo:hover {
+    background-color: rgba(196, 126, 126, 0.15);
+    color: rgba(153, 12, 37, 0.57);
+  }
+
+  &:focus {
+    opacity: 0.4;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+  }
 }
 
-.machines__link--solo:hover {
-  background-color: rgba(196, 126, 126, 0.15);
-  color: rgba(153, 12, 37, 0.57);
-}
-
-.machines__link:hover {
-  opacity: 0.7;
-  transition: 0.3s;
-}
-
-.machines__link:focus {
-  opacity: 0.4;
-}
-
-.machines__item--miraflex,
-.machines__item--fisher,
-.machines__item--laminator {
-  position: relative;
-}
-
-.inner-list {
+.machines__sublist {
+  display: none;
   width: 250px;
   justify-content: space-around;
   position: absolute;
@@ -72,16 +73,16 @@
   padding: 10px;
   background-color: rgba(196, 126, 126, 0.15);
   border-radius: 25px;
+
+  &--miraflex,
+  &--fisher,
+  &--laminator {
+    top: 70px;
+    left: 15px;
+  }
 }
 
-.miraflex-inner,
-.fisher-inner,
-.laminator-inner {
-  top: 70px;
-  left: 15px;
-}
-
-.inner__link {
+.machines__sublink {
   font-size: 18px;
   display: block;
   box-sizing: border-box;
@@ -89,14 +90,16 @@
   padding: 10px 15px;
   line-height: 20px;
   margin-bottom: 5px;
+  color: var(--color__black);
+  text-decoration: none;
+
+  &:hover {
+    color: rgba(153, 12, 37, 0.57);
+  }
 }
 
-.inner__link:hover {
-  color: rgba(153, 12, 37, 0.57);
-}
-
-.machines__item--miraflex:hover .miraflex-inner,
-.machines__item--fisher:hover .fisher-inner,
-.machines__item--laminator:hover .laminator-inner {
+.machines__item--miraflex:hover .machines__sublist--miraflex,
+.machines__item--fisher:hover .machines__sublist--fisher,
+.machines__item--laminator:hover .machines__sublist--laminator {
   display: block;
 }

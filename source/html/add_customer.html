@@ -1,0 +1,21 @@
+{% extends "../templates/layout.twig" %}
+
+{% block page__main %}
+
+<section class="page__centerer add-form">
+  <h2 class="visible-hidden">Добавление нового заказчика</h2>
+  <form action="../../php/create_customer.php" method="post">
+    <label for="customer"> Наименование заказчика </label>
+    <br>
+    <br>
+    <textarea id="customer" name="customer" rows="3" cols="50" placeholder="Например 'ООО Фацер'"></textarea>
+    <br>
+    <br>
+    <button type="submit">Добавить нового заказчика </button>
+  </form>
+  <br>
+</section>
+<a class="back-button" href="../../index.html">Вернуться на главную</a>
+
+
+{% endblock %}

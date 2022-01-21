@@ -1,0 +1,29 @@
+{% extends "../templates/layout.twig" %}
+
+{% block page__main %}
+
+<section class="page__centerer add-form">
+  <h3 class="visible-hidden">Добавление нового заказа</h3>
+  <form action="../../php/create_client_order.php" method="post">
+    <p>Выберите заказчика</p>
+    <select name="customer">
+      <option value="Выберите заказчика" disabled>Выберите заказчика</option>
+      <?php $query = mysqli_query($DB_connect, 'SELECT customer FROM `client` ORDER BY customer');
+      while ($row = mysqli_fetch_assoc($query)) {
+      ?>
+      <option value="<?=$row['customer'] ?>"> "
+        <?= $row['customer'] ?>"
+      </option>
+      <? } ?>
+    </select>
+    <p> Наименование заказа </p>
+    <textarea name="order_title" rows="3" cols="50" placeholder="Например, Пельмени с мясом и картошкой"></textarea>
+    <br><br>
+    <button type="submit">Добавить новый заказ </button>
+  </form>
+</section>
+<br><br>
+<a class="back-button" href="../../index.html">Вернуться на главную</a>
+
+
+{% endblock %}

@@ -1,2 +1,17 @@
-@import "./blocks/main-page.css";
-@import "./blocks/pmf.css";
+/* global styles */
+@import "./global/variables.css";
+@import "./global/visually-hidden.css";
+@import "./global/reset-list.css";
+
+
+/* block styles */
+@import "./blocks/page.css";
+@import "./blocks/header-nav.css";
+@import "./blocks/footer.css";
+@import "./blocks/main-link.css";
+@import "./blocks/back-button.css";
+
+/* other pages blocks */
+@import "./blocks/machines.css";
+@import "./blocks/adds.css";
+@import "./blocks/add-form.css";

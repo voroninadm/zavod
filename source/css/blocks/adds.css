@@ -1,0 +1,12 @@
+.adds {
+  width: 1200px;
+  margin: auto;
+  padding: 50px;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+}

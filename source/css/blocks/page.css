@@ -1,0 +1,31 @@
+.page__header {
+  box-sizing: border-box;
+  padding: 20px 80px;
+  background: url("../../images/content-breadcrumb.png") no-repeat 50% 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "Montserrat", "Verdana", sans-serif;
+  border-top: 3px solid rgba(167, 160, 162, 0.47);
+  border-bottom: 3px solid rgba(167, 160, 162, 0.47);
+}
+
+.page__body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color__background);
+}
+
+.page__main {
+  flex: 1;
+  padding: 20px 10px;
+}
+
+.page__centerer {
+  margin: 0 auto;
+  width: 1220px;
+}

@@ -4,20 +4,24 @@
 
 {% block page__main %}
 
-<section class="forms">
-  <ul class="add-list reset-list">
-    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_operator_form.html">Добавить
-        оператора</a></li>
-    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_master_form.html">Добавить мастера</a>
+<section class="adds">
+  <h1 class="visually-hidden">Список форм ввода в базу данных</h1>
+  <ul class="adds__list reset-list">
+    <li class="adds__item">
+      <a class="adds__link main-link" href="add_operator.html">Добавить оператора</a>
     </li>
-    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_customer_form.html">Добавить
-        заказчика</a></li>
-    <li class="add-form__item"><a class="main__link" href="forms/adding_forms/add_client_order.phtml">Добавить заказ</a>
+    <li class="adds__item">
+      <a class="adds__link main-link" href="add_master.html">Добавить мастера</a>
+    </li>
+    <li class="adds__item">
+      <a class="adds__link main-link" href="add_customer.html">Добавить заказчика</a>
+    </li>
+    <li class="adds__item">
+      <a class="adds__link main-link" href="add_order.html">Добавить заказ</a>
     </li>
   </ul>
 </section>
-<div class="main-nav">
   <a class="back-button" href="index.html">Вернуться на главную</a>
-</div>
+
 
 {% endblock %}

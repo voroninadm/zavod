@@ -15,6 +15,7 @@ import postImport from "postcss-import";
 import postMediaMinMax from "postcss-media-minmax";
 import postCustomMedia from "postcss-custom-media";
 import csso from "postcss-csso";
+import postNested from "postcss-nested";
 
 import autoprefixer from "autoprefixer";
 import browser from "browser-sync";
@@ -50,6 +51,7 @@ export function processStyles () {
     .pipe(postcss([
       postImport(),
       postUrl(),
+      postNested(),
     // ], { syntax: css } )) - for sass files
     // .pipe(css().on("error", style.logError))
     //.pipe(postcss([
@@ -80,34 +82,34 @@ export function processScripts () {
 }
 
 export function optimizeImages () {
-  return src("./source/img/**/*.{png,jpg}")
+  return src("./source/images/**/*.{png,jpg}")
     .pipe(squoosh())
-    .pipe(dest("build/img"))
+    .pipe(dest("build/images"))
 }
 
 export function copyImages () {
-  return src("./source/img/**/*.{png,jpg}")
-    .pipe(dest("build/img"))
+  return src("./source/images/**/*.{png,jpg}")
+    .pipe(dest("build/images"))
 }
 
 export function createWebp () {
-  return src("./source/img/**/*.{jpg,png}")
+  return src("./source/images/**/*.{jpg,png}")
     .pipe(
       squoosh({
         webp: {}
       })
     )
-    .pipe(dest("./build/img"))
+    .pipe(dest("./build/images"))
 }
 
 export function createAvif () {
-  return src("./source/img/**/*.{jpg,png}")
+  return src("./source/images/**/*.{jpg,png}")
     .pipe(
       squoosh({
         avif: {}
       })
     )
-    .pipe(dest("./build/img"))
+    .pipe(dest("./build/images"))
 }
 
 export function createSprite () {
@@ -127,7 +129,7 @@ export function copyAssets (done) {
   src([
     "./source/fonts/*.{woff2,woff}",
     "./source/*.ico",
-    "./source/img/**/*.svg",
+    "./source/icons/**/*.svg",
     "./source/favicons/*",
     "./source/*.webmanifest",
     "./source/php/*.php"
