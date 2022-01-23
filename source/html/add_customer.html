@@ -3,11 +3,15 @@
 {% block page__main %}
 
 <section class="add-form page__centerer">
-  <h1 class="visible-hidden">Добавление нового заказчика</h1>
+  <h1 class="add-form__title">Добавление нового заказчика</h1>
   <form class="simple-form" action="../../php/create_customer.php" method="post">
-    <label class="simple-form__label" for="customer"> Наименование заказчика </label>
-    <textarea class="simple-form__input simple-form__textarea" id="customer" name="customer"
-      placeholder="Например, 'ООО Фацер'"></textarea>
+    <ul class="simple-form__list">
+      <li class="simple-form__item simple-form__item--wide">
+        <label class="simple-form__label" for="customer"> Наименование заказчика </label>
+        <textarea class="simple-form__input simple-form__textarea" id="customer" name="customer"
+          placeholder="Например, 'ООО Фацер'"></textarea>
+      </li>
+    </ul>
     <button class="simple-form__button" type="submit">Добавить нового заказчика </button>
   </form>
 </section>

@@ -3,10 +3,10 @@
 {% block page__main %}
 
 <section class="add-form page__centerer">
-  <h1 class="visible-hidden">Добавление нового заказа</h1>
+  <h1 class="add-form__title">Добавление нового заказа</h1>
   <form class="simple-form" action="../../php/create_client_order.php" method="post">
     <ul class="simple-form__list reset-list">
-      <li class="simple-form__item">
+      <li class="simple-form__item simple-form__item--wide">
         <label class="simple-form__label" for="customer">Выберите заказчика</label>
         <select name="customer" id="customer">
           <option value="Выберите заказчика" disabled>Выберите заказчика</option>
@@ -19,7 +19,7 @@
           <? } ?>
         </select>
       </li>
-      <li class="simple-form__item">
+      <li class="simple-form__item simple-form__item--wide">
         <label class="simple-form__label" for="order"> Наименование заказа </label>
         <textarea class="simple-form__input simple-form__textarea" id="order" name="order_title"
           placeholder="Например, Пельмени с мясом и картошкой"></textarea>

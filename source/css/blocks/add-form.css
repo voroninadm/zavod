@@ -1,4 +1,9 @@
 .add-form {
   display: grid;
   justify-content: center;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 25px;
+  }
 }
