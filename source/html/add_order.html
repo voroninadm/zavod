@@ -2,27 +2,32 @@
 
 {% block page__main %}
 
-<section class="page__centerer add-form">
-  <h3 class="visible-hidden">Добавление нового заказа</h3>
-  <form action="../../php/create_client_order.php" method="post">
-    <p>Выберите заказчика</p>
-    <select name="customer">
-      <option value="Выберите заказчика" disabled>Выберите заказчика</option>
-      <?php $query = mysqli_query($DB_connect, 'SELECT customer FROM `client` ORDER BY customer');
+<section class="add-form page__centerer">
+  <h1 class="visible-hidden">Добавление нового заказа</h1>
+  <form class="simple-form" action="../../php/create_client_order.php" method="post">
+    <ul class="simple-form__list reset-list">
+      <li class="simple-form__item">
+        <label class="simple-form__label" for="customer">Выберите заказчика</label>
+        <select name="customer" id="customer">
+          <option value="Выберите заказчика" disabled>Выберите заказчика</option>
+          <?php $query = mysqli_query($DB_connect, 'SELECT customer FROM `client` ORDER BY customer');
       while ($row = mysqli_fetch_assoc($query)) {
       ?>
-      <option value="<?=$row['customer'] ?>"> "
-        <?= $row['customer'] ?>"
-      </option>
-      <? } ?>
-    </select>
-    <p> Наименование заказа </p>
-    <textarea name="order_title" rows="3" cols="50" placeholder="Например, Пельмени с мясом и картошкой"></textarea>
-    <br><br>
-    <button type="submit">Добавить новый заказ </button>
+          <option value="<?=$row['customer'] ?>"> "
+            <?= $row['customer'] ?>"
+          </option>
+          <? } ?>
+        </select>
+      </li>
+      <li class="simple-form__item">
+        <label class="simple-form__label" for="order"> Наименование заказа </label>
+        <textarea class="simple-form__input simple-form__textarea" id="order" name="order_title"
+          placeholder="Например, Пельмени с мясом и картошкой"></textarea>
+      </li>
+    </ul>
+    <button class="simple-form__button" type="submit">Добавить новый заказ </button>
   </form>
 </section>
-<br><br>
 <a class="back-button" href="../../index.html">Вернуться на главную</a>
 
 
