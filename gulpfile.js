@@ -27,7 +27,7 @@ import data from "./source/templates/data.js";
 const { src, dest, watch, series, parallel } = gulp;
 
 export function processMarkup () {
-  return src("./source/html/*.html")
+  return src(["./source/html/*.html", "./source/html/machines/*.html"])
     .pipe(twig({
       data: data
     }))
@@ -36,7 +36,7 @@ export function processMarkup () {
 }
 
 export function validateMarkup () {
-  return src("./source/html/*.html")
+  return src(["./source/html/*.html", "./source/html/machines/*.html"])
   .pipe(twig({
     data: data
   }))

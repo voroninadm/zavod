@@ -1,0 +1,430 @@
+<form action="create_main_work.php" method="POST">
+  <h1 class="visible-hidden">Основная таблица работ Fisher & Krecke-4</h1>
+
+  <article class="page-container">
+    <section class="header-section">
+      <h2 class="header-section__title">График работ</h2>
+    </section>
+    <section class="header-section">
+      <h2 class="header-section__title">Расход материала</h2>
+    </section>
+    <section class="header-section">
+      <h2 class="header-section__title">Технические операции</h2>
+    </section>
+
+
+    <section class="data-column-1">
+      <h3 class="visible-hidden">График работ</h3>
+      <ul class="work-block work-block--first">
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="work_date">Дата смены</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="date" name="work_date" id="work_date">
+            </li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="work_shift">Номер смены</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="number" name="work_shift"
+                id="work_shift" placeholder="1 или 2" min="1" max="2"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="master">Мастер смены</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="master" id="master">
+                <option value="Выберите мастера смены" disabled>Выберите мастера смены</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `master` ORDER BY login");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['login'] ?>>
+                  <?= $row['login'] ?>
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="operator1">Оператор 1</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="operator1" id="operator1">
+                <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['login'] ?>>
+                  <?= $row['login'] ?>
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="operator2">Оператор 2</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="operator2" id="operator2">
+                <option value="Выберите второго оператора" disabled>Выберите второго оператора</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['login'] ?>>
+                  <?= $row['login'] ?>
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="operator3">Оператор 3</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="operator3" id="operator3">
+                <!-- Селект оператора 2 -->
+                <option value="Выберите третьего оператора" disabled>Выберите третьего оператора</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['login'] ?>>
+                  <?= $row['login'] ?>
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="operator_helper">Помощник оператора</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="operator_helper"
+                id="operator_helper">
+                <option value="Выберите помощника оператора" disabled>Выберите помощника оператора</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['login'] ?>>
+                  <?= $row['login'] ?>
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="customer">Заказчик</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="customer" id="customer">
+                <option value="Выберите заказчика" disabled>Выберите заказчика</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value="<?= $row['customer'] ?>"> "
+                  <?= $row['customer'] ?>"
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="print_title">Наименование заказа</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><select class="inside-list__select inside-list__select--first" name="print_title" id="print_title">
+                <option value="Выберите заказ" disabled>Выберите заказ</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value="<?= $row['order_title'] ?>"> "
+                  <?= $row['order_title'] ?>"
+                </option>
+                <? } ?>
+              </select></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="tkn">Номер ТКН</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="text" name="tkn" id="tkn"
+                pattern="[0-9а-я]+"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="circulation">Тираж</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="number" name="circulation"
+                id="circulation"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="work_start">Начало работ</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="datetime-local" name="work_start"
+                id="work_start"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--first">
+          <label class="work-block__label work-block__label--first" for="work_finish">Окончание работ</label>
+          <ul class="inside-list inside-list--first inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--first" type="datetime-local" name="work_finish"
+                id="work_finish"></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+
+    <section class="data-column-2">
+      <h3 class="visible-hidden">Расход материала</h3>
+      <ul class="work-block work-block--second">
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="material">Материалы</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li>
+              <select class="inside-list__select inside-list__select--second" name="material1" id="material">
+                <option value="Выберите первый материал" disabled>Выберите первый материал</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['material'] ?>>
+                  <?= $row['material'] ?>
+                </option>
+                <? } ?>
+              </select>
+            </li>
+            <li>
+              <select class="inside-list__select inside-list__select--second" name="material2" id="material">
+                <option value="Выберите второй материал" disabled>Выберите второй материал</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['material'] ?>>
+                  <?= $row['material'] ?>
+                </option>
+                <? } ?>
+              </select>
+            </li>
+            <li>
+              <select class="inside-list__select inside-list__select--second" name="material3" id="material">
+                <option value="Выберите третий материал" disabled>Выберите третий материал</option>
+                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                  ?>
+                <option value=<?=$row['material'] ?>>
+                  <?= $row['material'] ?>
+                </option>
+                <? } ?>
+              </select>
+            </li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="matcount">Количество сырья</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="mat1count" id="matcount"
+                placeholder="1 материала, кг" step="0.01">
+            </li>
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="mat2count" id="matcount"
+                placeholder="2 материала, кг" step="0.01">
+            </li>
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="mat3count" id="matcount"
+                placeholder="3 материала, кг" step="0.01">
+            </li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="sizes">Размеры</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="width" id="sizes"
+                placeholder="ширина" step="0.01">
+            </li>
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="thickness" id="sizes"
+                placeholder="толщина" step="0.01">
+            </li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="workout">Выработка</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="workout_mass"
+                id="workout" placeholder="кг" step="0.01">
+            </li>
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="workout_length"
+                id="workout" placeholder="пог.м." step="0.01">
+
+            <li>
+              <input class="inside-list__input inside-list__input--second" type="number" name="workout_m2" id="workout"
+                placeholder="м2" step="0.01">
+            </li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="waste">Отходы</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--second" type="number" name="waste_print" id="waste"
+                placeholder="печати, кг" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--second" type="number" name="waste_raw" id="waste"
+                placeholder="сырья , кг" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--second" type="number" name="waste_sum" id="waste"
+                placeholder="итоговые , кг" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--second">
+          <label class="work-block__label work-block__label--second" for="colors">Количество красок</label>
+          <ul class="inside-list inside-list--second inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--second" type="number" name="colors" id="colors"
+                placeholder="от 1 до 10" min="1" max="10"></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="data-column-3">
+      <h3 class="visible-hidden">Расход материала</h3>
+      <ul class="work-block work-block--third">
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="electro_mechanical">Эл/мех часть</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="electro_mechanical"
+                id="electro_mechanical" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="aniloks">Подбор анилоксов</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="aniloks" id="aniloks"
+                step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="clean_machine">Мытье машины</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="clean_machine"
+                id="clean_machine" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="form_glue">Переклейка форм</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="form_glue"
+                id="form_glue" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="rakel">Замена ракеля</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="rakel" id="rakel"
+                step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="clean_dry">Чистка сушки</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="clean_dry"
+                id="clean_dry" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="clean_val">Чистка валов</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="clean_val"
+                id="clean_val" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="prepare">Приправка</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="prepare_mass"
+                id="prepare" placeholder="кг" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="prepare_hours"
+                id="prepare" placeholder="часов" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="color_correction">Коррекция красок</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="correction_PN"
+                id="color_correction" placeholder="PN" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="correction_CMYK"
+                id="color_correction" placeholder="CMYK" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="no_">Часы отсутствия</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="no_human" id="no_"
+                placeholder="людей" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="no_work" id="no_"
+                placeholder="заказов" step="0.01"></li>
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="no_raw" id="no_"
+                placeholder="сырья" step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="speed">Скорость печати</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="speed" id="speed"
+                step="0.01"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third">
+          <label class="work-block__label inside-list__label--third" for="diff_circulation">Разница тиража</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><input class="inside-list__input inside-list__input--third" type="number" name="diff_circulation"
+                id="diff_circulation" placeholder="+  или  - шт"></li>
+          </ul>
+        </li>
+
+        <li class="inside-list inside-list--third textarea">
+          <label class="work-block__label inside-list__label--third" for="notes">Примечание</label>
+          <ul class="inside-list inside-list--third inside-list--inner">
+            <li><textarea class="inside-list__input inside-list__input--third inside-list__textarea" rows="4" cols="30"
+                name="notes" id="notes" placeholder=". . . "></textarea></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <?php
+      mysqli_close($DB_connect);
+      mysqli_close($DB_connect_machine);
+      ?>
+  </article>
+
+  <div class="form-footer">
+    <button class="form-footer__main-button" type="submit">Внести данные</button>
+    <a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
+  </div>
+</form>

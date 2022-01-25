@@ -1,0 +1,26 @@
+<section class="machine-main">
+  <h1 class="machine-main__title reset-list">{{ machines[machineId].name }}</h1>
+  <p class="machine-main__subtitle reset-list">Добро пожаловать</p>
+  <section class="machine-main__add">
+    <h2 class="visually-hidden">Формы внесения данных</h2>
+    <ul class="machine-main__list page__cenerer reset-list">
+      <li class="machine-main__item">
+        <a class="machine-main__link link" href="{{ }}">Внести данные в основную таблицу</a>
+      </li>
+    </ul>
+  </section>
+  <section class="machine-main__show">
+    <h2 class="visually-hidden">Просмотр внесенных данных</h2>
+    <ul class="machine-main__list reset-list">
+      <li class="machine-main__item">
+        <a class="machine-main__link machine-main__link--work link" href="{{ }}">График работ</a>
+      </li>
+      <li class="machine-main__item">
+        <a class="machine-main__link machine-main__link--material link" href="{{ }}">Расход материала</a>
+      </li>
+      <li class="machine-main__item">
+        <a class="machine-main__link machine-main__link--techopp" href="{{ }}">Технические операции</a>
+      </li>
+    </ul>
+  </section>
+</section>
