@@ -1,2 +1,2 @@
-Starting new programm for NTL
+Refactoring small programm for zavod
 --with gulp--
