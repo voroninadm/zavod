@@ -1,200 +1,211 @@
-<form action="create_main_work.php" method="POST">
-  <h1 class="visible-hidden">Основная таблица работ Fisher & Krecke-4</h1>
+<form action="mainwork-print.php" method="POST">
+  <h1 class="visually-hidden">Основная таблица для ввода работ</h1>
 
-  <article class="page-container">
-    <section class="header-section">
-      <h2 class="header-section__title">График работ</h2>
-    </section>
-    <section class="header-section">
-      <h2 class="header-section__title">Расход материала</h2>
-    </section>
-    <section class="header-section">
-      <h2 class="header-section__title">Технические операции</h2>
-    </section>
+  <article>
 
+    <fieldset class="form-block">
+      <legend class="form-block__title">График работ</legend>
+      <ul class="form-block__list">
 
-    <section class="data-column-1">
-      <h3 class="visible-hidden">График работ</h3>
-      <ul class="work-block work-block--first">
-
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="work_date">Дата смены</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="date" name="work_date" id="work_date">
+        <li class="form-block__item">
+          <label class="form-block__label" for="work_date">Дата смены</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <input class="form-block__input" type="date" name="work_date" id="work_date">
             </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="work_shift">Номер смены</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="number" name="work_shift"
-                id="work_shift" placeholder="1 или 2" min="1" max="2"></li>
+        <li class="form-block__item">
+          <label class="form-block__label" for="work_shift">Рабочая смена</label>
+          <ul class="form-block__sublist form-block__sublist--radio">
+            <li class="form-block__subitem">
+              <input class="form-block__input" id="work_shift-1" type="radio" name="work_shift" value="1">
+              <label class="form-block__sublabel" for="work_shift-1">с 8 до 20</label>
+            </li>
+            <li class="form-block__subitem">
+              <input class="form-block__input" id="work_shift-2" type="radio" name="work_shift" value="2">
+              <label class="form-block__sublabel" for="work_shift-2">с 20 до 8</label>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="master">Мастер смены</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="master" id="master">
+        <li class="form-block__item">
+          <label class="form-block__label" for="master">Мастер смены</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="master" id="master">
                 <option value="Выберите мастера смены" disabled>Выберите мастера смены</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `master` ORDER BY login");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['login'] ?>>
                   <?= $row['login'] ?>
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="operator1">Оператор 1</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="operator1" id="operator1">
+        <li class="form-block__item">
+          <label class="form-block__label" for="operator1">Оператор 1</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="operator1" id="operator1">
                 <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['login'] ?>>
                   <?= $row['login'] ?>
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="operator2">Оператор 2</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="operator2" id="operator2">
+        <li class="form-block__item">
+          <label class="form-block__label" for="operator2">Оператор 2</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="operator2" id="operator2">
                 <option value="Выберите второго оператора" disabled>Выберите второго оператора</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['login'] ?>>
                   <?= $row['login'] ?>
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="operator3">Оператор 3</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="operator3" id="operator3">
-                <!-- Селект оператора 2 -->
+        <li class="form-block__item">
+          <label class="form-block__label" for="operator3">Оператор 3</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="operator3" id="operator3">
                 <option value="Выберите третьего оператора" disabled>Выберите третьего оператора</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['login'] ?>>
                   <?= $row['login'] ?>
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="operator_helper">Помощник оператора</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="operator_helper"
-                id="operator_helper">
+        <li class="form-block__item">
+          <label class="form-block__label" for="operator_helper">Помощник оператора</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="operator_helper" id="operator_helper">
                 <option value="Выберите помощника оператора" disabled>Выберите помощника оператора</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['login'] ?>>
                   <?= $row['login'] ?>
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="customer">Заказчик</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="customer" id="customer">
+        <li class="form-block__item">
+          <label class="form-block__label" for="customer">Заказчик</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="customer" id="customer">
                 <option value="Выберите заказчика" disabled>Выберите заказчика</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value="<?= $row['customer'] ?>"> "
                   <?= $row['customer'] ?>"
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="print_title">Наименование заказа</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><select class="inside-list__select inside-list__select--first" name="print_title" id="print_title">
+        <li class="form-block__item">
+          <label class="form-block__label" for="print_title">Наименование заказа</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <select class="form-block__input form-block__select" name="print_title" id="print_title">
                 <option value="Выберите заказ" disabled>Выберите заказ</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value="<?= $row['order_title'] ?>"> "
                   <?= $row['order_title'] ?>"
                 </option>
                 <? } ?>
-              </select></li>
+              </select>
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="tkn">Номер ТКН</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="text" name="tkn" id="tkn"
-                pattern="[0-9а-я]+"></li>
+        <li class="form-block__item">
+          <label class="form-block__label" for="tkn">Номер ТКН</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <input class="form-block__input" type="text" name="tkn" id="tkn" pattern="[0-9а-я]+">
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="circulation">Тираж</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="number" name="circulation"
-                id="circulation"></li>
+        <li class="form-block__item">
+          <label class="form-block__label" for="circulation">Тираж</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <input class="form-block__input" type="number" name="circulation" id="circulation">
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="work_start">Начало работ</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="datetime-local" name="work_start"
-                id="work_start"></li>
+        <li class="form-block__item">
+          <label class="form-block__label" for="work_start">Начало работ</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <input class="form-block__input" type="datetime-local" name="work_start" id="work_start">
+            </li>
           </ul>
         </li>
 
-        <li class="inside-list inside-list--first">
-          <label class="work-block__label work-block__label--first" for="work_finish">Окончание работ</label>
-          <ul class="inside-list inside-list--first inside-list--inner">
-            <li><input class="inside-list__input inside-list__input--first" type="datetime-local" name="work_finish"
-                id="work_finish"></li>
+        <li class="form-block__item">
+          <label class="form-block__label" for="work_finish">Окончание работ</label>
+          <ul class="form-block__sublist">
+            <li class="form-block__subitem">
+              <input class="form-block__input" type="datetime-local" name="work_finish" id="work_finish">
+            </li>
           </ul>
         </li>
       </ul>
-    </section>
+    </fieldset>
 
+    <fielset class="form-block">
+      <legend class="form-block__title">Расход материала</legend>
+      <ul class="form-block__list">
 
-    <section class="data-column-2">
-      <h3 class="visible-hidden">Расход материала</h3>
-      <ul class="work-block work-block--second">
-
-        <li class="inside-list inside-list--second">
+        <li class="form-block__item">
           <label class="work-block__label work-block__label--second" for="material">Материалы</label>
           <ul class="inside-list inside-list--second inside-list--inner">
             <li>
               <select class="inside-list__select inside-list__select--second" name="material1" id="material">
                 <option value="Выберите первый материал" disabled>Выберите первый материал</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['material'] ?>>
                   <?= $row['material'] ?>
                 </option>
@@ -205,8 +216,8 @@
               <select class="inside-list__select inside-list__select--second" name="material2" id="material">
                 <option value="Выберите второй материал" disabled>Выберите второй материал</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['material'] ?>>
                   <?= $row['material'] ?>
                 </option>
@@ -217,8 +228,8 @@
               <select class="inside-list__select inside-list__select--second" name="material3" id="material">
                 <option value="Выберите третий материал" disabled>Выберите третий материал</option>
                 <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase`");
-                              while ($row = mysqli_fetch_assoc($query)) {
-                                  ?>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
                 <option value=<?=$row['material'] ?>>
                   <?= $row['material'] ?>
                 </option>
@@ -298,10 +309,9 @@
           </ul>
         </li>
       </ul>
-    </section>
-
-    <section class="data-column-3">
-      <h3 class="visible-hidden">Расход материала</h3>
+    </fielset>
+    <fieldset class="column">
+      <legend class="column__title">Технические операции</legend>
       <ul class="work-block work-block--third">
 
         <li class="inside-list inside-list--third">
@@ -416,7 +426,13 @@
           </ul>
         </li>
       </ul>
-    </section>
+    </fieldset>
+
+
+
+
+
+
     <?php
       mysqli_close($DB_connect);
       mysqli_close($DB_connect_machine);
