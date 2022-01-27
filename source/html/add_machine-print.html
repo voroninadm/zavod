@@ -1,0 +1,9 @@
+{% set machineId = 0 %}
+
+{% set machineType = machines[machineId].type %}
+
+{% block page__main %}
+
+{% include "../templates/machine-print.twig" %}
+
+{% endblock %}

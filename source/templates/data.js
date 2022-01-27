@@ -5,7 +5,7 @@ export default {
   ],
 
   "machines": [
-    { "id": 0, "path": "miraflex1.html", "name": "Miraflex-1" },
+    { "id": 0, "path": "miraflex1.html", "name": "Miraflex-1", "type": "print" },
     { "id": 1, "path": "miraflex2.html", "name": "Miraflex-2" },
     { "id": 2, "path": "lemo.html", "name": " LEMO" },
     { "id": 3, "path": "fisher4.html", "name": "Fisher & Krecke-4" },
