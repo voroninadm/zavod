@@ -1,0 +1,9 @@
+{% set machineId = 4 %}
+
+{% set machineType = machines[machineId].type %}
+
+{% block page__main %}
+
+{% include "../../templates/machine-input.twig" %}
+
+{% endblock %}

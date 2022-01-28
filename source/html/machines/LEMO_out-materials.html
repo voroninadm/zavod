@@ -1,0 +1,10 @@
+{% set machineId = 2 %}
+
+{% set machineName = machines[machineId].name %}
+{% set machineType = machines[machineId].type %}
+
+{% block page__main %}
+
+{% include "../../templates/machine-out-materials.twig" %}
+
+{% endblock %}
