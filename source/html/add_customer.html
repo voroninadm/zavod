@@ -5,14 +5,19 @@
 <section class="add-form page__centerer">
   <h1 class="add-form__title">Добавление нового заказчика</h1>
   <form class="simple-form" action="../../php/create_customer.php" method="post">
-    <ul class="simple-form__list">
+    <ul class="simple-form__list reset-list">
       <li class="simple-form__item simple-form__item--wide">
-        <label class="simple-form__label" for="customer"> Наименование заказчика </label>
+        <label class="simple-form__label" for="customer"> Наименование заказчика*</label>
         <textarea class="simple-form__input simple-form__textarea" id="customer" name="customer"
-          placeholder="Например, 'ООО Фацер'"></textarea>
+          placeholder="Например, 'ООО Фацер'" required></textarea>
       </li>
     </ul>
-    <button class="simple-form__button" type="submit">Добавить нового заказчика </button>
+    <div class="simple-form__submit">
+      <button class="simple-form__button" type="submit">Добавить нового заказчика </button>
+      <span class="simple-form__span">
+        <sup>* - обязательные поля</sup>
+      </span>
+    </div>
   </form>
 </section>
 <a class="back-button" href="../../index.html">Вернуться на главную</a>

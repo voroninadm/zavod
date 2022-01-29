@@ -5,21 +5,26 @@
 <section class="add-form page__centerer">
   <h1 class="add-form__title">Добавление нового мастера смены</h1>
   <form class="simple-form" action="../../php/create_master.php" method="post">
-    <ul class="simple-form__list">
+    <ul class="simple-form__list reset-list">
       <li class="simple-form__item">
-        <label class="simple-form__label" for="name">Фамилия мастера</label>
-        <input class="simple-form__input" id="name" type="text" name="name">
+        <label class="simple-form__label" for="name">Ф.И.О. мастера*</label>
+        <input class="simple-form__input" id="name" type="text" name="name" placeholder="Иванов Иван Иванович" required>
       </li>
       <li class="simple-form__item">
-        <label class="simple-form__label" for="login"> Логин </label>
-        <input class="simple-form__input" id="login" type="text" name="login">
+        <label class="simple-form__label" for="login"> Логин*</label>
+        <input class="simple-form__input" id="login" type="text" name="login" placeholder="ИвановИИ" required>
       </li>
       <li class="simple-form__item">
-        <label class="simple-form__label" for="password"> Пароль </label>
+        <label class="simple-form__label" for="password">Пароль</label>
         <input class="simple-form__input" id="password" type="text" name="password">
       </li>
     </ul>
-    <button class="simple-form__button" type="submit">Добавить нового мастера смены</button>
+    <div class="simple-form__submit">
+      <button class="simple-form__button" type="submit">Добавить нового мастера </button>
+      <span class="simple-form__span">
+        <sup>* - обязательные поля</sup>
+      </span>
+    </div>
   </form>
 </section>
 <a class="back-button" href="../../index.html">Вернуться на главную</a>

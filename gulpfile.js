@@ -27,7 +27,7 @@ import data from "./source/templates/data.js";
 const { src, dest, watch, series, parallel } = gulp;
 
 export function processMarkup () {
-  return src(["./source/html/*.html", "./source/html/machines/*.html"])
+  return src("./source/html/*.html")
     .pipe(twig({
       data: data
     }))
@@ -35,8 +35,16 @@ export function processMarkup () {
     .pipe(dest("./build"));
 }
 
+export function processMarkupMachines () {
+  return src("./source/html/machines/*.html")
+    .pipe(twig({
+      data: data
+    }))
+    .pipe(dest("./build"));
+}
+
 export function validateMarkup () {
-  return src(["./source/html/*.html", "./source/html/machines/*.html"])
+  return src("./source/html/*.html")
   .pipe(twig({
     data: data
   }))
@@ -44,6 +52,16 @@ export function validateMarkup () {
   .pipe(htmlValidator.analyzer())
   .pipe(htmlValidator.reporter());
 }
+
+// export function validateMarkupMachines () {
+//   return src("./source/html/machines/*.html")
+//   .pipe(twig({
+//     data: data
+//   }))
+//   .pipe(dest("./build"))
+//   .pipe(htmlValidator.analyzer())
+//   .pipe(htmlValidator.reporter());
+// }
 
 export function processStyles () {
   return src("./source/css/*.css", { sourcemaps: true })
@@ -178,6 +196,7 @@ export const build = series(
   parallel(
     processStyles,
     processMarkup,
+    processMarkupMachines,
     processScripts,
     //createSprite,
     createWebp,
@@ -194,6 +213,7 @@ export default series(
   parallel(
     processStyles,
     processMarkup,
+    processMarkupMachines,
     processScripts,
     //createSprite,
     createWebp,

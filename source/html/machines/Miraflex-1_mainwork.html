@@ -1,9 +1,15 @@
-{% set machineId = 0 %}
-
-{% set machineType = machines[machineId].type %}
+{% extends "../../templates/layout-out.twig" %}
 
 {% block page__main %}
 
+{% set machineId = 0 %}
+{% set machineType = machines[machineId].type %}
+
+<? php
+$machineName = "Miraflex1"
+?>
+
+{% include "../../php/machine-connect.php" %}
 {% include "../../templates/machine-input.twig" %}
 
 {% endblock %}

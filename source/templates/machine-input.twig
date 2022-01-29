@@ -1,7 +1,7 @@
-<form action="mainwork-print.php" method="POST">
-  <h1 class="visually-hidden">Основная таблица ввода работ</h1>
+<article>
 
-  <article>
+  <form action="mainwork-print.php" method="POST">
+    <h1 class="visually-hidden">Основная таблица ввода работ</h1>
 
     <fieldset class="form-block form-block--work">
       <legend class="form-block__title">График работ</legend>
@@ -589,8 +589,7 @@
           <label class="form-block__label" for="prepare">Приправка</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare" id="prepare"
-                step="0.01">
+              <input class="form-block__input" type="number" name="prepare" id="prepare" step="0.01">
             </li>
           </ul>
         </li>
@@ -600,8 +599,7 @@
             рубашки</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_shirt"
-                id="prepare_shirt" step="0.01">
+              <input class="form-block__input" type="number" name="prepare_shirt" id="prepare_shirt" step="0.01">
             </li>
           </ul>
         </li>
@@ -610,8 +608,7 @@
           <label class="form-block__label" for="flushing">Расход на промывку</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="flushing" id="flushing"
-                step="0.01">
+              <input class="form-block__input" type="number" name="flushing" id="flushing" step="0.01">
             </li>
           </ul>
         </li>
@@ -620,8 +617,7 @@
           <label class="form-block__label" for="tech_clean">Техчистка</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="tech_clean"
-                id="tech_clean" step="0.01">
+              <input class="form-block__input" type="number" name="tech_clean" id="tech_clean" step="0.01">
             </li>
           </ul>
         </li>
@@ -630,8 +626,7 @@
           <label class="form-block__label" for="change_glue">Замена клея</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="change_glue"
-                id="change_glue" step="0.01">
+              <input class="form-block__input" type="number" name="change_glue" id="change_glue" step="0.01">
             </li>
           </ul>
         </li>
@@ -640,8 +635,7 @@
           <label class="form-block__label" for="calibrating">Калибровка</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="calibrating"
-                id="calibrating" step="0.01">
+              <input class="form-block__input" type="number" name="calibrating" id="calibrating" step="0.01">
             </li>
           </ul>
         </li>
@@ -650,8 +644,8 @@
           <label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="electro_mechanical"
-                id="electro_mechanical" step="0.01">
+              <input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical"
+                step="0.01">
             </li>
           </ul>
         </li>
@@ -660,8 +654,7 @@
           <label class="form-block__label" for="tech_service">Техническое обслуживание</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="tech_service" id="tech_service"
-                step="0.01">
+              <input class="form-block__input" type="number" name="tech_service" id="tech_service" step="0.01">
             </li>
           </ul>
         </li>
@@ -670,12 +663,12 @@
           <label class="form-block__label" for="remain">Остаток</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="remain_perv" id="remain"
-                placeholder="первички" step="0.01">
+              <input class="form-block__input" type="number" name="remain_perv" id="remain" placeholder="первички"
+                step="0.01">
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="remain_sec" id="remain"
-                placeholder="вторички" step="0.01">
+              <input class="form-block__input" type="number" name="remain_sec" id="remain" placeholder="вторички"
+                step="0.01">
             </li>
           </ul>
         </li>
@@ -735,10 +728,13 @@
       mysqli_close($DB_connect_machine);
       ?>
 
-  </article>
 
-  <div class="form-footer">
-    <button class="form-footer__main-button" type="submit">Внести данные</button>
-    <a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
-  </div>
-</form>
+
+    <div class="form-footer">
+      <button class="form-footer__main-button" type="submit">Внести данные</button>
+      <a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
+    </div>
+
+  </form>
+
+</article>

@@ -20,12 +20,17 @@
         </select>
       </li>
       <li class="simple-form__item simple-form__item--wide">
-        <label class="simple-form__label" for="order"> Наименование заказа </label>
+        <label class="simple-form__label" for="order"> Наименование заказа*</label>
         <textarea class="simple-form__input simple-form__textarea" id="order" name="order_title"
-          placeholder="Например, Пельмени с мясом и картошкой"></textarea>
+          placeholder="Например, Пельмени с мясом и картошкой" required></textarea>
       </li>
     </ul>
-    <button class="simple-form__button" type="submit">Добавить новый заказ </button>
+    <div class="simple-form__submit">
+      <button class="simple-form__button" type="submit">Добавить новый заказ </button>
+      <span class="simple-form__span">
+        <sup>* - обязательные поля</sup>
+      </span>
+    </div>
   </form>
 </section>
 <a class="back-button" href="../../index.html">Вернуться на главную</a>
