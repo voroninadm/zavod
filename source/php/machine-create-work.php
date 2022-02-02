@@ -1,8 +1,27 @@
+
 <?php
 
-require "./machine-connect.php";
+// Подключаемся к MySQL
 
-if (machineType == "print") {
+$servername = "192.168.11.4";
+$username = "lanuser";
+$password = "123";
+$dbmain = "ntlmain";
+$db_machine = $db;
+
+
+// Подключаемся
+
+$DB_connect = new mysqli($servername, $username, $password, $dbmain);
+$DB_connect_machine = new mysqli($servername, $username, $password, $db_machine);
+// Проверка соединения
+
+if ($DB_connect->connect_error) {
+    die("Ошибка подключения: " . $DB_connect->connect_error);
+};
+
+
+if ($machineType == "print") {
 
   $work_date = $_POST["work_date"];
   $work_shift = $_POST["work_shift"];
@@ -53,7 +72,7 @@ if (machineType == "print") {
   $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator1`, `operator2`, `operator3`, `operator_helper`,`tkn`, `work_start`, `work_finish`, `customer`, `print_title`, `circulation`, `material1`, `material2`, `material3`, `colors`, `width`, `thickness`, `mat1count`, `mat2count`, `mat3count`, `workout_mass`, `workout_length`, `workout_m2`, `waste_print`, `waste_raw`, `waste_sum`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro_mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator1', '$operator2', '$operator3', '$operator_helper', '$tkn', '$work_start', '$work_finish', '$customer', '$print_title', '$circulation', '$material1', '$material2', '$material3', '$colors', '$width', '$thickness', '$mat1count', '$mat2count', '$mat3count', '$workout_mass', '$workout_length', '$workout_m2', '$waste_print' , '$waste_raw' , '$waste_sum', '$prepare_mass', '$prepare_hours', '$correction_PN', '$correction_CMYK', '$electro_mechanical', '$aniloks', '$clean_machine', '$form_glue', '$rakel', '$clean_dry', '$clean_val', '$speed', '$no_human', '$no_work', '$no_raw', '$diff_circulation', '$notes')");
 }
 
-if (machineType == "lamination") {
+if ($machineType == "lamination") {
 
   $work_date = $_POST["work_date"];
   $work_shift = $_POST["work_shift"];
