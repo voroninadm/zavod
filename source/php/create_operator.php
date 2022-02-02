@@ -1,6 +1,6 @@
 <?php
 
-require "db_connect.php";
+require "./machine-connect.php";
 
 $name = $_POST["name"];
 $login = $_POST["login"];

@@ -1,740 +1,736 @@
 <article>
 
-  <form action="mainwork-print.php" method="POST">
-    <h1 class="visually-hidden">Основная таблица ввода работ</h1>
+	<form action="../php/machine-create-work.php" method="POST">
+		<h1 class="visually-hidden">Основная таблица ввода работ</h1>
 
-    <fieldset class="form-block form-block--work">
-      <legend class="form-block__title">График работ</legend>
-      <ul class="form-block__list">
-        <li class="form-block__item">
-          <label class="form-block__label" for="work_date">Рабочая смены</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="date" name="work_date" id="work_date">
-            </li>
-          </ul>
-        </li>
+		<fieldset class="form-block form-block--work">
+			<legend class="form-block__title">График работ</legend>
+			<ul class="form-block__list">
+				<li class="visually-hidden">
+					<label class="form-block__label" for="machineType">Тип машины</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="text" name="machineType" id="machineType" value="{{ machineType }}">
+						</li>
+					</ul>
+				</li>
+				<li class="form-block__item">
+					<label class="form-block__label" for="work_date">Рабочая смены</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="date" name="work_date" id="work_date">
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="work_shift">Рабочая смена</label>
-          <ul class="form-block__sublist form-block__sublist--radio">
-            <li class="form-block__subitem">
-              <input class="form-block__input" id="work_shift-1" type="radio" name="work_shift" value="1">
-              <label class="form-block__sublabel" for="work_shift-1">с 8 до 20</label>
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" id="work_shift-2" type="radio" name="work_shift" value="2">
-              <label class="form-block__sublabel" for="work_shift-2">с 20 до 8</label>
-          </ul>
-        </li>
+				<li class="form-block__item">
+					<label class="form-block__label" for="work_shift">Рабочая смена</label>
+					<ul class="form-block__sublist form-block__sublist--radio">
+						<li class="form-block__subitem">
+							<input class="form-block__input" id="work_shift-1" type="radio" name="work_shift" value="1">
+							<label class="form-block__sublabel" for="work_shift-1">с 8 до 20</label>
+						</li>
+						<li class="form-block__subitem">
+							<input class="form-block__input" id="work_shift-2" type="radio" name="work_shift" value="2">
+							<label class="form-block__sublabel" for="work_shift-2">с 20 до 8</label>
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="master">Мастер смены</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="master" id="master">
-                <option value="Выберите мастера смены" disabled>Выберите мастера смены</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `master` ORDER BY login");
+				<li class="form-block__item">
+					<label class="form-block__label" for="master">Мастер смены</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<select class="form-block__input form-block__select" name="master" id="master">
+								<option value="Выберите мастера смены" disabled>Выберите мастера смены</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT login FROM `master` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+									<option value=<?=$row['login'] ?>>
+										<?= $row['login'] ?>
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+					</ul>
+				</li>
 
-        {% if machineType == "print" %}
+				{% if machineType == "print" %}
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator1">Оператор 1</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="operator1" id="operator1">
-                <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator1">Оператор 1</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input form-block__select" name="operator1" id="operator1">
+									<option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator2">Оператор 2</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="operator2" id="operator2">
-                <option value="Выберите второго оператора" disabled>Выберите второго оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator2">Оператор 2</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input form-block__select" name="operator2" id="operator2">
+									<option value="Выберите второго оператора" disabled>Выберите второго оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator3">Оператор 3</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="operator3" id="operator3">
-                <option value="Выберите третьего оператора" disabled>Выберите третьего оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator3">Оператор 3</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input form-block__select" name="operator3" id="operator3">
+									<option value="Выберите третьего оператора" disabled>Выберите третьего оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator_helper">Помощник оператора</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="operator_helper" id="operator_helper">
-                <option value="Выберите помощника оператора" disabled>Выберите помощника оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator_helper">Помощник оператора</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input form-block__select" name="operator_helper" id="operator_helper">
+									<option value="Выберите помощника оператора" disabled>Выберите помощника оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        {% endif %}
-        {% if machineType == "lamination" %}
+				{% endif %}
+				{% if machineType == "lamination" %}
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator">Оператор</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input" name="operator" id="operator1">
-                <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator">Оператор</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input" name="operator" id="operator1">
+									<option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                       while ($row = mysqli_fetch_assoc($query)) {
                           ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator_student">Ученик оператора</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input" name="operator_student" id="operator_student">
-                <option value="Выберите второго оператора" disabled>Выберите ученика оператора</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator_student">Ученик оператора</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input" name="operator_student" id="operator_student">
+									<option value="Выберите второго оператора" disabled>Выберите ученика оператора</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                       while ($row = mysqli_fetch_assoc($query)) {
                           ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="operator_helper">Подсобный рабочий</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input" name="operator_helper" id="operator_helper">
-                <option value="Выберите третьего оператора" disabled>Выберите подсобного рабочего</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
+					<li class="form-block__item">
+						<label class="form-block__label" for="operator_helper">Подсобный рабочий</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<select class="form-block__input" name="operator_helper" id="operator_helper">
+									<option value="Выберите третьего оператора" disabled>Выберите подсобного рабочего</option>
+									<?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                       while ($row = mysqli_fetch_assoc($query)) {
                           ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+										<option value=<?=$row['login'] ?>>
+											<?= $row['login'] ?>
+										</option>
+										<? } ?>
+									</select>
+								</li>
+							</li>
+						</ul>
+					</li>
 
-        {% endif %}
+				{% endif %}
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="customer">Заказчик</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="customer" id="customer">
-                <option value="Выберите заказчика" disabled>Выберите заказчика</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
+				<li class="form-block__item">
+					<label class="form-block__label" for="customer">Заказчик</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<select class="form-block__input form-block__select" name="customer" id="customer">
+								<option value="Выберите заказчика" disabled>Выберите заказчика</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
                                         while ($row = mysqli_fetch_assoc($query)) {
                                             ?>
-                <option value="<?= $row['customer'] ?>"> "
-                  <?= $row['customer'] ?>"
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+									<option value="<?= $row['customer'] ?>">
+										"
+										<?= $row['customer'] ?>"
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="print_title">Наименование заказа</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="print_title" id="print_title">
-                <option value="Выберите заказ" disabled>Выберите заказ</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
+				<li class="form-block__item">
+					<label class="form-block__label" for="print_title">Наименование заказа</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<select class="form-block__input form-block__select" name="print_title" id="print_title">
+								<option value="Выберите заказ" disabled>Выберите заказ</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value="<?= $row['order_title'] ?>"> "
-                  <?= $row['order_title'] ?>"
-                </option>
-                <? } ?>
-              </select>
-            </li>
-          </ul>
-        </li>
+									<option value="<?= $row['order_title'] ?>">
+										"
+										<?= $row['order_title'] ?>"
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="tkn">Номер ТКН</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="text" name="tkn" id="tkn" pattern="[0-9а-я]+">
-            </li>
-          </ul>
-        </li>
+				<li class="form-block__item">
+					<label class="form-block__label" for="tkn">Номер ТКН</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="text" name="tkn" id="tkn" pattern="[0-9а-я]+">
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="circulation">Тираж</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="circulation" id="circulation">
-            </li>
-          </ul>
-        </li>
+				<li class="form-block__item">
+					<label class="form-block__label" for="circulation">Тираж</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="number" name="circulation" id="circulation">
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="work_start">Начало работ</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="datetime-local" name="work_start" id="work_start">
-            </li>
-          </ul>
-        </li>
+				<li class="form-block__item">
+					<label class="form-block__label" for="work_start">Начало работ</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="datetime-local" name="work_start" id="work_start">
+						</li>
+					</ul>
+				</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="work_finish">Окончание работ</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="datetime-local" name="work_finish" id="work_finish">
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </fieldset>
+				<li class="form-block__item">
+					<label class="form-block__label" for="work_finish">Окончание работ</label>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="datetime-local" name="work_finish" id="work_finish">
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</fieldset>
 
-    <fieldset class="form-block form-block--material">
-      <legend class="form-block__title">Расход материала</legend>
-      <ul class="form-block__list">
+		<fieldset class="form-block form-block--material">
+			<legend class="form-block__title">Расход материала</legend>
+			<ul class="form-block__list">
 
-        <li class="form-block__item">
-          <p class="form-block__description">Материал 1</p>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="material-1">Материал</label>
-              <select class="form-block__input" name="material1" id="material-1">
-                <option value="Выберите первый материал" disabled>Выберите первый материал</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
+				<li class="form-block__item">
+					<p class="form-block__description">Материал 1</p>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="material-1">Материал</label>
+							<select class="form-block__input" name="material1" id="material-1">
+								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {
                                   ?>
-                <option value=<?=$row['material'] ?>>
-                  <?= $row['material'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="matcount-1">Количество сырья</label>
-              <input class="form-block__input" type="number" name="mat1count" id="matcount-1"
-                placeholder="количество сырья, кг" step="0.01">
-            </li>
-            {% if machineType == "lamination" %}
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="width1">Ширина</label>
-              <input class="form-block__input" type="number" name="width1" id="width1" placeholder="ширина" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="thickness1">Толщина</label>
-              <input class="form-block__input" type="number" name="thickness1" id="thickness1" placeholder="толщина"
-                step="0.01">
-            </li>
-            {% endif%}
-          </ul>
-        </li>
-
-
-        <li class="form-block__item">
-          <p class="form-block__description">Материал 2</p>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="material-2">Материал</label>
-              <select class="form-block__input" name="material2" id="material-2">
-                <option value="Выберите первый материал" disabled>Выберите первый материал</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
+									<option value=<?=$row['material'] ?>>
+										<?= $row['material'] ?>
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="matcount-1">Количество сырья</label>
+							<input class="form-block__input" type="number" name="mat1count" id="matcount-1" placeholder="количество сырья, кг" step="0.01">
+						</li>
+						{% if machineType == "lamination" %}
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="width1">Ширина</label>
+								<input class="form-block__input" type="number" name="width1" id="width1" placeholder="ширина" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="thickness1">Толщина</label>
+								<input class="form-block__input" type="number" name="thickness1" id="thickness1" placeholder="толщина" step="0.01">
+							</li>
+							{% endif%}
+						</ul>
+					</li>
+				</li>
+				<li class="form-block__item">
+					<p class="form-block__description">Материал 2</p>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="material-2">Материал</label>
+							<select class="form-block__input" name="material2" id="material-2">
+								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {
                                   ?>
-                <option value=<?=$row['material'] ?>>
-                  <?= $row['material'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="matcount-2">Количество сырья</label>
-              <input class="form-block__input" type="number" name="mat2count" id="matcount-2"
-                placeholder="количество сырья, кг" step="0.01">
-            </li>
-            {% if machineType == "lamination" %}
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="width2">Ширина</label>
-              <input class="form-block__input" type="number" name="width2" id="width2" placeholder="ширина" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="thickness2">Толщина</label>
-              <input class="form-block__input" type="number" name="thickness2" id="thickness2" placeholder="толщина"
-                step="0.01">
-            </li>
-            {% endif%}
-          </ul>
-        </li>
-
-
-        <li class="form-block__item">
-          <p class="form-block__description">Материал 3</p>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="material-3">Материал</label>
-              <select class="form-block__input" name="material3" id="material-3">
-                <option value="Выберите первый материал" disabled>Выберите первый материал</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
+									<option value=<?=$row['material'] ?>>
+										<?= $row['material'] ?>
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="matcount-2">Количество сырья</label>
+							<input class="form-block__input" type="number" name="mat2count" id="matcount-2" placeholder="количество сырья, кг" step="0.01">
+						</li>
+						{% if machineType == "lamination" %}
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="width2">Ширина</label>
+								<input class="form-block__input" type="number" name="width2" id="width2" placeholder="ширина" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="thickness2">Толщина</label>
+								<input class="form-block__input" type="number" name="thickness2" id="thickness2" placeholder="толщина" step="0.01">
+							</li>
+							{% endif%}
+						</ul>
+					</li>
+				</li>
+				<li class="form-block__item">
+					<p class="form-block__description">Материал 3</p>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="material-3">Материал</label>
+							<select class="form-block__input" name="material3" id="material-3">
+								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {
                                   ?>
-                <option value=<?=$row['material'] ?>>
-                  <?= $row['material'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="matcount-3">Количество сырья</label>
-              <input class="form-block__input" type="number" name="mat3count" id="matcount-3"
-                placeholder="количество сырья, кг" step="0.01">
-            </li>
-            {% if machineType == "lamination" %}
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="width3">Ширина</label>
-              <input class="form-block__input" type="number" name="width3" id="width3" placeholder="ширина" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="thickness3">Толщина</label>
-              <input class="form-block__input" type="number" name="thickness3" id="thickness3" placeholder="толщина"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
-
-        <li class="form-block__item">
-          <p class="form-block__description">Материал 4</p>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="material-4">Материал</label>
-              <select class="form-block__input" name="material3" id="material-4">
-                <option value="Выберите первый материал" disabled>Выберите первый материал</option>
-                <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
+									<option value=<?=$row['material'] ?>>
+										<?= $row['material'] ?>
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="matcount-3">Количество сырья</label>
+							<input class="form-block__input" type="number" name="mat3count" id="matcount-3" placeholder="количество сырья, кг" step="0.01">
+						</li>
+						{% if machineType == "lamination" %}
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="width3">Ширина</label>
+								<input class="form-block__input" type="number" name="width3" id="width3" placeholder="ширина" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<label class="form-block__label" for="thickness3">Толщина</label>
+								<input class="form-block__input" type="number" name="thickness3" id="thickness3" placeholder="толщина" step="0.01">
+							</li>
+						</ul>
+					</li>
+				</li>
+				<li class="form-block__item">
+					<p class="form-block__description">Материал 4</p>
+					<ul class="form-block__sublist">
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="material-4">Материал</label>
+							<select class="form-block__input" name="material3" id="material-4">
+								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
+								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {
                                   ?>
-                <option value=<?=$row['material'] ?>>
-                  <?= $row['material'] ?>
-                </option>
-                <? } ?>
-              </select>
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="matcount-4">Количество сырья</label>
-              <input class="form-block__input" type="number" name="mat4count" id="matcount-4"
-                placeholder="количество сырья, кг" step="0.01">
-            </li>
+									<option value=<?=$row['material'] ?>>
+										<?= $row['material'] ?>
+									</option>
+									<? } ?>
+								</select>
+							</li>
+						</li>
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="matcount-4">Количество сырья</label>
+							<input class="form-block__input" type="number" name="mat4count" id="matcount-4" placeholder="количество сырья, кг" step="0.01">
+						</li>
 
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="width4">Ширина</label>
-              <input class="form-block__input" type="number" name="width4" id="width4" placeholder="ширина" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <label class="form-block__label" for="thickness4">Толщина</label>
-              <input class="form-block__input" type="number" name="thickness4" id="thickness4" placeholder="толщина"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
-        {% endif%}
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="width4">Ширина</label>
+							<input class="form-block__input" type="number" name="width4" id="width4" placeholder="ширина" step="0.01">
+						</li>
+						<li class="form-block__subitem">
+							<label class="form-block__label" for="thickness4">Толщина</label>
+							<input class="form-block__input" type="number" name="thickness4" id="thickness4" placeholder="толщина" step="0.01">
+						</li>
+					</ul>
+				</li>
+				{% endif%}
 
-        {% if machineType == "print" %}
-        <li class="form-block__item">
-          <label class="form-block__label" for="sizes">Размеры</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="width" id="sizes" placeholder="ширина" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="thickness" id="sizes" placeholder="толщина"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
-        {% endif%}
+				{% if machineType == "print" %}
+					<li class="form-block__item">
+						<label class="form-block__label" for="sizes">Размеры</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="width" id="sizes" placeholder="ширина" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="thickness" id="sizes" placeholder="толщина" step="0.01">
+							</li>
+						</ul>
+					</li>
+					{% endif%}
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="workout">Выработка</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="workout_mass" id="workout" placeholder="кг"
-                step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="workout_length" id="workout" placeholder="пог.м."
-                step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="workout_m2" id="workout" placeholder="м2"
-                step="0.01">
-            </li>
-            {% if machineType == "lamination" %}
-            <li>
-              <input class="form-block__input" type="number" name="otk_mass" id="workout" placeholder="на ОТК, кг"
-                step="0.01">
-            </li>
-            {% endif %}
-          </ul>
-        </li>
+					<li class="form-block__item">
+						<label class="form-block__label" for="workout">Выработка</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="workout_mass" id="workout" placeholder="кг" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="workout_length" id="workout" placeholder="пог.м." step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="workout_m2" id="workout" placeholder="м2" step="0.01">
+							</li>
+							{% if machineType == "lamination" %}
+								<li>
+									<input class="form-block__input" type="number" name="otk_mass" id="workout" placeholder="на ОТК, кг" step="0.01">
+								</li>
+							{% endif %}
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="waste">Отходы</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг"
-                step="0.01">
-            </li>
-            {% if machineType == "print" %}
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="waste_raw" id="waste" placeholder="сырья , кг"
-                step="0.01">
-            </li>
-            {% endif %}
-            {% if machineType == "lamination" %}
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="waste_lam" id="waste" placeholder="ламинации , кг"
-                step="0.01">
-            </li>
-            {% endif %}
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
+					<li class="form-block__item">
+						<label class="form-block__label" for="waste">Отходы</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг" step="0.01">
+							</li>
+							{% if machineType == "print" %}
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="waste_raw" id="waste" placeholder="сырья , кг" step="0.01">
+								</li>
+							{% endif %}
+							{% if machineType == "lamination" %}
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="waste_lam" id="waste" placeholder="ламинации , кг" step="0.01">
+								</li>
+							{% endif %}
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01">
+							</li>
+						</ul>
+					</li>
 
-        {% if machineType == "print" %}
-        <li class="form-block__item">
-          <label class="form-block__label" for="colors">Количество красок</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="colors" id="colors" placeholder="от 1 до 10" min="1"
-                max="10">
-            </li>
-          </ul>
-        </li>
-        {% endif %}
-      </ul>
-    </fieldset>
+					{% if machineType == "print" %}
+						<li class="form-block__item">
+							<label class="form-block__label" for="colors">Количество красок</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="colors" id="colors" placeholder="от 1 до 10" min="1" max="10">
+								</li>
+							</ul>
+						</li>
+					{% endif %}
+				</ul>
+			</fieldset>
 
-    <fieldset class="form-block form-block--techopp">
-      <legend class="form-block__title">Технические операции</legend>
-      <ul class="form-block__list">
+			<fieldset class="form-block form-block--techopp">
+				<legend class="form-block__title">Технические операции</legend>
+				<ul class="form-block__list">
 
-        {% if machineType == "print" %}
-        <li class="form-block__item">
-          <label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
+					{% if machineType == "print" %}
+						<li class="form-block__item">
+							<label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="aniloks">Подбор анилоксов</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="aniloks" id="aniloks" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="aniloks">Подбор анилоксов</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="aniloks" id="aniloks" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="clean_machine">Мытье машины</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_machine" id="clean_machine" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="clean_machine">Мытье машины</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="clean_machine" id="clean_machine" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="form_glue">Переклейка форм</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="form_glue" id="form_glue" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="form_glue">Переклейка форм</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="form_glue" id="form_glue" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="rakel">Замена ракеля</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="rakel" id="rakel" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="rakel">Замена ракеля</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="rakel" id="rakel" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="clean_dry">Чистка сушки</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_dry" id="clean_dry" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="clean_dry">Чистка сушки</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="clean_dry" id="clean_dry" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="clean_val">Чистка валов</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_val" id="clean_val" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="clean_val">Чистка валов</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="clean_val" id="clean_val" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="prepare">Приправка</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_mass" id="prepare" placeholder="кг"
-                step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_hours" id="prepare" placeholder="часов"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="prepare">Приправка</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="prepare_mass" id="prepare" placeholder="кг" step="0.01">
+								</li>
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="prepare_hours" id="prepare" placeholder="часов" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="color_correction">Коррекция красок</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="correction_PN" id="color_correction" placeholder="PN"
-                step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="correction_CMYK" id="color_correction"
-                placeholder="CMYK" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="color_correction">Коррекция красок</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="correction_PN" id="color_correction" placeholder="PN" step="0.01">
+								</li>
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="correction_CMYK" id="color_correction" placeholder="CMYK" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="speed">Скорость печати</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="speed" id="speed" step="0.01">
-            </li>
-          </ul>
-        </li>
-        {% endif %}
+						<li class="form-block__item">
+							<label class="form-block__label" for="speed">Скорость печати</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="speed" id="speed" step="0.01">
+								</li>
+							</ul>
+						</li>
+					{% endif %}
 
-        {% if machineType == "lamination" %}
-        <li class="form-block__item">
-          <label class="form-block__label" for="prepare">Приправка</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare" id="prepare" step="0.01">
-            </li>
-          </ul>
-        </li>
+					{% if machineType == "lamination" %}
+						<li class="form-block__item">
+							<label class="form-block__label" for="prepare">Приправка</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="prepare" id="prepare" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="prepare_shirt">Приправка с заменой
-            рубашки</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_shirt" id="prepare_shirt" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="prepare_shirt">Приправка с заменой
+								            рубашки</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="prepare_shirt" id="prepare_shirt" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="flushing">Расход на промывку</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="flushing" id="flushing" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="flushing">Расход на промывку</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="flushing" id="flushing" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="tech_clean">Техчистка</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="tech_clean" id="tech_clean" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="tech_clean">Техчистка</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="tech_clean" id="tech_clean" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="change_glue">Замена клея</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="change_glue" id="change_glue" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="change_glue">Замена клея</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="change_glue" id="change_glue" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="calibrating">Калибровка</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="calibrating" id="calibrating" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="calibrating">Калибровка</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="calibrating" id="calibrating" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="tech_service">Техническое обслуживание</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="tech_service" id="tech_service" step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="tech_service">Техническое обслуживание</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="tech_service" id="tech_service" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="remain">Остаток</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="remain_perv" id="remain" placeholder="первички"
-                step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="remain_sec" id="remain" placeholder="вторички"
-                step="0.01">
-            </li>
-          </ul>
-        </li>
+						<li class="form-block__item">
+							<label class="form-block__label" for="remain">Остаток</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="remain_perv" id="remain" placeholder="первички" step="0.01">
+								</li>
+								<li class="form-block__subitem">
+									<input class="form-block__input" type="number" name="remain_sec" id="remain" placeholder="вторички" step="0.01">
+								</li>
+							</ul>
+						</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="prepare_ok">Приправка принята</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" id="prepare-radio-1" type="radio" name="prepare_ok" value="Да">
-              <label class="form-block__input" for="prepare-radio-1">Да</label>
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" id="prepare-radio-2" type="radio" name="prepare_ok" value="Нет">
-              <label class="form-block__input" for="prepare-radio-2">Нет</label>
-          </ul>
-        </li>
-        {% endif %}
+						<li class="form-block__item">
+							<label class="form-block__label" for="prepare_ok">Приправка принята</label>
+							<ul class="form-block__sublist">
+								<li class="form-block__subitem">
+									<input class="form-block__input" id="prepare-radio-1" type="radio" name="prepare_ok" value="Да">
+									<label class="form-block__input" for="prepare-radio-1">Да</label>
+								</li>
+								<li class="form-block__subitem">
+									<input class="form-block__input" id="prepare-radio-2" type="radio" name="prepare_ok" value="Нет">
+									<label class="form-block__input" for="prepare-radio-2">Нет</label>
+								</li>
+							</ul>
+						</li>
+					{% endif %}
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="no_">Часы отсутствия</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_human" id="no_" placeholder="людей" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_work" id="no_" placeholder="заказов" step="0.01">
-            </li>
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_raw" id="no_" placeholder="сырья" step="0.01">
-            </li>
-          </ul>
-        </li>
+					<li class="form-block__item">
+						<label class="form-block__label" for="no_">Часы отсутствия</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="no_human" id="no_" placeholder="людей" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="no_work" id="no_" placeholder="заказов" step="0.01">
+							</li>
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="no_raw" id="no_" placeholder="сырья" step="0.01">
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item">
-          <label class="form-block__label" for="diff_circulation">Разница тиража</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="diff_circulation" id="diff_circulation"
-                placeholder="+  или  - шт">
-            </li>
-          </ul>
-        </li>
+					<li class="form-block__item">
+						<label class="form-block__label" for="diff_circulation">Разница тиража</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<input class="form-block__input" type="number" name="diff_circulation" id="diff_circulation" placeholder="+  или  - шт">
+							</li>
+						</ul>
+					</li>
 
-        <li class="form-block__item textarea">
-          <label class="form-block__label" for="notes">Примечание</label>
-          <ul class="form-block__sublist">
-            <li class="form-block__subitem">
-              <textarea class="form-block__input" name="notes" id="notes" placeholder=". . . "></textarea>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </fieldset>
+					<li class="form-block__item textarea">
+						<label class="form-block__label" for="notes">Примечание</label>
+						<ul class="form-block__sublist">
+							<li class="form-block__subitem">
+								<textarea class="form-block__input" name="notes" id="notes" placeholder=". . . "></textarea>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</fieldset>
 
-    <?php
+			<?php
       mysqli_close($DB_connect);
       mysqli_close($DB_connect_machine);
       ?>
 
 
+			<div class="form-footer">
+				<button class="form-footer__main-button" type="submit">Внести данные</button>
+				<a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
+			</div>
 
-    <div class="form-footer">
-      <button class="form-footer__main-button" type="submit">Внести данные</button>
-      <a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
-    </div>
+		</form>
 
-  </form>
-
-</article>
+	</article>
