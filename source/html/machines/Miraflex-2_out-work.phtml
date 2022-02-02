@@ -1,0 +1,16 @@
+{% extends "../../templates/layout-out.twig" %}
+
+{% block page__main %}
+
+{% set machineId = 1 %}
+{% set machineName = machines[machineId].name %}
+{% set machineType = machines[machineId].type %}
+
+<?php
+$db = 'miraflex2';
+?>
+
+{% include "../../php/machine-connect.php" %}
+{% include "../../templates/machine-out-work.twig" %}
+
+{% endblock %}

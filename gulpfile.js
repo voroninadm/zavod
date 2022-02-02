@@ -43,6 +43,19 @@ export function processMarkupMachines () {
     .pipe(dest("./build"));
 }
 
+export function processMarkupPhtml () {
+  return src("./source/html/machines/*.phtml")
+    .pipe(twig({
+      data: data
+    }))
+    .pipe(
+      rename({
+        extname: ".phtml"
+      })
+    )
+    .pipe(dest("./build"));
+}
+
 export function validateMarkup () {
   return src("./source/html/*.html")
   .pipe(twig({
@@ -197,6 +210,7 @@ export const build = series(
     processStyles,
     processMarkup,
     processMarkupMachines,
+    processMarkupPhtml,
     processScripts,
     //createSprite,
     createWebp,
@@ -214,6 +228,7 @@ export default series(
     processStyles,
     processMarkup,
     processMarkupMachines,
+    processMarkupPhtml,
     processScripts,
     //createSprite,
     createWebp,

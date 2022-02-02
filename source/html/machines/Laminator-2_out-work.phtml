@@ -1,0 +1,16 @@
+{% extends "../../templates/layout-out.twig" %}
+
+{% block page__main %}
+
+{% set machineId = 7 %}
+{% set machineName = machines[machineId].name %}
+{% set machineType = machines[machineId].type %}
+
+<?php
+$db = 'laminator2';
+?>
+
+{% include "../../php/machine-connect.php" %}
+{% include "../../templates/machine-out-work.twig" %}
+
+{% endblock %}
