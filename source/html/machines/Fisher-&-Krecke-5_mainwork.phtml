@@ -1,4 +1,3 @@
-
 {% extends "../../templates/layout-out.twig" %}
 
 {% block page__main %}
@@ -6,12 +5,14 @@
 {% set machineId = 4 %}
 {% set machineName = machines[machineId].name %}
 {% set machineType = machines[machineId].type %}
+{% set machineDB = machines[machineId].db %}
 
 <?php
 $db_machine = 'fisher5';
+$machineType = "print";
+require './php/machine-connect.php';
 ?>
 
-{% include "../../php/machine-connect.php" %}
 {% include "../../templates/machine-input.twig" %}
 
 {% endblock %}

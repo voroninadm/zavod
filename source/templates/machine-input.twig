@@ -11,6 +11,7 @@
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
 							<input class="form-block__input" type="text" name="machineType" id="machineType" value="{{ machineType }}">
+							<input class="form-block__input" type="text" name="db_machine" id="db_machine" value="{{ machineDB }}">
 						</li>
 					</ul>
 				</li>
@@ -384,7 +385,7 @@
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
 							<label class="form-block__label" for="material-4">Материал</label>
-							<select class="form-block__input" name="material3" id="material-4">
+							<select class="form-block__input" name="material4" id="material-4">
 								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
 								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {

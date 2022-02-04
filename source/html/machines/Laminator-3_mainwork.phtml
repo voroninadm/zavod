@@ -6,12 +6,14 @@
 {% set machineId = 8 %}
 {% set machineName = machines[machineId].name %}
 {% set machineType = machines[machineId].type %}
+{% set machineDB = machines[machineId].db %}
 
 <?php
 $db_machine = 'laminator3';
+$machineType = "lamination";
+require './php/machine-connect.php';
 ?>
 
-{% include "../../php/machine-connect.php" %}
 {% include "../../templates/machine-input.twig" %}
 
 {% endblock %}
