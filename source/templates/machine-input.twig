@@ -1,11 +1,11 @@
 <article>
 
-	<form action="../php/machine-create-work.php" method="POST">
+	<form class="form-block__form page__centerer" action="../php/machine-create-work.php" method="POST">
 		<h1 class="visually-hidden">Основная таблица ввода работ</h1>
 
 		<fieldset class="form-block form-block--work">
 			<legend class="form-block__title">График работ</legend>
-			<ul class="form-block__list">
+			<ul class="form-block__list form-block__list--first">
 				<li class="visually-hidden">
 					<label class="form-block__label" for="machineType">Тип машины</label>
 					<ul class="form-block__sublist">
@@ -28,11 +28,11 @@
 					<label class="form-block__label" for="work_shift">Рабочая смена</label>
 					<ul class="form-block__sublist form-block__sublist--radio">
 						<li class="form-block__subitem">
-							<input class="form-block__input" id="work_shift-1" type="radio" name="work_shift" value="1">
+							<input class="form-block__input form-block__input--radio" id="work_shift-1" type="radio" name="work_shift" value="1">
 							<label class="form-block__sublabel" for="work_shift-1">с 8 до 20</label>
 						</li>
 						<li class="form-block__subitem">
-							<input class="form-block__input" id="work_shift-2" type="radio" name="work_shift" value="2">
+							<input class="form-block__input form-block__input--radio" id="work_shift-2" type="radio" name="work_shift" value="2">
 							<label class="form-block__sublabel" for="work_shift-2">с 20 до 8</label>
 						</li>
 					</ul>
@@ -277,13 +277,13 @@
 
 		<fieldset class="form-block form-block--material">
 			<legend class="form-block__title">Расход материала</legend>
-			<ul class="form-block__list">
+			<ul class="form-block__list form-block__second">
 
 				<li class="form-block__item">
 					<p class="form-block__description">Материал 1</p>
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="material-1">Материал</label>
+							<label class="visually-hidden" for="material-1">Материал</label>
 							<select class="form-block__input" name="material1" id="material-1">
 								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
 								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
@@ -297,16 +297,16 @@
 							</li>
 						</li>
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="matcount-1">Количество сырья</label>
+							<label class="visually-hidden" for="matcount-1">Количество сырья</label>
 							<input class="form-block__input" type="number" name="mat1count" id="matcount-1" placeholder="количество сырья, кг" step="0.01">
 						</li>
 						{% if machineType == "lamination" %}
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="width1">Ширина</label>
+								<label class="visually-hidden" for="width1">Ширина</label>
 								<input class="form-block__input" type="number" name="width1" id="width1" placeholder="ширина" step="0.01">
 							</li>
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="thickness1">Толщина</label>
+								<label class="visually-hidden" for="thickness1">Толщина</label>
 								<input class="form-block__input" type="number" name="thickness1" id="thickness1" placeholder="толщина" step="0.01">
 							</li>
 							{% endif%}
@@ -317,7 +317,7 @@
 					<p class="form-block__description">Материал 2</p>
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="material-2">Материал</label>
+							<label class="visually-hidden" for="material-2">Материал</label>
 							<select class="form-block__input" name="material2" id="material-2">
 								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
 								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
@@ -331,16 +331,16 @@
 							</li>
 						</li>
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="matcount-2">Количество сырья</label>
+							<label class="visually-hidden" for="matcount-2">Количество сырья</label>
 							<input class="form-block__input" type="number" name="mat2count" id="matcount-2" placeholder="количество сырья, кг" step="0.01">
 						</li>
 						{% if machineType == "lamination" %}
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="width2">Ширина</label>
+								<label class="visually-hidden" for="width2">Ширина</label>
 								<input class="form-block__input" type="number" name="width2" id="width2" placeholder="ширина" step="0.01">
 							</li>
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="thickness2">Толщина</label>
+								<label class="visually-hidden" for="thickness2">Толщина</label>
 								<input class="form-block__input" type="number" name="thickness2" id="thickness2" placeholder="толщина" step="0.01">
 							</li>
 							{% endif%}
@@ -351,7 +351,7 @@
 					<p class="form-block__description">Материал 3</p>
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="material-3">Материал</label>
+							<label class="visually-hidden" for="material-3">Материал</label>
 							<select class="form-block__input" name="material3" id="material-3">
 								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
 								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
@@ -365,26 +365,27 @@
 							</li>
 						</li>
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="matcount-3">Количество сырья</label>
+							<label class="visually-hidden" for="matcount-3">Количество сырья</label>
 							<input class="form-block__input" type="number" name="mat3count" id="matcount-3" placeholder="количество сырья, кг" step="0.01">
 						</li>
 						{% if machineType == "lamination" %}
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="width3">Ширина</label>
+								<label class="visually-hidden" for="width3">Ширина</label>
 								<input class="form-block__input" type="number" name="width3" id="width3" placeholder="ширина" step="0.01">
 							</li>
 							<li class="form-block__subitem">
-								<label class="form-block__label" for="thickness3">Толщина</label>
+								<label class="visually-hidden" for="thickness3">Толщина</label>
 								<input class="form-block__input" type="number" name="thickness3" id="thickness3" placeholder="толщина" step="0.01">
 							</li>
-						</ul>
-					</li>
+            {% endif %}
+					</ul>
+          {% if machineType == "lamination" %}
 				</li>
 				<li class="form-block__item">
 					<p class="form-block__description">Материал 4</p>
 					<ul class="form-block__sublist">
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="material-4">Материал</label>
+							<label class="visually-hidden" for="material-4">Материал</label>
 							<select class="form-block__input" name="material4" id="material-4">
 								<option value="Выберите первый материал" disabled>Выберите первый материал</option>
 								<?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
@@ -398,16 +399,16 @@
 							</li>
 						</li>
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="matcount-4">Количество сырья</label>
+							<label class="visually-hidden" for="matcount-4">Количество сырья</label>
 							<input class="form-block__input" type="number" name="mat4count" id="matcount-4" placeholder="количество сырья, кг" step="0.01">
 						</li>
 
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="width4">Ширина</label>
+							<label class="visually-hidden" for="width4">Ширина</label>
 							<input class="form-block__input" type="number" name="width4" id="width4" placeholder="ширина" step="0.01">
 						</li>
 						<li class="form-block__subitem">
-							<label class="form-block__label" for="thickness4">Толщина</label>
+							<label class="visually-hidden" for="thickness4">Толщина</label>
 							<input class="form-block__input" type="number" name="thickness4" id="thickness4" placeholder="толщина" step="0.01">
 						</li>
 					</ul>
@@ -485,7 +486,7 @@
 
 			<fieldset class="form-block form-block--techopp">
 				<legend class="form-block__title">Технические операции</legend>
-				<ul class="form-block__list">
+				<ul class="form-block__list form-block__list--third">
 
 					{% if machineType == "print" %}
 						<li class="form-block__item">
@@ -675,11 +676,11 @@
 							<label class="form-block__label" for="prepare_ok">Приправка принята</label>
 							<ul class="form-block__sublist">
 								<li class="form-block__subitem">
-									<input class="form-block__input" id="prepare-radio-1" type="radio" name="prepare_ok" value="Да">
+									<input class="form-block__input form-block__input--radio" id="prepare-radio-1" type="radio" name="prepare_ok" value="Да">
 									<label class="form-block__input" for="prepare-radio-1">Да</label>
 								</li>
 								<li class="form-block__subitem">
-									<input class="form-block__input" id="prepare-radio-2" type="radio" name="prepare_ok" value="Нет">
+									<input class="form-block__input form-block__input--radio" id="prepare-radio-2" type="radio" name="prepare_ok" value="Нет">
 									<label class="form-block__input" for="prepare-radio-2">Нет</label>
 								</li>
 							</ul>
@@ -710,11 +711,11 @@
 						</ul>
 					</li>
 
-					<li class="form-block__item textarea">
+					<li class="form-block__item form-block__item--textarea">
 						<label class="form-block__label" for="notes">Примечание</label>
 						<ul class="form-block__sublist">
 							<li class="form-block__subitem">
-								<textarea class="form-block__input" name="notes" id="notes" placeholder=". . . "></textarea>
+								<textarea class="form-block__input form-block__input--textarea" name="notes" id="notes" placeholder=". . . "></textarea>
 							</li>
 						</ul>
 					</li>
@@ -726,12 +727,11 @@
       mysqli_close($DB_connect_machine);
       ?>
 
-
-			<div class="form-footer">
-				<button class="form-footer__main-button" type="submit">Внести данные</button>
-				<a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
-			</div>
-
 		</form>
+
+    <div class="form-footer">
+      <button class="form-footer__main-button" type="submit">Внести данные</button>
+      <a class="form-footer__link" href="fisher4.html">Вернуться на Fisher-4</a>
+    </div>
 
 	</article>

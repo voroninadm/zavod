@@ -2,6 +2,7 @@
 @import "./global/variables.css";
 @import "./global/visually-hidden.css";
 @import "./global/reset-list.css";
+@import "./global/media.css";
 
 
 /* block styles */
@@ -16,3 +17,4 @@
 @import "./blocks/adds.css";
 @import "./blocks/add-form.css";
 @import "./blocks/simple-form.css";
+@import "./blocks/form-block.css";
