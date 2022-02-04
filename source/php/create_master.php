@@ -1,6 +1,6 @@
 <?php
 
-require "db_connect.php";
+require "./machine-connect.php";
 
 $name = $_POST["name"];
 $login = $_POST["login"];
@@ -10,7 +10,7 @@ $post = mysqli_query($DB_connect, "INSERT INTO `master` (`id`, `name`, `login`, 
 if (!$post) {
   die("Ошибка отправки данных в базу");
 } else
-  echo "Новый пользователь успешно добавлен!";
+  echo "Новый мастер успешно добавлен!";
 ?>
 
 

@@ -44,7 +44,7 @@ export function processMarkupMachines () {
 }
 
 export function processMarkupPhtml () {
-  return src("./source/html/machines/*.phtml")
+  return src(["./source/html/*.phtml", "./source/html/machines/*.phtml"])
     .pipe(twig({
       data: data
     }))
