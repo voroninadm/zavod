@@ -8,7 +8,7 @@
   <form class="simple-form" action="../../php/create_client_order.php" method="post">
     <ul class="simple-form__list reset-list">
       <li class="simple-form__item simple-form__item--wide">
-        <label class="simple-form__label" for="customer">Выберите заказчика</label>
+        <label class="simple-form__label" for="customer">Выберите заказчика*</label>
         <select name="customer" id="customer">
           <option value="Выберите заказчика" disabled>Выберите заказчика</option>
           <?php $query = mysqli_query($DB_connect, 'SELECT customer FROM `client` ORDER BY customer');
@@ -26,15 +26,14 @@
           placeholder="Например, Пельмени с мясом и картошкой" required></textarea>
       </li>
     </ul>
-    <div class="simple-form__submit">
-      <button class="simple-form__button" type="submit">Добавить новый заказ </button>
-      <span class="simple-form__span">
+    <span class="simple-form__span">
         <sup>* - обязательные поля</sup>
       </span>
+    <div class="simple-form__submit">
+      <button class="simple-form__button" type="submit">Добавить новый заказ </button>
     </div>
   </form>
 </section>
-<a class="back-button" href="../../index.html">Вернуться на главную</a>
 
 
 {% endblock %}

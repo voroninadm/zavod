@@ -35,11 +35,22 @@
 
   &__button {
     position: relative;
-    padding: 5px 10px;
-    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px #888888;
+    color: var(--color__title);
+    font-size: 16px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #d6a3a384;
+    }
   }
 
   &__span {
-    justify-self: center;
+    display: block;
+    text-align: center;
+    margin: 10px;
   }
 }
