@@ -3,7 +3,7 @@
   <p class="machine-main__subtitle reset-list">Добро пожаловать</p>
   <section class="machine-main__add">
     <h2 class="visually-hidden">Формы внесения данных</h2>
-    <ul class="machine-main__list page__cenerer reset-list">
+    <ul class="machine-main__list machine-main__list--add reset-list">
       <li class="machine-main__item">
         <a class="machine-main__link link" href="../{{ machines[machineId].name }}_mainwork.phtml">Внести данные в
           основную таблицу</a>
@@ -11,8 +11,8 @@
     </ul>
   </section>
   <section class="machine-main__show">
-    <h2 class="visually-hidden">Просмотр внесенных данных</h2>
-    <ul class="machine-main__list reset-list">
+    <h2 class="machine-main__subtitle">Просмотр внесенных данных</h2>
+    <ul class="machine-main__list machine-main__list--show reset-list">
       <li class="machine-main__item">
         <a class="machine-main__link machine-main__link--work link"
           href="../{{ machines[machineId].name }}_out-work.phtml">График работ</a>

@@ -1,0 +1,55 @@
+.machine-main {
+  display: grid;
+  width: 98%;
+
+  &__show {
+    margin-top: 70px;
+  }
+
+  &__title {
+    justify-self: center;
+    color: var(--color__title);
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+    justify-self: center;
+    text-align: center;
+    color: var(--color__subtitle);
+    font-size: 18px;
+  }
+
+  &__list {
+    display: grid;
+    row-gap: 30px;
+    margin-top: 40px;
+    justify-self: center;
+
+    &--show {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__item {
+    width: max-content;
+    justify-self: center;
+  }
+
+  &__link {
+    width: max-content;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--color__black);
+    box-shadow: 2px 2px 1px #888888;
+    border-radius: 10px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #eed4d484;
+      box-shadow: 3px 3px 2px #888888;
+    }
+  }
+}
