@@ -1,0 +1,34 @@
+.form-footer {
+  display: grid;
+
+  &__main-button {
+    width: 200px;
+    padding: 10px 20px;
+    justify-self: center;
+    margin: 25px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px #888888;
+    color: var(--color__title);
+    font-size: 16px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #d6a3a384;
+    }
+  }
+
+  &__link {
+    display: grid;
+    padding: 5px 10px;
+    justify-self: center;
+    box-shadow: 2px 2px 1px #888888;
+    border-radius: 10px;
+    color: var(--color__subtitle);
+    text-decoration: none;
+
+    &:hover {
+      background-color: #eed4d484;
+    }
+  }
+}

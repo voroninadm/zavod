@@ -4,5 +4,6 @@
   --color__black: #000000;
   --color__input: #dbcbcb;
   --color__title: #540808;
+  --color__subtitle: #543030;
   --color__work-block: linear-gradient(to left top, #dddddd 0%, #dad9de00 100%);
 }
