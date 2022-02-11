@@ -21,7 +21,7 @@
     top: 0;
     z-index: 5;
     background: #ffffff;
-    width: 90%;
+    /* width: 90%; */
   }
 
   &__header {

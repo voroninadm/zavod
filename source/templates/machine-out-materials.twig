@@ -5,7 +5,7 @@
     </caption>
 
     {% if machineType == "print" %}
-    <thead>
+    <thead class="table-sort__head">
       <tr class="table-sort__row">
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
@@ -112,7 +112,7 @@
     {% endif %}
 
     {% if machineType == "lamination" %}
-    <thead>
+    <thead class="table-sort__head">
       <tr class="table-sort__row">
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
