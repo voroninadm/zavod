@@ -93,5 +93,9 @@
       min-height: 25px;
       resize: vertical;
     }
+
+    &--error {
+      border-color: var(--color__input-error);
+    }
   }
 }
