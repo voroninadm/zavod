@@ -13,6 +13,6 @@ if (!$post) {
   echo "Новый пользователь успешно добавлен!";
 ?>
 
-
+<br>
 <a href="../index.html">Вернуться на главную страницу</a>
-<a href="../forms/adding_forms/add_operator_form.html">Добавить еще одного оператора</a>
+

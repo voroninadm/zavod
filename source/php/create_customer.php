@@ -11,7 +11,6 @@ if (!$post) {
   echo "Новый заказчик успешно добавлен!";
 ?>
 
-
+<br>
 <a href="../index.html">Перейти на гравную страницу</a>
 
-<a href="../forms/adding_forms/add_customer_form.html">Добавить еще одного заказчика</a>

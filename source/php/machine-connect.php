@@ -2,9 +2,9 @@
 
 // Подключаемся к MySQL
 
-$servername = "192.168.11.4";
+$servername = "10.1.2.76";
 $username = "lanuser";
-$password = "123";
+$password = "P@ssw0rd";
 $dbmain = "ntlmain";
 
 

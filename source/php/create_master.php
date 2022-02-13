@@ -13,8 +13,8 @@ if (!$post) {
   echo "Новый мастер успешно добавлен!";
 ?>
 
-
+<br>
 <a href="../index.html">Вернуться на главную страницу</a>
-<a href="../forms/adding_forms/add_operator_form.html">Добавить еще одного мастера смены</a>
+
 
 <?php

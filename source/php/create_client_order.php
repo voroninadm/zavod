@@ -14,6 +14,5 @@ if (!$post) {
   echo "Новый  заказ успешно добавлен!";
 ?>
 
-
+<br>
 <a href="../index.html">Перейти на гравную страницу</a>
-<a href="../forms/adding_forms/add_client_order.phtml">Добавить очередной заказ</a>
