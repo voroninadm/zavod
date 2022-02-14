@@ -95,7 +95,8 @@
     }
 
     &--error {
-      border-color: var(--color__input-error);
+      background-color: var(--color__background-error);
+      border-color: var(--color__border-error);
     }
   }
 }

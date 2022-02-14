@@ -6,5 +6,6 @@
   --color__title: #540808;
   --color__subtitle: #543030;
   --color__work-block: linear-gradient(to left top, #dddddd 0%, #dad9de00 100%);
-  --color__input-error: #b03030;
+  --color__border-error: #b03030;
+  --color__background-error: #f6dfdf;
 }
