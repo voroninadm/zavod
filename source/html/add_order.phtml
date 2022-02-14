@@ -14,8 +14,8 @@
           <?php $query = mysqli_query($DB_connect, 'SELECT customer FROM `client` ORDER BY customer');
       while ($row = mysqli_fetch_assoc($query)) {
       ?>
-          <option value="<?=$row['customer'] ?>"> "
-            <?= $row['customer'] ?>"
+          <option value="<?=$row['customer']?>"> "
+            <?=$row['customer'] ?>"
           </option>
           <? } ?>
         </select>
@@ -23,7 +23,7 @@
       <li class="simple-form__item simple-form__item--wide">
         <label class="simple-form__label" for="order"> Наименование заказа*</label>
         <textarea class="simple-form__input simple-form__textarea" id="order" name="order_title"
-          placeholder="Например, Пельмени с мясом и картошкой" required></textarea>
+          placeholder="Наименование без кавычек, например Пельмени с мясом и картошкой" required></textarea>
       </li>
     </ul>
     <span class="simple-form__span">

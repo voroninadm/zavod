@@ -3,18 +3,26 @@
 require "./machine-connect.php";
 
 $name = $_POST["name"];
-$login = $_POST["login"];
+$login = str_replace(' ', '', $_POST["login"]);
 $password = $_POST["password"];
 
-$post = mysqli_query($DB_connect, "INSERT INTO `master` (`id`, `name`, `login`, `password`) VALUES (NULL, '$name', '$login', '$password' )");
-if (!$post) {
-  die("Ошибка отправки данных в базу");
-} else
-  echo "Новый мастер успешно добавлен!";
+$checkLogin = mysqli_query($DB_connect, "SELECT login FROM master where login = '$login' LIMIT 1 ");
+$countExist =  mysqli_num_rows($checkLogin);
+
+if ($countExist) {
+  echo "'$login' уже существует в базе данных";
+} else {
+  $post = mysqli_query($DB_connect, "INSERT INTO `master` (`id`, `name`, `login`, `password`) VALUES (NULL, '$name', '$login', '$password')");
+  if (!$post) {
+    die("Ошибка отправки данных в базу");
+  } else {
+    echo "Новый мастер с логином '$login' успешно добавлен в базу данных!";
+  }
+};
+
+mysqli_close($DB_connect);
 ?>
 
 <br>
 <a href="../index.html">Вернуться на главную страницу</a>
 
-
-<?php
