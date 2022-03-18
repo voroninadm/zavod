@@ -1,0 +1,70 @@
+<form method="post" action="" autocomplete="off">
+  <fieldset>
+    <legend>Выберите диапазон для составления отчета</legend>
+    <label for="date-from">С </label>
+    <input type="date" name="date-from" required>
+    <label for="date-to">По  </label>
+    <input type="date" name="date-to" required>
+  </fieldset>
+  <fieldset>
+    <legend>Выберите необходимое оборудование</legend>
+    <label for="mf1">Miraflex1</label>
+    <input type="checkbox" name="mf1" id="mf1">
+    <label for="mf2">Miraflex2</label>
+    <input type="checkbox" name="mf2" id="mf2">
+    <label for="lemo">LEMO</label>
+    <input type="checkbox" name="lemo" id="lemo">
+    <label for="fk4">Fisher4</label>
+    <input type="checkbox" name="fk4" id="fk4">
+    <label for="fk5">Fisher5</label>
+    <input type="checkbox" name="fk5" id="fk5">
+    <label for="fk6">Fisher6</label>
+    <input type="checkbox" name="fk6" id="fk6">
+    <label for="lm1">Laminator1</label>
+    <input type="checkbox" name="lm1" id="lm1">
+    <label for="lm2">Laminator2</label>
+    <input type="checkbox" name="lm2" id="lm2">
+    <label for="lm3">Laminator 3</label>
+    <input type="checkbox" name="lm3" id="lm13">
+  </fieldset>
+  <button type="submit">Сформировать отчет</button>
+  <button type="reset">Сбросить значения</button>
+</form>
+
+<table class="table-sort">
+  <caption>Отчет простоя c -- по -- </caption>
+
+  <thead>
+    <tr>
+      <th></th>
+      <th>Электро-механика</th>
+      <th>Техническое обслуживание</th>
+      <th>Персонал</th>
+      <th>Заказы</th>
+      <th>Сырье</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>м1</th>
+      <td>3 часов</td>
+    </tr>
+    <tr>
+      <th>м2</th>
+      <td>5 часов</td>
+    </tr>
+    <tr>
+      <th>м3</th>
+      <td>1 часов</td>
+    </tr>
+    <tr>
+      <th>м4</th>
+      <td>34 часов</td>
+    </tr>
+    <tr>
+      <th>ИТОГО: </th>
+      <td>346 часов</td>
+    </tr>
+  </tbody>
+
+</table>
