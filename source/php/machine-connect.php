@@ -1,6 +1,6 @@
 <?php
 
-// Подключаемся к MySQL
+// Подключаемся к MySQ
 
 $servername = "192.168.11.4";
 $username = "lanuser";
@@ -20,6 +20,6 @@ if (isset($db_machine)) {
 // Проверка соединения
 
 if ($DB_connect->connect_error) {
-    die("Ошибка подключения к главной базе: " . $DB_connect->connect_error);
+  die("Ошибка подключения к главной базе: " . $DB_connect->connect_error);
 };
 ?>
