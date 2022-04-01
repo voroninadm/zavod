@@ -107,7 +107,7 @@
                 pointerUp        : 'mouseup',
 
                 // *** selectors
-                selectorHeaders  : '.table-row__header--sorted',
+                selectorHeaders  : '.table-sort__header--sorted',
                 selectorSort     : 'th, td', // jQuery selector of content within selectorHeaders that is clickable to trigger a sort
                 selectorRemove   : '.remove-me',
 

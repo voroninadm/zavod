@@ -114,11 +114,11 @@
     {% if machineType == "lamination" %}
     <thead class="table-sort__head">
       <tr class="table-sort__row">
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Тираж заказа</th>
+        <th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">№</th>
+        <th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Заказчик</th>
+        <th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Наименование заказа</th>
+        <th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Номер ТКН</th>
+        <th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Тираж заказа</th>
         <th class="table-sort__header" colspan="4">Материал 1</th>
         <th class="table-sort__header" colspan="4">Материал 2</th>
         <th class="table-sort__header" colspan="4">Материал 3</th>
@@ -255,20 +255,20 @@
 
   </table>
 
-  <!-- <script>
-        $(function() {
-            // call the tablesorter plugin
-            $("table").tablesorter({
-                theme : 'blue',
-                // change the default sorting order from 'asc' to 'desc'
-                sortInitialOrder: "desc"
+  <script>
+    $(function() {
+      // call the tablesorter plugin
+      $("table").tablesorter({
+        theme : 'blue',
+      // change the default sorting order from 'asc' to 'desc'
+        sortInitialOrder: "desc"
             });
         });
-    </script> -->
+  </script>
 
   <?php
     mysqli_close($DB_connect);
     mysqli_close($DB_connect_machine);
-    ?>
+  ?>
 
 </section>

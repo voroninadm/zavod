@@ -27,10 +27,10 @@ require './create_report_config.php'
           <a class="header-nav__link header-nav__link--persons" href="../adding.html">Пользователи и заказчики</a>
         </li>
         <li class="header-nav__item">
-          <a class="header-nav__link header-nav__link--mainpage" href="../index.html">На главную</a>
+          <a class="header-nav__link header-nav__link--report" href="../report.phtml">Отчеты</a>
         </li>
         <li class="header-nav__item">
-          <a class="header-nav__link header-nav__link--report" href="../report.phtml">report</a>
+          <a class="header-nav__link header-nav__link--mainpage" href="../index.html">На главную</a>
         </li>
       </ul>
     </nav>
@@ -41,31 +41,40 @@ require './create_report_config.php'
     <form method="post" action="/source/create_report.php" autocomplete="off">
       <fieldset class="filters">
         <legend>Выберите необходимое оборудование</legend>
-        <label for="miraflex1">Miraflex1</label>
-        <input type="checkbox" name="miraflex1" id="miraflex1">
-        <label for="miraflex2">Miraflex2</label>
-        <input type="checkbox" name="miraflex2" id="miraflex2">
-        <label for="lemo">LEMO</label>
-        <input type="checkbox" name="lemo" id="lemo">
-        <label for="fisher4">Fisher4</label>
-        <input type="checkbox" name="fisher4" id="fisher4">
-        <label for="fisher5">Fisher5</label>
-        <input type="checkbox" name="fisher5" id="fisher5">
-        <label for="fisher6">Fisher6</label>
-        <input type="checkbox" name="fisher6" id="fisher6">
-        <label for="laminator1">Laminator1</label>
-        <input type="checkbox" name="laminator1" id="laminator1">
-        <label for="laminator2">Laminator2</label>
-        <input type="checkbox" name="laminator2" id="laminator2">
-        <label for="laminator3">Laminator 3</label>
-        <input type="checkbox" name="laminator3" id="laminator3">
+        <label for="miraflex1">Miraflex1
+          <input type="checkbox" name="miraflex1" id="miraflex1">
+        </label>
+        <label for="miraflex2">Miraflex2
+          <input type="checkbox" name="miraflex2" id="miraflex2">
+        </label>
+        <label for="lemo">LEMO
+          <input type="checkbox" name="lemo" id="lemo">
+        </label>
+        <label for="fisher4">Fisher4
+          <input type="checkbox" name="fisher4" id="fisher4">
+        </label>
+        <label for="fisher5">Fisher5
+          <input type="checkbox" name="fisher5" id="fisher5">
+        </label>
+        <label for="fisher6">Fisher6
+          <input type="checkbox" name="fisher6" id="fisher6">
+        </label>
+        <label for="laminator1">Laminator1
+          <input type="checkbox" name="laminator1" id="laminator1">
+        </label>
+        <label for="laminator2">Laminator2
+          <input type="checkbox" name="laminator2" id="laminator2">
+        </label>
+        <label for="laminator3">Laminator 3
+          <input type="checkbox" name="laminator3" id="laminator3">
+        </label>
       </fieldset>
       <button type="submit" hidden>Сформировать отчет</button>
       <button type="reset" hidden>Сбросить значения</button>
     </form>
 
     <table class="table-sort">
-      <caption>Отчет простоя c <? print $date_from ?> по <? print $date_to ?> </caption>
+      <caption class="table-sort__caption">Отчет простоя c <? print $date_from ?> по <? print $date_to ?> </caption>
 
       <thead class="table-sort__head">
         <tr class="table-sort__row ">
@@ -343,7 +352,7 @@ require './create_report_config.php'
             ?>
           </td>
           <td>
-          <?php
+            <?php
             $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
             $result = mysqli_fetch_assoc($result);
             $sum5 = $result['sum'];
@@ -391,7 +400,7 @@ require './create_report_config.php'
             ?>
           </td>
           <td>
-          <?php
+            <?php
             $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
             $result = mysqli_fetch_assoc($result);
             $sum5 = $result['sum'];
@@ -439,7 +448,7 @@ require './create_report_config.php'
             ?>
           </td>
           <td>
-          <?php
+            <?php
             $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
             $result = mysqli_fetch_assoc($result);
             $sum5 = $result['sum'];
