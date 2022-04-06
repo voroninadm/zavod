@@ -40,34 +40,25 @@ require './create_report_config.php'
   <main class="page__main">
     <form method="post" action="/source/create_report.php" autocomplete="off">
       <fieldset class="filters">
-        <legend>Выберите необходимое оборудование</legend>
-        <label for="miraflex1">Miraflex1
-          <input type="checkbox" name="miraflex1" id="miraflex1">
-        </label>
-        <label for="miraflex2">Miraflex2
-          <input type="checkbox" name="miraflex2" id="miraflex2">
-        </label>
-        <label for="lemo">LEMO
-          <input type="checkbox" name="lemo" id="lemo">
-        </label>
-        <label for="fisher4">Fisher4
-          <input type="checkbox" name="fisher4" id="fisher4">
-        </label>
-        <label for="fisher5">Fisher5
-          <input type="checkbox" name="fisher5" id="fisher5">
-        </label>
-        <label for="fisher6">Fisher6
-          <input type="checkbox" name="fisher6" id="fisher6">
-        </label>
-        <label for="laminator1">Laminator1
-          <input type="checkbox" name="laminator1" id="laminator1">
-        </label>
-        <label for="laminator2">Laminator2
-          <input type="checkbox" name="laminator2" id="laminator2">
-        </label>
-        <label for="laminator3">Laminator 3
-          <input type="checkbox" name="laminator3" id="laminator3">
-        </label>
+        <legend class="filters__legend">Выберите необходимое оборудование</legend>
+        <input class="filters__input visually-hidden" type="checkbox" name="miraflex1" id="miraflex1">
+        <label class="filters__label" for="miraflex1">Miraflex1</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="miraflex2" id="miraflex2">
+        <label class="filters__label" for="miraflex2">Miraflex2</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="lemo" id="lemo">
+        <label class="filters__label" for="lemo">LEMO</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="fisher4" id="fisher4">
+        <label class="filters__label" for="fisher4">Fisher4</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="fisher5" id="fisher5">
+        <label class="filters__label" for="fisher5">Fisher5</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="fisher6" id="fisher6">
+        <label class="filters__label" for="fisher6">Fisher6</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="laminator1" id="laminator1">
+        <label class="filters__label" for="laminator1">Laminator1</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="laminator2" id="laminator2">
+        <label class="filters__label" for="laminator2">Laminator2</label>
+        <input class="filters__input visually-hidden" type="checkbox" name="laminator3" id="laminator3">
+        <label class="filters__label" for="laminator3">Laminator 3</label>
       </fieldset>
       <button type="submit" hidden>Сформировать отчет</button>
       <button type="reset" hidden>Сбросить значения</button>

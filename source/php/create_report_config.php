@@ -4,7 +4,6 @@ $username = "lanuser";
 $password = "123";
 
 
-
 $DB_connect_miraflex1 = new mysqli($servername, $username, $password, 'miraflex1');
 $DB_connect_miraflex2 = new mysqli($servername, $username, $password, 'miraflex2');
 $DB_connect_lemo = new mysqli($servername, $username, $password, 'lemo');

@@ -1,0 +1,30 @@
+.filters {
+  display: flex;
+  margin: 0 auto;
+  padding: 15px 30px;
+  width: 70%;
+  justify-content: center;
+  column-gap: 15px;
+
+  &__legend {
+    margin: 0 auto;
+    padding: 0 30px;
+    color: var(--color__subtitle);
+  }
+
+  &__label {
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.373);
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(206, 59, 54, 0.177);
+    }
+  }
+
+  &__input:checked + label {
+    background-color: rgba(221, 48, 42, 0.344);
+  }
+}
