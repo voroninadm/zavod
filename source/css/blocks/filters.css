@@ -17,7 +17,7 @@
     border: 2px solid rgba(0, 0, 0, 0.373);
     border-radius: 10px;
     padding: 5px 10px;
-    transition: 0.3s;
+    transition: 0.2s;
 
     &:hover {
       background-color: rgba(206, 59, 54, 0.177);

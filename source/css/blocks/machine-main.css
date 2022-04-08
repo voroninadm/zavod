@@ -45,7 +45,7 @@
     color: var(--color__black);
     box-shadow: 2px 2px 1px #888888;
     border-radius: 10px;
-    transition: 0.3s;
+    transition: 0.2s;
 
     &:hover {
       background-color: #eed4d484;

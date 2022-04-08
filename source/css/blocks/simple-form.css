@@ -41,10 +41,11 @@
     box-shadow: 2px 2px 1px #888888;
     color: var(--color__title);
     font-size: 16px;
-    transition: 0.3s;
+    transition: 0.2s;
 
     &:hover {
-      background-color: #d6a3a384;
+      background-color: #eed4d484;
+      box-shadow: 3px 3px 2px #888888;
     }
   }
 

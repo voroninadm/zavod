@@ -1,0 +1,58 @@
+.date-form {
+  width: 800px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    column-gap: 50px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  &__legend {
+    padding: 0 15px;
+    margin: 0 auto;
+    color: var(--color__subtitle);
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    border: none;
+    padding: 10px 20px;
+  }
+
+  & label {
+    display: flex;
+    column-gap: 20px;
+    align-items: center ;
+  }
+
+  & input {
+    flex: 1 1 auto;
+    padding: 3px 15px;
+    border: 1px solid var(--color__input);
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 1px 1px 1px var(--color__input);
+    cursor: pointer;
+  }
+
+  & button {
+    padding: 5px 10px;
+    box-shadow: 2px 2px 1px #888888;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+
+
+    &:hover {
+      background-color: #eed4d484;
+      box-shadow: 3px 3px 2px #888888;
+    }
+  }
+}

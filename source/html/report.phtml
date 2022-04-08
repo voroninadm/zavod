@@ -2,18 +2,22 @@
 
 {% block page__main %}
 
- {% include "../php/machine-connect.php" %}
+ <!-- {% include "../php/machine-connect.php" %} -->
 
-<form method="post" action="../php/create_report.php" autocomplete="off">
-  <fieldset>
-    <legend>Выберите диапазон для составления отчета</legend>
-    <label for="date-from">С </label>
-    <input type="date" name="date-from" required>
-    <label for="date-to">По </label>
-    <input type="date" name="date-to" required>
+<form class="date-form" method="post" action="../php/create_report.php" autocomplete="off">
+  <fieldset class="date-form__main">
+    <legend class="date-form__legend">Выберите диапазон для составления отчета</legend>
+    <label for="date-from">С
+      <input type="date" name="date-from" required>
+    </label>
+    <label for="date-to">По
+      <input type="date" name="date-to" required>
+    </label>
   </fieldset>
+  <fieldset class="date-form__buttons">
   <button type="submit">Сформировать отчет</button>
   <button type="reset">Сбросить значения</button>
+</fieldset>
 </form>
 
 {% endblock %}
