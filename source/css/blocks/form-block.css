@@ -20,6 +20,11 @@
   background-image: var(--color__work-block);
   box-shadow: 2px 2px 5px var(--color__input);
 
+  &__wrapper {
+    display: grid;
+    row-gap: 10px;
+    margin-bottom: 10px;
+  }
 
   &__title {
     text-align: center;

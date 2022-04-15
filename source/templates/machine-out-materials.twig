@@ -12,22 +12,16 @@
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Тираж заказа</th>
-        <th class="table-sort__header" colspan="3">Материалы</th>
+        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Материал</th>
         <th class="table-sort__header table-sort__header--sorted" rowspan="2">Кол-во красок</th>
         <th class="table-sort__header" colspan="2">Размеры</th>
-        <th class="table-sort__header" colspan="3">Количество сырья</th>
+        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Количество сырья</th>
         <th class="table-sort__header" colspan="3">Выработка</th>
         <th class="table-sort__header" colspan="3">Отходы</th>
       </tr>
       <tr class="table-sort__row table-sort__row--small">
-        <th class="table-sort__header table-sort__header--sorted">материал 1</th>
-        <th class="table-sort__header table-sort__header--sorted">материал 2</th>
-        <th class="table-sort__header table-sort__header--sorted">материал 3</th>
         <th class="table-sort__header table-sort__header--sorted">ширина</th>
         <th class="table-sort__header table-sort__header--sorted">толщина</th>
-        <th class="table-sort__header table-sort__header--sorted">материал 1, <small>кг</small></th>
-        <th class="table-sort__header table-sort__header--sorted">материал 2, <small>кг</small></th>
-        <th class="table-sort__header table-sort__header--sorted">материал 3, <small>кг</small></th>
         <th class="table-sort__header table-sort__header--sorted">кг</th>
         <th class="table-sort__header table-sort__header--sorted">пог.м.</th>
         <th class="table-sort__header table-sort__header--sorted">m<sup>2</sup></th>
@@ -39,7 +33,7 @@
     <tbody class="table-sort__body">
       <tr class="table-sort__row">
         <?php
-          $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `material2`, `material3`, `colors`, `width`, `thickness`, `mat1count`, `mat2count`, `mat3count`, `workout_mass`, `workout_length`, `workout_m2`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
+          $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
           $query = mysqli_fetch_all($query);
           foreach ($query as $qu) {
           ?>
@@ -91,18 +85,6 @@
         <td>
           <?= $qu[15] ?>
         </td>
-        <td>
-          <?= $qu[16] ?>
-        </td>
-        <td>
-          <?= $qu[17] ?>
-        </td>
-        <td>
-          <?= $qu[18] ?>
-        </td>
-        <td>
-          <?= $qu[19] ?>
-        </td>
       </tr>
       <?php
       }
@@ -122,15 +104,10 @@
         <th class="table-sort__header" colspan="4">Материал 1</th>
         <th class="table-sort__header" colspan="4">Материал 2</th>
         <th class="table-sort__header" colspan="4">Материал 3</th>
-        <th class="table-sort__header" colspan="4">Материал 4</th>
         <th class="table-sort__header" colspan="4">Выработка</th>
         <th class="table-sort__header" colspan="3">Отходы</th>
       </tr>
       <tr class="table-sort__row table-sort__row--small">
-        <th class="table-sort__header table-sort__header--sorted">Материал</th>
-        <th class="table-sort__header table-sort__header--sorted">кол-во сырья</th>
-        <th class="table-sort__header table-sort__header--sorted">ширина</th>
-        <th class="table-sort__header table-sort__header--sorted">толщина</th>
         <th class="table-sort__header table-sort__header--sorted">Материал</th>
         <th class="table-sort__header table-sort__header--sorted">кол-во сырья</th>
         <th class="table-sort__header table-sort__header--sorted">ширина</th>
@@ -155,7 +132,7 @@
     <tbody class="table-sort__body">
       <tr class="table-sort__row">
         <?php
-            $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count`, `width1`, `thickness1`, `material2`,`mat2count`, `width2`, `thickness2`, `material3`,`mat3count`, `width3`, `thickness3`,`material4`,`mat4count`, `width4`, `thickness4`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
+            $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count`, `width1`, `thickness1`, `material2`,`mat2count`, `width2`, `thickness2`, `material3`,`mat3count`, `width3`, `thickness3`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
             $query = mysqli_fetch_all($query);
             foreach ($query as $qu) {
             ?>
@@ -231,20 +208,6 @@
         <td>
           <?= $qu[23] ?>
         </td>
-        <td>
-          <?= $qu[24] ?>
-        </td>
-        <td>
-          <?= $qu[25] ?>
-        </td>
-        <td>
-          <?= $qu[26] ?>
-        </td>
-        <td>
-          <?= $qu[27] ?>
-        </td>
-
-
       </tr>
       <?php
         }
