@@ -23,6 +23,10 @@
 .page__main {
   flex: 1;
   padding: 30px 10px 10px 10px;
+  /* background-image: url("/images/miraflex.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%; */
 }
 
 .page__centerer {
