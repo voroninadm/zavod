@@ -378,48 +378,48 @@
 			</li>
 			{% endif%}
 		</div>
-		<li class="form-block__item">
-			<label class="form-block__label" for="workout">Выработка</label>
-			<ul class="form-block__sublist">
-				<li class="form-block__subitem">
-					<input class="form-block__input" type="number" name="workout_mass" id="workout" placeholder="кг" step="0.01" required>
-				</li>
-				<li class="form-block__subitem">
-					<input class="form-block__input" type="number" name="workout_length" id="workout" placeholder="пог.м." step="0.01" required>
-				</li>
-				<li class="form-block__subitem">
-					<input class="form-block__input" type="number" name="workout_m2" id="workout" placeholder="м2" step="0.01" required>
-				</li>
-				{% if machineType == "lamination" %}
+		<div class="form-block__wrapper">
+			<li class="form-block__item">
+				<label class="form-block__label" for="workout">Выработка</label>
+				<ul class="form-block__sublist">
+					<li class="form-block__subitem">
+						<input class="form-block__input" type="number" name="workout_mass" id="workout" placeholder="кг" step="0.01" required>
+					</li>
+					<li class="form-block__subitem">
+						<input class="form-block__input" type="number" name="workout_length" id="workout" placeholder="пог.м." step="0.01" required>
+					</li>
+					<li class="form-block__subitem">
+						<input class="form-block__input" type="number" name="workout_m2" id="workout" placeholder="м2" step="0.01" required>
+					</li>
 					<li class="form-block__subitem">
 						<input class="form-block__input" type="number" name="otk_mass" id="workout" placeholder="на ОТК, кг" step="0.01" required>
 					</li>
-				{% endif %}
-			</ul>
-		</li>
-
-		<li class="form-block__item">
-			<label class="form-block__label" for="waste">Отходы</label>
-			<ul class="form-block__sublist">
-				<li class="form-block__subitem">
-					<input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг" step="0.01" required>
-				</li>
-				{% if machineType == "print" %}
+				</ul>
+			</li>
+		</div>
+		<div class="form-block__wrapper">
+			<li class="form-block__item">
+				<label class="form-block__label" for="waste">Отходы</label>
+				<ul class="form-block__sublist">
 					<li class="form-block__subitem">
-						<input class="form-block__input" type="number" name="waste_raw" id="waste" placeholder="сырья , кг" step="0.01" required>
+						<input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг" step="0.01" required>
 					</li>
-				{% endif %}
-				{% if machineType == "lamination" %}
+					{% if machineType == "print" %}
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="number" name="waste_raw" id="waste" placeholder="сырья , кг" step="0.01" required>
+						</li>
+					{% endif %}
+					{% if machineType == "lamination" %}
+						<li class="form-block__subitem">
+							<input class="form-block__input" type="number" name="waste_lam" id="waste" placeholder="ламинации , кг" step="0.01" required>
+						</li>
+					{% endif %}
 					<li class="form-block__subitem">
-						<input class="form-block__input" type="number" name="waste_lam" id="waste" placeholder="ламинации , кг" step="0.01" required>
+						<input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01" required>
 					</li>
-				{% endif %}
-				<li class="form-block__subitem">
-					<input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01" required>
-				</li>
-			</ul>
-		</li>
-
+				</ul>
+			</li>
+		</div>
 		{% if machineType == "print" %}
 			<li class="form-block__item">
 				<label class="form-block__label" for="colors">Количество красок</label>
@@ -437,16 +437,18 @@
 	<legend class="form-block__title">Технические операции</legend>
 	<ul class="form-block__list form-block__list--third">
 
+		<li class="form-block__item">
+			<label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
+			<ul class="form-block__sublist">
+				<li class="form-block__subitem">
+					<input class="form-block__input" type="number" name="electro" id="electro_mechanical" step="0.01" placeholder="электрика, часов" required>
+				</li>
+				<li class="form-block__subitem">
+					<input class="form-block__input" type="number" name="mechanical" id="electro_mechanical" step="0.01" placeholder="механика, часов" required>
+				</li>
+			</ul>
+		</li>
 		{% if machineType == "print" %}
-			<li class="form-block__item">
-				<label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
-				<ul class="form-block__sublist">
-					<li class="form-block__subitem">
-						<input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical" step="0.01" placeholder="часов" required>
-					</li>
-				</ul>
-			</li>
-
 			<li class="form-block__item">
 				<label class="form-block__label" for="aniloks">Подбор анилоксов</label>
 				<ul class="form-block__sublist">
@@ -586,15 +588,6 @@
 				<ul class="form-block__sublist">
 					<li class="form-block__subitem">
 						<input class="form-block__input" type="number" name="calibrating" id="calibrating" step="0.01" placeholder="часов" required>
-					</li>
-				</ul>
-			</li>
-
-			<li class="form-block__item">
-				<label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
-				<ul class="form-block__sublist">
-					<li class="form-block__subitem">
-						<input class="form-block__input" type="number" name="electro_mechanical" id="electro_mechanical" step="0.01" placeholder="часов" required>
 					</li>
 				</ul>
 			</li>

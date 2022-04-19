@@ -30,6 +30,7 @@ if (isset($machineType)) {
     $workout_mass = $_POST["workout_mass"];
     $workout_length = $_POST["workout_length"];
     $workout_m2 = $_POST["workout_m2"];
+    $otk_mass = $_POST["otk_mass"];
     $waste_print = $_POST["waste_print"];
     $waste_raw = $_POST["waste_raw"];
     $waste_sum = $_POST["waste_sum"];
@@ -37,7 +38,8 @@ if (isset($machineType)) {
     $prepare_hours = $_POST["prepare_hours"];
     $correction_PN = $_POST["correction_PN"];
     $correction_CMYK = $_POST["correction_CMYK"];
-    $electro_mechanical = $_POST["electro_mechanical"];
+    $electro = $_POST["electro"];
+    $mechanical = $_POST["mechanical"];
     $aniloks = $_POST["aniloks"];
     $clean_machine = $_POST["clean_machine"];
     $form_glue = $_POST["form_glue"];
@@ -51,7 +53,7 @@ if (isset($machineType)) {
     $diff_circulation = $_POST["diff_circulation"];
     $notes = $_POST["notes"];
 
-    $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator1`, `operator2`, `operator3`, `operator_helper`,`tkn`, `work_start`, `work_finish`, `customer`, `print_title`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `waste_print`, `waste_raw`, `waste_sum`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro_mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator1', '$operator2', '$operator3', '$operator_helper', '$tkn', '$work_start', '$work_finish', '$customer', '$print_title', '$circulation', '$material1', '$colors', '$width1', '$thickness1', '$mat1count', '$workout_mass', '$workout_length', '$workout_m2', '$waste_print' , '$waste_raw' , '$waste_sum', '$prepare_mass', '$prepare_hours', '$correction_PN', '$correction_CMYK', '$electro_mechanical', '$aniloks', '$clean_machine', '$form_glue', '$rakel', '$clean_dry', '$clean_val', '$speed', '$no_human', '$no_work', '$no_raw', '$diff_circulation', '$notes')");
+    $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator1`, `operator2`, `operator3`, `operator_helper`,`tkn`, `work_start`, `work_finish`, `customer`, `print_title`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_raw`, `waste_sum`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro`, `mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator1', '$operator2', '$operator3', '$operator_helper', '$tkn', '$work_start', '$work_finish', '$customer', '$print_title', '$circulation', '$material1', '$colors', '$width1', '$thickness1', '$mat1count', '$workout_mass', '$workout_length', '$workout_m2', '$otk_mass', '$waste_print' , '$waste_raw' , '$waste_sum', '$prepare_mass', '$prepare_hours', '$correction_PN', '$correction_CMYK', '$electro', '$mechanical', '$aniloks', '$clean_machine', '$form_glue', '$rakel', '$clean_dry', '$clean_val', '$speed', '$no_human', '$no_work', '$no_raw', '$diff_circulation', '$notes')");
   } if ($machineType == "lamination") {
 
     $work_date = $_POST["work_date"];
@@ -90,7 +92,8 @@ if (isset($machineType)) {
     $flushing = $_POST["flushing"];
     $tech_clean = $_POST["tech_clean"];
     $change_glue = $_POST["change_glue"];
-    $electro_mechanical = $_POST["electro_mechanical"];
+    $electro = $_POST["electro"];
+    $mechanical = $_POST["mechanical"];
     $tech_service = $_POST["tech_service"];
     $calibrating = $_POST["calibrating"];
     $no_human = $_POST["no_human"];
@@ -102,7 +105,7 @@ if (isset($machineType)) {
     $prepare_ok = $_POST["prepare_ok"];
     $notes = $_POST["notes"];
 
-    $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator`, `operator_student`, `operator_helper`, `tkn`, `work_start`, `work_finish`, `customer`, `print_title`, `circulation`, `material1`, `material2`, `material3`, `width1`, `width2`, `width3`, `thickness1`, `thickness2`, `thickness3`, `mat1count`, `mat2count`, `mat3count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_lam`, `waste_sum`, `prepare`, `prepare_shirt`, `flushing`, `tech_clean`, `change_glue`, `electro_mechanical`, `tech_service`, `calibrating`, `no_human`, `no_work`, `no_raw`, `remain_perv`, `remain_sec`, `diff_circulation`, `prepare_ok`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator', '$operator_student', '$operator_helper', '$tkn', '$work_start', '$work_finish', '$customer', '$print_title', '$circulation', '$material1', '$material2', '$material3', '$width1', '$width2', '$width3', '$thickness1', '$thickness2', '$thickness3', '$mat1count', '$mat2count', '$mat3count', '$workout_mass', '$workout_length', '$workout_m2', '$otk_mass', '$waste_print' , '$waste_lam' , '$waste_sum', '$prepare', '$prepare_shirt', '$flushing', '$tech_clean', '$change_glue', '$electro_mechanical', '$tech_service', '$calibrating', '$no_human', '$no_work', '$no_raw', '$remain_perv', '$remain_sec', '$diff_circulation', '$prepare_ok', '$notes')");
+    $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator`, `operator_student`, `operator_helper`, `tkn`, `work_start`, `work_finish`, `customer`, `print_title`, `circulation`, `material1`, `material2`, `material3`, `width1`, `width2`, `width3`, `thickness1`, `thickness2`, `thickness3`, `mat1count`, `mat2count`, `mat3count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_lam`, `waste_sum`, `prepare`, `prepare_shirt`, `flushing`, `tech_clean`, `change_glue`, `electro`, `mechanical`, `tech_service`, `calibrating`, `no_human`, `no_work`, `no_raw`, `remain_perv`, `remain_sec`, `diff_circulation`, `prepare_ok`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator', '$operator_student', '$operator_helper', '$tkn', '$work_start', '$work_finish', '$customer', '$print_title', '$circulation', '$material1', '$material2', '$material3', '$width1', '$width2', '$width3', '$thickness1', '$thickness2', '$thickness3', '$mat1count', '$mat2count', '$mat3count', '$workout_mass', '$workout_length', '$workout_m2', '$otk_mass', '$waste_print' , '$waste_lam' , '$waste_sum', '$prepare', '$prepare_shirt', '$flushing', '$tech_clean', '$change_glue', '$electro', '$mechanical', '$tech_service', '$calibrating', '$no_human', '$no_work', '$no_raw', '$remain_perv', '$remain_sec', '$diff_circulation', '$prepare_ok', '$notes')");
   }
 } else {
   echo ("Переменная машины не задана!");

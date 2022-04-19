@@ -1,235 +1,244 @@
 <section class="show-table">
-  <table class="table-sort">
-    <caption class="table-sort__caption">Технические операции
-      <span class="table-sort__title">{{ machineName }}</span>
-    </caption>
+	<table class="table-sort">
+		<caption class="table-sort__caption">Технические операции
+			<span class="table-sort__title">{{ machineName }}</span>
+		</caption>
 
-    {% if machineType == "print" %}
-    <thead class="table-sort__head">
-      <tr class="table-sort__row">
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
-        <th class="table-sort__header" colspan="2">Приправка</th>
-        <th class="table-sort__header" colspan="2">Корректировка красок, ч</th>
-        <th class="table-sort__header" colspan="7">Технические операции, ч</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Скорость печати, м/м</th>
-        <th class="table-sort__header" colspan="3">Часы отсутствия </th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Разница тиража</th>
-        <th class="table-sort__header" rowspan="2">Примечание</th>
-      </tr>
-      <tr class="table-sort__row table-sort__row--small">
-        <th class="table-sort__header table-sort__header--sorted">кг</th>
-        <th class="table-sort__header table-sort__header--sorted">часов</th>
-        <th class="table-sort__header table-sort__header--sorted">PN</th>
-        <th class="table-sort__header table-sort__header--sorted">CMYK</th>
-        <th class="table-sort__header table-sort__header--sorted">мех/элек часть</th>
-        <th class="table-sort__header table-sort__header--sorted">подбор анилоксов</th>
-        <th class="table-sort__header table-sort__header--sorted">мытье машины</th>
-        <th class="table-sort__header table-sort__header--sorted">переклейка форм</th>
-        <th class="table-sort__header table-sort__header--sorted">замена ракеля</th>
-        <th class="table-sort__header table-sort__header--sorted">чистка сушки</th>
-        <th class="table-sort__header table-sort__header--sorted">чистка валов</th>
-        <th class="table-sort__header table-sort__header--sorted">людей</th>
-        <th class="table-sort__header table-sort__header--sorted">заказов</th>
-        <th class="table-sort__header table-sort__header--sorted">сырья</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-sort__row">
-        <?php
-          $query = mysqli_query($DB_connect_machine,"SELECT `id`, `customer`, `print_title`, `tkn`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro_mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes` FROM `primbase` ");
+		{% if machineType == "print" %}
+			<thead class="table-sort__head">
+				<tr class="table-sort__row">
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
+					<th class="table-sort__header" colspan="2">Приправка</th>
+					<th class="table-sort__header" colspan="2">Корректировка красок, ч</th>
+					<th class="table-sort__header" colspan="8">Технические операции, ч</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Скорость печати, м/м</th>
+					<th class="table-sort__header" colspan="3">Часы отсутствия
+					</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Разница тиража</th>
+					<th class="table-sort__header" rowspan="2">Примечание</th>
+				</tr>
+				<tr class="table-sort__row table-sort__row--small">
+					<th class="table-sort__header table-sort__header--sorted">кг</th>
+					<th class="table-sort__header table-sort__header--sorted">часов</th>
+					<th class="table-sort__header table-sort__header--sorted">PN</th>
+					<th class="table-sort__header table-sort__header--sorted">CMYK</th>
+					<th class="table-sort__header table-sort__header--sorted">электрика</th>
+					<th class="table-sort__header table-sort__header--sorted">механика</th>
+					<th class="table-sort__header table-sort__header--sorted">подбор анилоксов</th>
+					<th class="table-sort__header table-sort__header--sorted">мытье машины</th>
+					<th class="table-sort__header table-sort__header--sorted">переклейка форм</th>
+					<th class="table-sort__header table-sort__header--sorted">замена ракеля</th>
+					<th class="table-sort__header table-sort__header--sorted">чистка сушки</th>
+					<th class="table-sort__header table-sort__header--sorted">чистка валов</th>
+					<th class="table-sort__header table-sort__header--sorted">людей</th>
+					<th class="table-sort__header table-sort__header--sorted">заказов</th>
+					<th class="table-sort__header table-sort__header--sorted">сырья</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-sort__row">
+					<?php
+          $query = mysqli_query($DB_connect_machine,"SELECT `id`, `customer`, `print_title`, `tkn`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro`, `mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes` FROM `primbase` ");
           $query = mysqli_fetch_all($query);
           foreach ($query as $qu) {
           ?>
-        <td>
-          <?= $qu[0] ?>
-        </td>
-        <td>
-          <?= $qu[1] ?>
-        </td>
-        <td>
-          <?= $qu[2] ?>
-        </td>
-        <td>
-          <?= $qu[3] ?>
-        </td>
-        <td>
-          <?= $qu[4] ?>
-        </td>
-        <td>
-          <?= $qu[5] ?>
-        </td>
-        <td>
-          <?= $qu[6] ?>
-        </td>
-        <td>
-          <?= $qu[7] ?>
-        </td>
-        <td>
-          <?= $qu[8] ?>
-        </td>
-        <td>
-          <?= $qu[9] ?>
-        </td>
-        <td>
-          <?= $qu[10] ?>
-        </td>
-        <td>
-          <?= $qu[11] ?>
-        </td>
-        <td>
-          <?= $qu[12] ?>
-        </td>
-        <td>
-          <?= $qu[13] ?>
-        </td>
-        <td>
-          <?= $qu[14] ?>
-        </td>
-        <td>
-          <?= $qu[15] ?>
-        </td>
-        <td>
-          <?= $qu[16] ?>
-        </td>
-        <td>
-          <?= $qu[17] ?>
-        </td>
-        <td>
-          <?= $qu[18] ?>
-        </td>
-        <td>
-          <?= $qu[19] ?>
-        </td>
-        <td>
-          <?= $qu[20] ?>
-        </td>
-      </tr>
-      <?php
+						<td>
+							<?= $qu[0] ?>
+						</td>
+						<td>
+							<?= $qu[1] ?>
+						</td>
+						<td>
+							<?= $qu[2] ?>
+						</td>
+						<td>
+							<?= $qu[3] ?>
+						</td>
+						<td>
+							<?= $qu[4] ?>
+						</td>
+						<td>
+							<?= $qu[5] ?>
+						</td>
+						<td>
+							<?= $qu[6] ?>
+						</td>
+						<td>
+							<?= $qu[7] ?>
+						</td>
+						<td>
+							<?= $qu[8] ?>
+						</td>
+						<td>
+							<?= $qu[9] ?>
+						</td>
+						<td>
+							<?= $qu[10] ?>
+						</td>
+						<td>
+							<?= $qu[11] ?>
+						</td>
+						<td>
+							<?= $qu[12] ?>
+						</td>
+						<td>
+							<?= $qu[13] ?>
+						</td>
+						<td>
+							<?= $qu[14] ?>
+						</td>
+						<td>
+							<?= $qu[15] ?>
+						</td>
+						<td>
+							<?= $qu[16] ?>
+						</td>
+						<td>
+							<?= $qu[17] ?>
+						</td>
+						<td>
+							<?= $qu[18] ?>
+						</td>
+						<td>
+							<?= $qu[19] ?>
+						</td>
+						<td>
+							<?= $qu[20] ?>
+						</td>
+						<td>
+							<?= $qu[20] ?>
+						</td>
+					</tr>
+				<?php
       }
       ?>
-    </tbody>
-    {% endif %}
+			</tbody>
+		{% endif %}
 
-    {% if machineType == "lamination" %}
-    <thead class="table-sort__head">
-      <tr class="table-sort__row">
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка с заменой рубашки</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Расход на промывку</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Техчистка</th>
-        <th class="table-sort__header" colspan="4">Технические операции, ч</th>
-        <th class="table-sort__header" colspan="3">Часы отсутствия </th>
-        <th class="table-sort__header" colspan="2">Остаток</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Разница тиража</th>
-        <th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка принята</th>
-        <th class="table-sort__header" rowspan="2">Примечание</th>
-      </tr>
-      <tr class="table-sort__row table-sort__row--small">
-        <th class="table-sort__header table-sort__header--sorted">замена клея</th>
-        <th class="table-sort__header table-sort__header--sorted">калибровка</th>
-        <th class="table-sort__header table-sort__header--sorted">мех/элек часть</th>
-        <th class="table-sort__header table-sort__header--sorted">тех обслуживание</th>
-        <th class="table-sort__header table-sort__header--sorted">людей</th>
-        <th class="table-sort__header table-sort__header--sorted">заказов</th>
-        <th class="table-sort__header table-sort__header--sorted">сырья</th>
-        <th class="table-sort__header table-sort__header--sorted">первички</th>
-        <th class="table-sort__header table-sort__header--sorted">вторички</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-sort__row">
-        <?php
-            $query = mysqli_query($DB_connect_machine,"SELECT `id`, `customer`, `print_title`, `tkn`, `prepare`, `prepare_shirt`, `flushing`,  `tech_clean`, `change_glue`, `calibrating`, `electro_mechanical`, `tech_service`, `no_human`, `no_work`, `no_raw`, `remain_perv`, `remain_sec`, `diff_circulation`, `prepare_ok`, `notes` FROM `primbase` ");
+		{% if machineType == "lamination" %}
+			<thead class="table-sort__head">
+				<tr class="table-sort__row">
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка с заменой рубашки</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Расход на промывку</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Техчистка</th>
+					<th class="table-sort__header" colspan="5">Технические операции, ч</th>
+					<th class="table-sort__header" colspan="3">Часы отсутствия
+					</th>
+					<th class="table-sort__header" colspan="2">Остаток</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Разница тиража</th>
+					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка принята</th>
+					<th class="table-sort__header" rowspan="2">Примечание</th>
+				</tr>
+				<tr class="table-sort__row table-sort__row--small">
+					<th class="table-sort__header table-sort__header--sorted">замена клея</th>
+					<th class="table-sort__header table-sort__header--sorted">калибровка</th>
+					<th class="table-sort__header table-sort__header--sorted">электрика</th>
+					<th class="table-sort__header table-sort__header--sorted">механика</th>
+					<th class="table-sort__header table-sort__header--sorted">тех обслуживание</th>
+					<th class="table-sort__header table-sort__header--sorted">людей</th>
+					<th class="table-sort__header table-sort__header--sorted">заказов</th>
+					<th class="table-sort__header table-sort__header--sorted">сырья</th>
+					<th class="table-sort__header table-sort__header--sorted">первички</th>
+					<th class="table-sort__header table-sort__header--sorted">вторички</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-sort__row">
+					<?php
+            $query = mysqli_query($DB_connect_machine,"SELECT `id`, `customer`, `print_title`, `tkn`, `prepare`, `prepare_shirt`, `flushing`,  `tech_clean`, `change_glue`, `calibrating`, `electro`, `mechanical`, `tech_service`, `no_human`, `no_work`, `no_raw`, `remain_perv`, `remain_sec`, `diff_circulation`, `prepare_ok`, `notes` FROM `primbase` ");
             $query = mysqli_fetch_all($query);
             foreach ($query as $qu) {
             ?>
-        <td>
-          <?= $qu[0] ?>
-        </td>
-        <td>
-          <?= $qu[1] ?>
-        </td>
-        <td>
-          <?= $qu[2] ?>
-        </td>
-        <td>
-          <?= $qu[3] ?>
-        </td>
-        <td>
-          <?= $qu[4] ?>
-        </td>
-        <td>
-          <?= $qu[5] ?>
-        </td>
-        <td>
-          <?= $qu[6] ?>
-        </td>
-        <td>
-          <?= $qu[7] ?>
-        </td>
-        <td>
-          <?= $qu[8] ?>
-        </td>
-        <td>
-          <?= $qu[9] ?>
-        </td>
-        <td>
-          <?= $qu[10] ?>
-        </td>
-        <td>
-          <?= $qu[11] ?>
-        </td>
-        <td>
-          <?= $qu[12] ?>
-        </td>
-        <td>
-          <?= $qu[13] ?>
-        </td>
-        <td>
-          <?= $qu[14] ?>
-        </td>
-        <td>
-          <?= $qu[15] ?>
-        </td>
-        <td>
-          <?= $qu[16] ?>
-        </td>
-        <td>
-          <?= $qu[17] ?>
-        </td>
-        <td>
-          <?= $qu[18] ?>
-        </td>
-        <td>
-          <?= $qu[19] ?>
-        </td>
-      </tr>
-      <?php
+						<td>
+							<?= $qu[0] ?>
+						</td>
+						<td>
+							<?= $qu[1] ?>
+						</td>
+						<td>
+							<?= $qu[2] ?>
+						</td>
+						<td>
+							<?= $qu[3] ?>
+						</td>
+						<td>
+							<?= $qu[4] ?>
+						</td>
+						<td>
+							<?= $qu[5] ?>
+						</td>
+						<td>
+							<?= $qu[6] ?>
+						</td>
+						<td>
+							<?= $qu[7] ?>
+						</td>
+						<td>
+							<?= $qu[8] ?>
+						</td>
+						<td>
+							<?= $qu[9] ?>
+						</td>
+						<td>
+							<?= $qu[10] ?>
+						</td>
+						<td>
+							<?= $qu[11] ?>
+						</td>
+						<td>
+							<?= $qu[12] ?>
+						</td>
+						<td>
+							<?= $qu[13] ?>
+						</td>
+						<td>
+							<?= $qu[14] ?>
+						</td>
+						<td>
+							<?= $qu[15] ?>
+						</td>
+						<td>
+							<?= $qu[16] ?>
+						</td>
+						<td>
+							<?= $qu[17] ?>
+						</td>
+						<td>
+							<?= $qu[18] ?>
+						</td>
+						<td>
+							<?= $qu[19] ?>
+						</td>
+						<td>
+							<?= $qu[20] ?>
+						</td>
+					</tr>
+				<?php
         }
         ?>
-    </tbody>
-    {% endif %}
-  </table>
+			</tbody>
+		{% endif %}
+	</table>
 
-  <script>
-        $(function() {
-            // call the tablesorter plugin
-            $("table").tablesorter({
-                theme : 'blue',
-                // change the default sorting order from 'asc' to 'desc'
-                sortInitialOrder: "desc"
-            });
-        });
-    </script>
+	<script>
+		$(function () { // call the tablesorter plugin
+$("table").tablesorter({
+theme: 'blue',
+// change the default sorting order from 'asc' to 'desc'
+sortInitialOrder: "desc"
+});
+});
+	</script>
 
-  <?php
+	<?php
     mysqli_close($DB_connect);
     mysqli_close($DB_connect_machine);
     ?>
