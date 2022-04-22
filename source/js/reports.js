@@ -1,6 +1,6 @@
 const tableBody = document.querySelector('.table-sort__body');
 const filters = document.querySelector('.filters');
-const rowData = tableBody.querySelectorAll('.row-data')
+const rowData = tableBody.querySelectorAll('.row-data');
 const hidingClass = 'visually-hidden';
 
 rowData.forEach((row) => row.classList.add(hidingClass));

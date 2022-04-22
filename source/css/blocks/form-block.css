@@ -7,7 +7,6 @@
 
   @media (max-width: 1280px) {
     grid-template-columns: 1fr 1fr;
-
   }
 }
 
@@ -104,4 +103,10 @@
       border-color: var(--color__border-error);
     }
   }
+
+  input[name="workout_m2"] {
+    background-color: var(--color__input-readonly);
+    border-color: #8080804f;
+  }
 }
+

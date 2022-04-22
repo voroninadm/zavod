@@ -8,4 +8,6 @@
   --color__work-block: linear-gradient(to left top, #dddddd 0%, #dad9de00 100%);
   --color__border-error: #b03030;
   --color__background-error: #f6dfdf;
+
+  --color__input-readonly: #d3d3d3c6;
 }
