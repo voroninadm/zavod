@@ -89,8 +89,27 @@
     box-shadow: 1px 1px 1px var(--color__input);
 
     &--radio {
-      width: initial;
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 20px;
+      border: 1px solid var(--color__checks-border);
+      border-radius: 50%;
       box-shadow: none;
+    }
+
+    &--radio::before {
+      width: 10px;
+      height: 8px;
+      border-radius: 50%;
+      content: "";
+      background-color: var(--color, var(--color__checks-inside));
+    }
+
+    &--radio:checked::before {
+      --color: green;
     }
 
     &--textarea {
@@ -104,9 +123,13 @@
     }
   }
 
-  input[name="workout_m2"] {
-    background-color: var(--color__input-readonly);
-    border-color: #8080804f;
+  /*change default background-color radio-before on check*/
+  input[id="prepare-radio-2"]:checked::before {
+    --color: var(--color__input-error);
   }
 }
 
+input:read-only {
+  background-color: var(--color__input-readonly);
+  border-color: var(--color__input-readonly-border);
+}

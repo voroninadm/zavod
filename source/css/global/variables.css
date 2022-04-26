@@ -3,6 +3,8 @@
   --color__white: #ffffff;
   --color__black: #000000;
   --color__input: #dbcbcb;
+  --color__input-error: #f11a75;
+  --color__input-ok: rgb(6, 141, 6);
   --color__title: #540808;
   --color__subtitle: #543030;
   --color__work-block: linear-gradient(to left top, #dddddd 0%, #dad9de00 100%);
@@ -10,4 +12,9 @@
   --color__background-error: #f6dfdf;
 
   --color__input-readonly: #d3d3d3c6;
+  --color__input-readonly-border: #8080804f;
+
+  --color__checks-border: #575151;
+  --color__checks-inside: #57515161;
+
 }
