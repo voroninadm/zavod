@@ -87,6 +87,7 @@
     border-top-left-radius: 6px;
     border-bottom-right-radius: 6px;
     box-shadow: 1px 1px 1px var(--color__input);
+    transition: 0.2s;
 
     &--radio {
       appearance: none;
@@ -98,6 +99,16 @@
       border: 1px solid var(--color__checks-border);
       border-radius: 50%;
       box-shadow: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    &--radio:hover {
+      opacity: 0.8;
+    }
+
+    &--radio:hover + label {
+      opacity: 0.8;
     }
 
     &--radio::before {
@@ -105,11 +116,19 @@
       height: 8px;
       border-radius: 50%;
       content: "";
-      background-color: var(--color, var(--color__checks-inside));
+      background-color: var(--color-checked, var(--color__checks-inside));
+    }
+
+    &--radio + label {
+      cursor: pointer;
+    }
+
+    &--radio:checked {
+      border: 1px solid var(--color__input-ok);
     }
 
     &--radio:checked::before {
-      --color: green;
+      --color-checked: var(--color__input-ok);
     }
 
     &--textarea {
@@ -124,8 +143,12 @@
   }
 
   /*change default background-color radio-before on check*/
+  input[id="prepare-radio-2"]:checked {
+    border: 1px solid var(--color__input-error);
+  }
+
   input[id="prepare-radio-2"]:checked::before {
-    --color: var(--color__input-error);
+    --color-checked: var(--color__input-error);
   }
 }
 

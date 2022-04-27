@@ -42,16 +42,14 @@
           <label class="form-block__label" for="master">Мастер смены</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <select class="form-block__input form-block__select" name="master" id="master">
-                <option value="Выберите мастера смены" disabled>Выберите мастера смены</option>
+              <input class="form-block__input" name="master" type="text" id="master" list="masters" placeholder="Выберите мастера смены" required>
+              <datalist id="masters">
                 <?php $query = mysqli_query($DB_connect, "SELECT login FROM `master` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-                <option value=<?=$row['login'] ?>>
-                  <?= $row['login'] ?>
-                </option>
-                <? } ?>
-              </select>
+                <option value=<?=$row['login']?> >
+                  <? } ?>
+              </datalist>
             </li>
         </li>
       </ul>
@@ -63,76 +61,64 @@
         <label class="form-block__label" for="operator1">Оператор 1</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="operator1" id="operator1">
-              <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
+            <input class="form-block__input" name="operator1" type="text" id="operator1" list="operators" placeholder="Выберите первого оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="operator2">Оператор 2</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="operator2" id="operator2">
-              <option value="Выберите второго оператора" disabled>Выберите второго оператора</option>
+            <input class="form-block__input" name="operator2" type="text" id="operator2" list="operators" placeholder="Выберите второго оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="operator3">Оператор 3</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="operator3" id="operator3">
-              <option value="Выберите третьего оператора" disabled>Выберите третьего оператора</option>
+            <input class="form-block__input" name="operator3" type="text" id="operator3" list="operators" placeholder="Выберите третьего оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="operator_helper">Помощник оператора</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="operator_helper" id="operator_helper">
-              <option value="Выберите помощника оператора" disabled>Выберите помощника оператора</option>
+            <input class="form-block__input" name="operator_helper" type="text" id="operator_helper" list="operators" placeholder="Выберите помощника оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       {% endif %}
@@ -142,57 +128,48 @@
         <label class="form-block__label" for="operator">Оператор</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input" name="operator" id="operator1">
-              <option value="Выберите первого оператора" disabled>Выберите первого оператора</option>
+            <input class="form-block__input" name="operator" type="text" id="operator" list="operators" placeholder="Выберите оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                      while ($row = mysqli_fetch_assoc($query)) {
-                          ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="operator_student">Ученик оператора</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input" name="operator_student" id="operator_student">
-              <option value="Выберите второго оператора" disabled>Выберите ученика оператора</option>
+            <input class="form-block__input" name="operator_student" type="text" id="operator_student" list="operators" placeholder="Выберите ученика оператора" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                      while ($row = mysqli_fetch_assoc($query)) {
-                          ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="operator_helper">Подсобный рабочий</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input" name="operator_helper" id="operator_helper">
-              <option value="Выберите третьего оператора" disabled>Выберите подсобного рабочего</option>
+            <input class="form-block__input" name="operator_helper" type="text" id="operator_helper" list="operators" placeholder="Выберите подсобного рабочего" required>
+            <datalist id="operators">
               <?php $query = mysqli_query($DB_connect, "SELECT login FROM `operator` ORDER BY login");
-                      while ($row = mysqli_fetch_assoc($query)) {
-                          ?>
-              <option value=<?=$row['login'] ?>>
-                <?= $row['login'] ?>
-              </option>
-              <? } ?>
-            </select>
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    ?>
+              <option value=<?=$row['login']?> >
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       {% endif %}
@@ -201,40 +178,32 @@
         <label class="form-block__label" for="customer">Заказчик</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="customer" id="customer">
-              <option value="Выберите заказчика" disabled>Выберите заказчика</option>
+            <input class="form-block__input" name="customer" type="text" id="customer" list="customers" placeholder="Выберите заказчика" required>
+            <datalist id="customers">
               <?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
                                         while ($row = mysqli_fetch_assoc($query)) {
                                             ?>
-              <option value="<?= $row['customer'] ?>">
-                "
-                <?= $row['customer'] ?>"
-              </option>
-              <? } ?>
-            </select>
+              <option value="<?=$row['customer']?>">
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
         <label class="form-block__label" for="print_title">Наименование заказа</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <select class="form-block__input form-block__select" name="print_title" id="print_title">
-              <option value="Выберите заказ" disabled>Выберите заказ</option>
+            <input class="form-block__input" name="print_title" type="text" id="print_title" list="titles" placeholder="Выберите заказ" required>
+            <datalist id="titles">
               <?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     ?>
-              <option value="<?= $row['order_title'] ?>">
-                "
-                <?= $row['order_title'] ?>"
-              </option>
-              <? } ?>
-            </select>
+              <option value="<?=$row['order_title']?>">
+                <? } ?>
+            </datalist>
           </li>
-      </li>
-      </ul>
+        </ul>
       </li>
 
       <li class="form-block__item">
