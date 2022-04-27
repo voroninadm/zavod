@@ -1,9 +1,7 @@
-'use strict'
-
 const mainInputForm = document.querySelector('.form-block__form');
-const inputReq = mainInputForm.querySelectorAll(".form-block__input[required]");
-const btnSubmit = mainInputForm.querySelector(".form-footer__main-button");
-const errorClass = "form-block__input--error";
+const inputReq = mainInputForm.querySelectorAll('.form-block__input[required]');
+const btnSubmit = mainInputForm.querySelector('.form-footer__main-button');
+const errorClass = 'form-block__input--error';
 
 const firstMaterialWidth = mainInputForm.querySelector('[name="width1"]');
 const workoutLength = mainInputForm.querySelector('[name="workout_length"]');
@@ -18,21 +16,21 @@ const PERCENTS = 5;
 //validate required inputs on submit button click
 btnSubmit.addEventListener('click', () => {
   for (let i = 0; i < inputReq.length; i++) {
-    if (inputReq[i].value == "") {
+    if (inputReq[i].value === '') {
       inputReq[i].classList.add(errorClass);
     } else {
       inputReq[i].classList.remove(errorClass);
     }
-  };
-})
+  }
+});
 
 /**
  * listen and calculate material1 width and workout length
  * @return caclulated value to workout m2 input
  */
 const calcM2OnChange = () => {
-  let materialWidth = 0;
-  let materialLength = 0;
+  let materialWidth;
+  let materialLength;
 
   //on width change -> change m2
   firstMaterialWidth.addEventListener('input', () => {
@@ -47,6 +45,10 @@ const calcM2OnChange = () => {
   });
 };
 
+/**
+ * listen input of plan and fact circulation, calc diff and set error if diff > PERCENTS
+ * @returns value of diff and set error background of input
+ */
 const calcDiffCirculation = () => {
   const percent = PERCENTS / 100; // 5 percents of plan circulation
   let planCirculation;
@@ -54,19 +56,26 @@ const calcDiffCirculation = () => {
   let delta;
   let diff;
 
+  const calcDiff = (sub, value) => {
+    if (value >= sub) {
+      return (diffCirculation.style.backgroundColor = 'tomato');
+    }
+    return (diffCirculation.style.backgroundColor = 'inherit');
+  };
+
   circulation.addEventListener('input', () => {
     planCirculation = circulation.value;
     delta = Math.abs(planCirculation * percent);
     diff = diffCirculation.value = Math.abs(planCirculation - factCirculation).toFixed(2);
-    (diff >= delta) ? diffCirculation.style.backgroundColor = 'tomato' : diffCirculation.style.backgroundColor = 'inherit';
-  })
+    calcDiff(delta, diff);
+  });
 
   workoutCirculation.addEventListener('input', () => {
     factCirculation = workoutCirculation.value;
     diff = diffCirculation.value = Math.abs(planCirculation - factCirculation).toFixed(2);
-    (diff >= delta) ? diffCirculation.style.backgroundColor = 'tomato' : diffCirculation.style.backgroundColor = 'inherit';
-  })
-}
+    calcDiff(delta, diff);
+  });
+};
 
 //==call form functions
 calcM2OnChange();
