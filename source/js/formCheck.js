@@ -12,7 +12,6 @@ const workoutCirculation = mainInputForm.querySelector('[name="workout_mass"]');
 const diffCirculation = mainInputForm.querySelector('[name="diff_circulation"]');
 const PERCENTS = 5;
 
-
 //validate required inputs on submit button click
 btnSubmit.addEventListener('click', () => {
   for (let i = 0; i < inputReq.length; i++) {
@@ -77,6 +76,32 @@ const calcDiffCirculation = () => {
   });
 };
 
+const waste = {
+  print: mainInputForm.querySelector('[name="waste_print"]'),
+  raw: mainInputForm.querySelector('[name="waste_raw"]'),
+  lam: mainInputForm.querySelector('[name="waste_lam"]'),
+  sum: mainInputForm.querySelector('[name="waste_sum"]'),
+  sumValueCalc() {
+    if (this.raw) {
+      this.print.addEventListener('input', () => {
+        this.sum.value = Number(this.print.value) + Number(this.raw.value);
+      });
+      this.raw.addEventListener('input', () => {
+        this.sum.value = Number(this.print.value) + Number(this.raw.value);
+      });
+    }
+    if (this.lam) {
+      this.print.addEventListener('input', () => {
+        this.sum.value = Number(this.print.value) + Number(this.lam.value);
+      });
+      this.lam.addEventListener('input', () => {
+        this.sum.value = Number(this.print.value) + Number(this.lam.value);
+      });
+    }
+  }
+};
+
 //==call form functions
 calcM2OnChange();
 calcDiffCirculation();
+waste.sumValueCalc();

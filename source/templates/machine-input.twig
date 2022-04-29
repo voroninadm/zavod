@@ -371,6 +371,9 @@
           <label class="form-block__label" for="waste">Отходы</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
+              <input class="form-block__input" type="number" name="waste_plan" id="waste" placeholder="план, кг" step="0.01" required>
+            </li>
+            <li class="form-block__subitem">
               <input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг" step="0.01" required>
             </li>
             {% if machineType == "print" %}
@@ -384,7 +387,7 @@
             </li>
             {% endif %}
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01" required>
+              <input class="form-block__input" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01" readonly>
             </li>
           </ul>
         </li>

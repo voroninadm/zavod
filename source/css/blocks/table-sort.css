@@ -25,13 +25,13 @@
 
   &__header {
     border: 1px solid black;
-    padding: 1px 2px;
+    /* padding: 1px 2px; */
     background-color: rgba(255, 0, 0, 0.11);
     cursor: pointer;
     transition: 0.15s;
     outline: 1px solid dimgray;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    user-select: none;
+    user-select: none;
 
     &:hover {
       opacity: 0.7;
@@ -42,19 +42,19 @@
       color: #e00606;
     }
 
-    td{
+    td {
       border: 1px solid black;
       padding: 3px;
     }
   }
 }
 
-td{
+td {
   border: 1px solid black;
-  padding: 3px;
+  /* padding: 3px; */
 }
 
-.table-sort__row--small th{ /* для маленьких thead */
+.table-sort__row--small th { /* для маленьких thead */
   font-family: "Calibri", sans-serif;
   font-size: smaller;
   background-color: rgba(71, 3, 3, 0.11);
@@ -63,12 +63,15 @@ td{
 ::-webkit-scrollbar {
   width: 5px;
 }
+
 ::-webkit-scrollbar-button {
   background: #5e5d5d;
 }
+
 ::-webkit-scrollbar-track-piece {
   background: #e3e1e1;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 0, 0, 0.36);
 } */

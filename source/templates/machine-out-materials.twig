@@ -10,7 +10,8 @@
 		{% if machineType == "print" %}
 			<thead class="table-sort__head">
 				<tr class="table-sort__row">
-					<th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
+          <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
+          <th class="table-sort__header table-sort__header--sorted" rowspan="2">Мастер смены</th>
 					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Заказчик</th>
 					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Наименование заказа</th>
 					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
@@ -40,7 +41,7 @@
 			<tbody class="table-sort__body">
 				<tr class="table-sort__row">
 					<?php
-          $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
+          $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
           $query = mysqli_fetch_all($query);
           foreach ($query as $qu) {
           ?>
@@ -95,6 +96,9 @@
 						<td>
 							<?= $qu[16] ?>
 						</td>
+            <td>
+							<?= $qu[17] ?>
+						</td>
 					</tr>
 				<?php
       }
@@ -106,7 +110,8 @@
 		{% if machineType == "lamination" %}
 			<thead class="table-sort__head">
 				<tr class="table-sort__row">
-					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">№</th>
+          <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
+          <th class="table-sort__header table-sort__header--sorted" rowspan="2">Мастер смены</th>
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Заказчик</th>
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Наименование заказа</th>
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Номер ТКН</th>
@@ -145,7 +150,7 @@
 			<tbody class="table-sort__body">
 				<tr class="table-sort__row">
 					<?php
-            $query = mysqli_query($DB_connect_machine, "SELECT `id`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count`, `width1`, `thickness1`, `material2`,`mat2count`, `width2`, `thickness2`, `material3`,`mat3count`, `width3`, `thickness3`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
+            $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count`, `width1`, `thickness1`, `material2`,`mat2count`, `width2`, `thickness2`, `material3`,`mat3count`, `width3`, `thickness3`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
             $query = mysqli_fetch_all($query);
             foreach ($query as $qu) {
             ?>
@@ -220,6 +225,9 @@
 						</td>
 						<td>
 							<?= $qu[23] ?>
+						</td>
+            <td>
+							<?= $qu[24] ?>
 						</td>
 					</tr>
 				<?php
