@@ -23,6 +23,3 @@ if ($countExist) {
 mysqli_close($DB_connect);
 ?>
 
-<br>
-<a href="../index.html">Вернуться на главную страницу</a>
-
