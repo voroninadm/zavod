@@ -1,8 +1,5 @@
 <?php
 require './create_report_config.php'
-
-$date_start = date_create($date_from);
-$date_finish = date_create($date_to);
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +65,7 @@ $date_finish = date_create($date_to);
     </form>
 
     <table class="table-sort">
-      <caption class="table-sort__caption">Отчет простоя c <? print date_format($date_start, 'd/m/Y') ?> по <? print date_format($date_finish, 'd/m/Y') ?> </caption>
+      <caption class="table-sort__caption">Отчет простоя c <? print $date_start ?> по <? print $date_finish ?> </caption>
 
       <thead class="table-sort__head">
         <tr class="table-sort__row ">
