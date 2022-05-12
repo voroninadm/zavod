@@ -46,7 +46,10 @@
           foreach ($query as $qu) {
           ?>
 						<td>
-							<?= $qu[0] ?>
+              <?php
+              $date = date_create($qu[0]);
+              echo date_format($date, 'd/m/Y')
+              ?>
 						</td>
 						<td>
 							<?= $qu[1] ?>
@@ -155,7 +158,10 @@
             foreach ($query as $qu) {
             ?>
 						<td>
-							<?= $qu[0] ?>
+              <?php
+              $date = date_create($qu[0]);
+              echo date_format($date, 'd/m/Y')
+              ?>
 						</td>
 						<td>
 							<?= $qu[1] ?>

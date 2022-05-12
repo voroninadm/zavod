@@ -36,7 +36,10 @@
           <?= $qu[0] ?>
         </td>
         <td>
-          <?= $qu[1] ?>
+          <?php
+          $date = date_create($qu[1]);
+          echo date_format($date, 'd/m/Y')
+          ?>
         </td>
         <td>
           <?= $qu[2] ?>
@@ -106,7 +109,10 @@
           <?= $qu[0] ?>
         </td>
         <td>
-          <?= $qu[1] ?>
+          <?php
+          $date = date_create($qu[1]);
+          echo date_format($date, 'd/m/Y')
+          ?>
         </td>
         <td>
           <?= $qu[2] ?>
