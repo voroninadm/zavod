@@ -8,7 +8,7 @@ $checkCustomer = mysqli_query($DB_connect, "SELECT customer FROM client where cu
 $countExist =  mysqli_num_rows($checkCustomer);
 
 if ($countExist) {
-  echo "$customer уже существует в базе данных";
+  echo "Заказчик '$customer' уже существует в базе данных";
 } else {
   $post = mysqli_query($DB_connect, " INSERT INTO `client` (`id`, `customer`) VALUES (NULL, '$customer')");
   if (!$post) {
@@ -16,7 +16,6 @@ if ($countExist) {
   } else
     echo "Новый заказчик '$customer' успешно добавлен!";
 }
-?>
 
-<br>
-<a href="../index.html">Перейти на гравную страницу</a>
+mysqli_close($DB_connect);
+?>

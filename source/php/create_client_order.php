@@ -10,7 +10,7 @@ $checkOrder = mysqli_query($DB_connect, "SELECT order_title FROM client_order wh
 $countExist =  mysqli_num_rows($checkOrder);
 
 if ($countExist) {
-  echo "'$order_title' уже существует в базе данных";
+  echo "Заказ '$order_title' уже существует в базе данных";
 } else {
 $post = mysqli_query($DB_connect, " INSERT INTO `client_order` (`id`, `customer`, `order_title`) VALUES (NULL, '$customer', '$order_title')");
 if (!$post) {
@@ -18,7 +18,6 @@ if (!$post) {
 } else
   echo "Новый заказ '$order_title' успешно добавлен!";
 }
-?>
 
-<br>
-<a href="../index.html">Перейти на гравную страницу</a>
+mysqli_close($DB_connect);
+?>

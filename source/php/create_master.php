@@ -10,7 +10,7 @@ $checkLogin = mysqli_query($DB_connect, "SELECT login FROM master where login = 
 $countExist =  mysqli_num_rows($checkLogin);
 
 if ($countExist) {
-  echo "'$login' уже существует в базе данных";
+  echo "Мастер '$login' уже существует в базе данных";
 } else {
   $post = mysqli_query($DB_connect, "INSERT INTO `master` (`id`, `name`, `login`, `password`) VALUES (NULL, '$name', '$login', '$password')");
   if (!$post) {

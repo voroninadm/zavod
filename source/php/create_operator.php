@@ -10,7 +10,7 @@ $checkLogin = mysqli_query($DB_connect, "SELECT login FROM operator where login 
 $countExist =  mysqli_num_rows($checkLogin);
 
 if ($countExist) {
-  echo "'$login' уже существует в базе данных";
+  echo "Оператор '$login' уже существует в базе данных";
 } else {
   $post = mysqli_query($DB_connect, "INSERT INTO `operator` (`id`, `name`, `login`, `password`) VALUES (NULL, '$name', '$login', '$password' )");
   if (!$post) {
@@ -18,7 +18,6 @@ if ($countExist) {
   } else
     echo "Новый пользователь c логином '$login' успешно добавлен!";
 }
-?>
 
-<br>
-<a href="../index.html">Вернуться на главную страницу</a>
+mysqli_close($DB_connect);
+?>
