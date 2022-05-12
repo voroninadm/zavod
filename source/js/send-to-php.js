@@ -1,5 +1,5 @@
 
-const form = document.querySelector('.simple-form');
+const form = document.querySelector('.form');
 const url = form.getAttribute('action');
 
 const showAlert = (message) => {
