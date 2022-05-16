@@ -99,8 +99,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
@@ -149,8 +148,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
@@ -199,8 +197,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_lemo, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
@@ -249,8 +246,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
@@ -299,8 +295,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
@@ -349,8 +344,7 @@ require './create_report_config.php'
             echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
             ?>
           </td>
-          <td>
-          </td>
+          <td></td>
           <td>
             <?php
             $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");

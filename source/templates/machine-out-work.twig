@@ -19,8 +19,10 @@
         <th class="table-sort__header table-sort__header--sorted">Оператор 3</th>
         <th class="table-sort__header table-sort__header--sorted">Помощник оператора</th>
         <th class="table-sort__header table-sort__header--sorted">Номер ТКН</th>
-        <th class="table-sort__header table-sort__header--sorted">Дата начала работ</th>
-        <th class="table-sort__header table-sort__header--sorted">Дата окончания работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Планируемое время работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Начало&nbsp;работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Окончание&nbsp;работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Фактическое время работ</th>
         <th class="table-sort__header table-sort__header--sorted">Заказчик</th>
         <th class="table-sort__header table-sort__header--sorted">Наименование заказа</th>
       </tr>
@@ -28,7 +30,7 @@
     <tbody class="table-sort__body">
       <tr class="table-sort__row">
         <?php
-      $query = mysqli_query($DB_connect_machine, "SELECT `id`, `work_date`, `work_shift`, `master`, `operator1`, `operator2`, `operator3`, `operator_helper`, `tkn`, `work_start`, `work_finish`, `customer`, `print_title` FROM `primbase` ORDER BY work_date");
+      $query = mysqli_query($DB_connect_machine, "SELECT `id`, `work_date`, `work_shift`, `master`, `operator1`, `operator2`, `operator3`, `operator_helper`, `tkn`,`work_plan`, `work_start`, `work_finish`, `customer`, `print_title` FROM `primbase` ORDER BY work_date");
       $query = mysqli_fetch_all($query);
       foreach ($query as $qu) {
       ?>
@@ -63,16 +65,28 @@
           <?= $qu[8] ?>
         </td>
         <td>
-          <?= $qu[9] ?>
+          <?= $qu[9] . ' ч'?>
         </td>
         <td>
-          <?= $qu[10] ?>
+          <?php
+          $date = date_create($qu[10]);
+          echo date_format($date, 'd.m.y H:i')
+          ?>
         </td>
         <td>
-          <?= $qu[11] ?>
+          <?php
+          $date = date_create($qu[11]);
+          echo date_format($date, 'd.m.y H:i')
+          ?>
+        </td>
+        <td>
+          <?= round((strtotime($qu[11]) - strtotime($qu[10]))/3600, 1) . ' ч' ?>
         </td>
         <td>
           <?= $qu[12] ?>
+        </td>
+        <td>
+          <?= $qu[13] ?>
         </td>
       </tr>
       <?php
@@ -92,8 +106,10 @@
         <th class="table-sort__header table-sort__header--sorted">Ученик оператора</th>
         <th class="table-sort__header table-sort__header--sorted">Подсобный рабочий</th>
         <th class="table-sort__header table-sort__header--sorted">Номер ТКН</th>
-        <th class="table-sort__header table-sort__header--sorted">Дата начала работ</th>
-        <th class="table-sort__header table-sort__header--sorted">Дата окончания работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Планируемое время работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Начало&nbsp;работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Окончание&nbsp;работ</th>
+        <th class="table-sort__header table-sort__header--sorted">Фактическое время работ</th>
         <th class="table-sort__header table-sort__header--sorted">Заказчик</th>
         <th class="table-sort__header table-sort__header--sorted">Наименование заказа</th>
       </tr>
@@ -101,7 +117,7 @@
     <tbody>
       <tr class="table-sort__row">
         <?php
-      $query = mysqli_query($DB_connect_machine, "SELECT `id`, `work_date`, `work_shift`, `master`, `operator`, `operator_student`, `operator_helper`, `tkn`, `work_start`, `work_finish`, `customer`, `print_title` FROM `primbase` ORDER BY work_date");
+      $query = mysqli_query($DB_connect_machine, "SELECT `id`, `work_date`, `work_shift`, `master`, `operator`, `operator_student`, `operator_helper`, `tkn`, `work_plan`, `work_start`, `work_finish`, `customer`, `print_title` FROM `primbase` ORDER BY work_date");
       $query = mysqli_fetch_all($query);
       foreach ($query as $qu) {
       ?>
@@ -133,16 +149,28 @@
           <?= $qu[7] ?>
         </td>
         <td>
-          <?= $qu[8] ?>
+          <?= $qu[8] . ' ч' ?>
         </td>
         <td>
-          <?= $qu[9] ?>
+          <?php
+          $date = date_create($qu[9]);
+          echo date_format($date, 'd.m.y H:i')
+          ?>
         </td>
         <td>
-          <?= $qu[10] ?>
+          <?php
+          $date = date_create($qu[10]);
+          echo date_format($date, 'd.m.y H:i')
+          ?>
+        </td>
+        <td>
+          <?= round((strtotime($qu[10]) - strtotime($qu[9]))/3600, 1) . ' ч' ?>
         </td>
         <td>
           <?= $qu[11] ?>
+        </td>
+        <td>
+          <?= $qu[12] ?>
         </td>
       </tr>
       <?php

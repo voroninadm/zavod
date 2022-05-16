@@ -1,14 +1,14 @@
-<script src="./js/JQuery.min.js"></script>
-<script src="./js/tablesorter.min.js"></script>
-
 <section class="show-table">
-	<table class="table-sort">
+	<table class="table-sort sortable">
 		<caption class="table-sort__caption">Расход материалов
 			<span class="table-sort__title">{{ machineName }}</span>
 		</caption>
 
 		{% if machineType == "print" %}
 			<thead class="table-sort__head">
+        <tr>
+
+        </tr>
 				<tr class="table-sort__row">
           <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
           <th class="table-sort__header table-sort__header--sorted" rowspan="2">Мастер смены</th>
@@ -19,13 +19,15 @@
 					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Материал</th>
 					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Кол-во красок</th>
 					<th class="table-sort__header" colspan="2">Размеры</th>
-					<th class="table-sort__header table-sort__header--sorted" rowspan="2">Количество сырья</th>
-					<th class="table-sort__header" colspan="4">Выработка</th>
-					<th class="table-sort__header" colspan="3">Отходы</th>
-				</tr>
+					<th class="table-sort__header" colspan="2">Количество сырья</th>
+					<th class="table-sort__header no-sort" colspan="4">Выработка</th>
+					<th class="table-sort__header no-sort" colspan="3">Отходы</th>
+        </tr>
 				<tr class="table-sort__row table-sort__row--small">
 					<th class="table-sort__header table-sort__header--sorted">ширина</th>
 					<th class="table-sort__header table-sort__header--sorted">толщина</th>
+					<th class="table-sort__header table-sort__header--sorted">план</th>
+					<th class="table-sort__header table-sort__header--sorted">факт</th>
 					<th class="table-sort__header table-sort__header--sorted">кг</th>
 					<th class="table-sort__header table-sort__header--sorted">пог.м.</th>
 					<th class="table-sort__header table-sort__header--sorted">m<sup>2</sup>
@@ -41,7 +43,7 @@
 			<tbody class="table-sort__body">
 				<tr class="table-sort__row">
 					<?php
-          $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
+          $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `colors`, `width1`, `thickness1`, `mat1count_plan`, `mat1count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_print`, `waste_raw`, `waste_sum` FROM `primbase` ");
           $query = mysqli_fetch_all($query);
           foreach ($query as $qu) {
           ?>
@@ -102,6 +104,9 @@
             <td>
 							<?= $qu[17] ?>
 						</td>
+            <td>
+							<?= $qu[18] ?>
+						</td>
 					</tr>
 				<?php
       }
@@ -119,23 +124,26 @@
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Наименование заказа</th>
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Номер ТКН</th>
 					<th class="table-sort__header table-sort__header--sorted table-row__header--sorted" rowspan="2">Тираж заказа</th>
-					<th class="table-sort__header" colspan="4">Материал 1</th>
-					<th class="table-sort__header" colspan="4">Материал 2</th>
-					<th class="table-sort__header" colspan="4">Материал 3</th>
-					<th class="table-sort__header" colspan="4">Выработка</th>
-					<th class="table-sort__header" colspan="3">Отходы</th>
+					<th class="table-sort__header no-sort" colspan="5">Материал 1</th>
+					<th class="table-sort__header no-sort" colspan="5">Материал 2</th>
+					<th class="table-sort__header no-sort" colspan="5">Материал 3</th>
+					<th class="table-sort__header no-sort" colspan="4">Выработка</th>
+					<th class="table-sort__header no-sort" colspan="3">Отходы</th>
 				</tr>
 				<tr class="table-sort__row table-sort__row--small">
 					<th class="table-sort__header table-sort__header--sorted">Материал</th>
-					<th class="table-sort__header table-sort__header--sorted">кол-во сырья</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье план</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье факт</th>
 					<th class="table-sort__header table-sort__header--sorted">ширина</th>
 					<th class="table-sort__header table-sort__header--sorted">толщина</th>
 					<th class="table-sort__header table-sort__header--sorted">Материал</th>
-					<th class="table-sort__header table-sort__header--sorted">кол-во сырья</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье план</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье факт</th>
 					<th class="table-sort__header table-sort__header--sorted">ширина</th>
 					<th class="table-sort__header table-sort__header--sorted">толщина</th>
 					<th class="table-sort__header table-sort__header--sorted">Материал</th>
-					<th class="table-sort__header table-sort__header--sorted">кол-во сырья</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье план</th>
+					<th class="table-sort__header table-sort__header--sorted">сырье факт</th>
 					<th class="table-sort__header table-sort__header--sorted">ширина</th>
 					<th class="table-sort__header table-sort__header--sorted">толщина</th>
 					<th class="table-sort__header table-sort__header--sorted">кг</th>
@@ -153,7 +161,7 @@
 			<tbody class="table-sort__body">
 				<tr class="table-sort__row">
 					<?php
-            $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count`, `width1`, `thickness1`, `material2`,`mat2count`, `width2`, `thickness2`, `material3`,`mat3count`, `width3`, `thickness3`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
+            $query = mysqli_query($DB_connect_machine, "SELECT `work_date`, `master`, `customer`, `print_title`, `tkn`, `circulation`, `material1`, `mat1count_plan`, `mat1count`, `width1`, `thickness1`, `material2`, `mat2count`_plan, `mat2count`, `width2`, `thickness2`, `material3`, `mat3count_plan`, `mat3count`, `width3`, `thickness3`, `workout_mass`, `workout_m2`, `otk_mass`, `workout_length`, `waste_print`, `waste_lam`, `waste_sum` FROM `primbase` ");
             $query = mysqli_fetch_all($query);
             foreach ($query as $qu) {
             ?>
@@ -235,6 +243,15 @@
             <td>
 							<?= $qu[24] ?>
 						</td>
+            <td>
+							<?= $qu[25] ?>
+						</td>
+            <td>
+							<?= $qu[26] ?>
+						</td>
+            <td>
+							<?= $qu[27] ?>
+						</td>
 					</tr>
 				<?php
         }
@@ -245,15 +262,7 @@
 
 	</table>
 
-	<script>
-		$(function () { // call the tablesorter plugin
-$("table").tablesorter({
-theme: 'blue',
-// change the default sorting order from 'asc' to 'desc'
-sortInitialOrder: "desc"
-});
-});
-	</script>
+  <script src="./js/sortable.min.js"></script>
 
 	<?php
     mysqli_close($DB_connect);

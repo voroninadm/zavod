@@ -225,6 +225,15 @@
       </li>
 
       <li class="form-block__item">
+        <label class="form-block__label" for="work_plan">Планируемое время</label>
+        <ul class="form-block__sublist">
+          <li class="form-block__subitem">
+            <input class="form-block__input" type="text" name="work_plan" id="work_plan" pattern="[0-9]+" maxlength="3" min="1" placeholder="часов" required>
+          </li>
+        </ul>
+      </li>
+
+      <li class="form-block__item">
         <label class="form-block__label" for="work_start">Начало работ</label>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
@@ -266,8 +275,12 @@
               </li>
           </li>
           <li class="form-block__subitem">
+            <label class="visually-hidden" for="matcount-1-plan">Количество сырья плановое</label>
+            <input class="form-block__input" type="number" name="mat1count_plan" id="matcount-1-plan" placeholder="планируемое количество, кг" step="0.01" required>
+          </li>
+          <li class="form-block__subitem">
             <label class="visually-hidden" for="matcount-1">Количество сырья</label>
-            <input class="form-block__input" type="number" name="mat1count" id="matcount-1" placeholder="количество сырья, кг" step="0.01" required>
+            <input class="form-block__input" type="number" name="mat1count" id="matcount-1" placeholder="фактическое количество, кг" step="0.01" required>
           </li>
           <li class="form-block__subitem">
             <label class="visually-hidden" for="width1">Ширина</label>
@@ -299,8 +312,12 @@
           </li>
       </li>
       <li class="form-block__subitem">
+        <label class="visually-hidden" for="matcount-2-plan">Количество сырья плановое</label>
+        <input class="form-block__input" type="number" name="mat2count_plan" id="matcount-2-plan" placeholder="планируемое количество, кг" step="0.01" required>
+      </li>
+      <li class="form-block__subitem">
         <label class="visually-hidden" for="matcount-2">Количество сырья</label>
-        <input class="form-block__input" type="number" name="mat2count" id="matcount-2" placeholder="количество сырья, кг" step="0.01" required>
+        <input class="form-block__input" type="number" name="mat2count" id="matcount-2" placeholder="фактическое количество, кг" step="0.01" required>
       </li>
       <li class="form-block__subitem">
         <label class="visually-hidden" for="width2">Ширина</label>
@@ -331,8 +348,12 @@
           </li>
       </li>
       <li class="form-block__subitem">
+        <label class="visually-hidden" for="matcount-3-plan">Количество сырья плановое</label>
+        <input class="form-block__input" type="number" name="mat3count_plan" id="matcount-3-plan" placeholder="планируемое количество, кг" step="0.01" required>
+      </li>
+      <li class="form-block__subitem">
         <label class="visually-hidden" for="matcount-3">Количество сырья</label>
-        <input class="form-block__input" type="number" name="mat3count" id="matcount-3" placeholder="количество сырья, кг" step="0.01" required>
+        <input class="form-block__input" type="number" name="mat3count" id="matcount-3" placeholder="фактическое количество, кг" step="0.01" required>
       </li>
       <li class="form-block__subitem">
         <label class="visually-hidden" for="width3">Ширина</label>
