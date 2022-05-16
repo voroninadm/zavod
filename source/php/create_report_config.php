@@ -49,7 +49,7 @@ $date_from = $_POST["date-from"];
 $date_to = $_POST["date-to"];
 
 $date_start = date_create($date_from);
-$date_start = date_format($date_start, 'd/m/Y');
+$date_start = date_format($date_start, 'd.m.Y');
 $date_finish = date_create($date_to);
-$date_finish = date_format($date_finish, 'd/m/Y');
+$date_finish = date_format($date_finish, 'd.m.Y');
 ?>
