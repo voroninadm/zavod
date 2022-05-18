@@ -1,4 +1,4 @@
-footer {
+.footer {
   display: flex;
   max-height: 30px;
   box-sizing: border-box;
@@ -13,6 +13,6 @@ footer {
   color: #535050;
 
   &__company {
-    margin-right: 10px;
+    margin-right: 6px;
   }
 }
