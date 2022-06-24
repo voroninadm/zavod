@@ -90,6 +90,12 @@
     box-shadow: 1px 1px 1px var(--color__input);
     transition: 0.2s;
 
+    /* read only input style */
+    &--readonly {
+      background-color: var(--color__input-readonly);
+      border-color: var(--color__input-readonly-border);
+    }
+
     &--radio {
       appearance: none;
       display: flex;
@@ -153,11 +159,6 @@ input[id="prepare-radio-2"]:checked::before {
   --color-checked: var(--color__input-error);
 }
 
-/* read only input style */
-input:read-only {
-  background-color: var(--color__input-readonly);
-  border-color: var(--color__input-readonly-border);
-}
 
 /* input[id="operator1"]:focus {
   background-color: burlywood;

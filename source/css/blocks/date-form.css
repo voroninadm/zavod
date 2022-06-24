@@ -1,11 +1,18 @@
 .date-form {
+  display: grid;
+  row-gap: 15px;
   width: 800px;
   box-sizing: border-box;
   margin: 0 auto;
 
+  &__radio {
+    display: flex;
+    justify-content: space-around;
+  }
+
   &__main {
     display: grid;
-    grid-template-columns: repeat( 2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 50px;
     align-items: center;
     padding: 20px;
@@ -28,10 +35,10 @@
   & label {
     display: flex;
     column-gap: 20px;
-    align-items: center ;
+    align-items: center;
   }
 
-  & input {
+  &__input {
     flex: 1 1 auto;
     padding: 3px 15px;
     border: 1px solid var(--color__input);
@@ -39,6 +46,11 @@
     border-bottom-right-radius: 6px;
     box-shadow: 1px 1px 1px var(--color__input);
     cursor: pointer;
+
+    &--radio {
+      width: 20px;
+      box-shadow: none;
+    }
   }
 
   & button {
@@ -55,4 +67,8 @@
       box-shadow: 3px 3px 2px #888888;
     }
   }
+}
+
+.date-form__input--radio-master:not(:checked) + input {
+  display: none;
 }

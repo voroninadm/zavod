@@ -1,5 +1,5 @@
 <?php
-require './create_report_config.php'
+require_once './create_report_config.php';
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ require './create_report_config.php'
     </form>
 
     <table class="table-sort">
-      <caption class="table-sort__caption">Отчет простоя c <? print $date_start ?> по <? print $date_finish ?> </caption>
+      <caption class="table-sort__caption">Отчет простоя c <?= $date_start ?> по <?= $date_finish ?> </caption>
 
       <thead class="table-sort__head">
         <tr class="table-sort__row ">
@@ -83,465 +83,93 @@ require './create_report_config.php'
 
         <tr class="table-sort__row row-data row-data--miraflex1">
           <th class="table-sort__header">miraflex1 </th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $miraflex1['electro'] ?></td>
+          <td><?= $miraflex1['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex1, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $miraflex1['no_human']?></td>
+          <td><?= $miraflex1['no_work']?></td>
+          <td><?= $miraflex1['no_raw']?></td>
+          <td><?= $miraflex1['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--miraflex2">
           <th class="table-sort__header">miraflex2 </th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $miraflex2['electro'] ?></td>
+          <td><?= $miraflex2['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_miraflex2, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $miraflex2['no_human']?></td>
+          <td><?= $miraflex2['no_work']?></td>
+          <td><?= $miraflex2['no_raw']?></td>
+          <td><?= $miraflex2['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--lemo">
           <th class="table-sort__header">ЛЕМО </th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_lemo, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_lemo, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $lemo['electro'] ?></td>
+          <td><?= $lemo['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_lemo, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_lemo, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_lemo, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $lemo['no_human']?></td>
+          <td><?= $lemo['no_work']?></td>
+          <td><?= $lemo['no_raw']?></td>
+          <td><?= $lemo['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--fisher4">
           <th class="table-sort__header">Fisher4 </th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher4['electro'] ?></td>
+          <td><?= $fisher4['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher4, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher4['no_human']?></td>
+          <td><?= $fisher4['no_work']?></td>
+          <td><?= $fisher4['no_raw']?></td>
+          <td><?= $fisher4['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--fisher5">
           <th class="table-sort__header">Fisher5</th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher5['electro'] ?></td>
+          <td><?= $fisher5['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher5, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher5['no_human']?></td>
+          <td><?= $fisher5['no_work']?></td>
+          <td><?= $fisher5['no_raw']?></td>
+          <td><?= $fisher5['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--fisher6">
           <th class="table-sort__header">Fisher6</th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher6['electro'] ?></td>
+          <td><?= $fisher6['mechanical']?></td>
           <td></td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_fisher6, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $fisher6['no_human']?></td>
+          <td><?= $fisher6['no_work']?></td>
+          <td><?= $fisher6['no_raw']?></td>
+          <td><?= $fisher6['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--laminator1">
           <th class="table-sort__header">laminator1</th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator1, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum6 = $result['sum'];
-            echo ($sum6 != 0) ? round($sum6, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5 + $sum6, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $laminator1['electro'] ?></td>
+          <td><?= $laminator1['mechanical']?></td>
+          <td><?= $laminator1['tech_service']?></td>
+          <td><?= $laminator1['no_human']?></td>
+          <td><?= $laminator1['no_work']?></td>
+          <td><?= $laminator1['no_raw']?></td>
+          <td><?= $laminator1['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--laminator2">
           <th class="table-sort__header">laminator2</th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator2, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum6 = $result['sum'];
-            echo ($sum6 != 0) ? round($sum6, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5 + $sum6, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $laminator2['electro'] ?></td>
+          <td><?= $laminator2['mechanical']?></td>
+          <td><?= $laminator2['tech_service']?></td>
+          <td><?= $laminator2['no_human']?></td>
+          <td><?= $laminator2['no_work']?></td>
+          <td><?= $laminator2['no_raw']?></td>
+          <td><?= $laminator2['sum']?></td>
         </tr>
         <tr class="table-sort__row row-data row-data--laminator3">
           <th class="table-sort__header">laminator3</th>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(electro) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum1 = $result['sum'];
-            echo ($sum1 != 0) ? round($sum1, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(mechanical) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum2 = $result['sum'];
-            echo ($sum2 != 0) ? round($sum2, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(tech_service) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum3 = $result['sum'];
-            echo ($sum3 != 0) ? round($sum3, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(no_human) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum4 = $result['sum'];
-            echo ($sum4 != 0) ? round($sum4, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(no_work) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum5 = $result['sum'];
-            echo ($sum5 != 0) ? round($sum5, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            $result = mysqli_query($DB_connect_laminator3, "SELECT SUM(no_raw) sum FROM primbase WHERE work_date BETWEEN '" . $date_from . "' AND '" . $date_to . "'");
-            $result = mysqli_fetch_assoc($result);
-            $sum6 = $result['sum'];
-            echo ($sum6 != 0) ? round($sum6, 2) . ' ч.' : 0 . ' ч.';
-            ?>
-          </td>
-          <td>
-            <?php
-            echo round($sum1 + $sum2 + $sum3 + $sum4 + $sum5 + $sum6, 2) . ' ч.';
-            ?>
-          </td>
+          <td><?= $laminator3['electro'] ?></td>
+          <td><?= $laminator3['mechanical']?></td>
+          <td><?= $laminator3['tech_service']?></td>
+          <td><?= $laminator3['no_human']?></td>
+          <td><?= $laminator3['no_work']?></td>
+          <td><?= $laminator3['no_raw']?></td>
+          <td><?= $laminator3['sum']?></td>
         </tr>
 
       </tbody>

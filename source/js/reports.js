@@ -9,3 +9,4 @@ filters.addEventListener('change', (evt) => {
   const target = evt.target.name;
   tableBody.querySelector(`.row-data--${target}`).classList.toggle(hidingClass);
 });
+

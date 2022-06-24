@@ -2,22 +2,46 @@
 
 {% block page__main %}
 
- <!-- {% include "../php/machine-connect.php" %} -->
-
 <form class="date-form" method="post" action="../php/create_report.php" autocomplete="off">
+  <fieldset class="date-form__radio">
+    <legend class="date-form__legend">Выберите тип отчета</legend>
+    <label class="date-form__label" for="idle">Отчет по простоям
+      <input class="date-form__input date-form__input--radio" type="radio" name="report_type" id="idle" value="idle">
+    </label>
+    <label class="date-form__label" for="master"> Отчет смен мастеров
+      <input class="date-form__input date-form__input--radio date-form__input--radio-master" type="radio" name="report_type" id="master" value="master_choose">
+      <div>
+      <label class="date-form__label date-form__label--master">Введите мастера смены
+        <input class="date-form__input " type="text" pattern="[A-Za-zА-Яа-яЁё]" name="master">
+      </div>
+    </label>
+    <label class="date-form__label" for="worker"> Отчет смен работников
+      <input class="date-form__input date-form__input--radio worker" type="radio" name="report_type" id="worker" value="worker_choose">
+    </label>
+
+    <div>
+      <!-- <label class="date-form__label date-form__label--master">Введите мастера смены
+        <input class="date-form__input " type="text" pattern="[A-Za-zА-Яа-яЁё]" name="master">
+      </label> -->
+      <label class="date-form__label date-form__label--worker visually-hidden">Введите работника смены
+        <input class="date-form__input" type="text" pattern="[A-Za-zА-Яа-яЁё]" name="worker">
+      </label>
+    </div>
+
+  </fieldset>
   <fieldset class="date-form__main">
     <legend class="date-form__legend">Выберите диапазон для составления отчета</legend>
     <label for="date-from">С
-      <input type="date" name="date-from" required>
+      <input class="date-form__input" type="date" id="date-from" name="date-from" required>
     </label>
     <label for="date-to">По
-      <input type="date" name="date-to" required>
+      <input class="date-form__input" type="date" id="date-to" name="date-to" required>
     </label>
   </fieldset>
   <fieldset class="date-form__buttons">
-  <button type="submit">Сформировать отчет</button>
-  <button type="reset">Сбросить значения</button>
-</fieldset>
+    <button type="submit">Сформировать отчет</button>
+    <button type="reset">Сбросить значения</button>
+  </fieldset>
 </form>
 
 {% endblock %}
