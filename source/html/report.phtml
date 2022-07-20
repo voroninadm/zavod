@@ -5,30 +5,24 @@
 <form class="date-form" method="post" action="../php/create_report.php" autocomplete="off">
   <fieldset class="date-form__radio">
     <legend class="date-form__legend">Выберите тип отчета</legend>
-    <label class="date-form__label" for="idle">Отчет по простоям
-      <input class="date-form__input date-form__input--radio" type="radio" name="report_type" id="idle" value="idle">
-    </label>
-    <label class="date-form__label" for="master"> Отчет смен мастеров
-      <input class="date-form__input date-form__input--radio date-form__input--radio-master" type="radio" name="report_type" id="master" value="master_choose">
-      <div>
-      <label class="date-form__label date-form__label--master">Введите мастера смены
-        <input class="date-form__input " type="text" pattern="[A-Za-zА-Яа-яЁё]" name="master">
-      </div>
-    </label>
-    <label class="date-form__label" for="worker"> Отчет смен работников
-      <input class="date-form__input date-form__input--radio worker" type="radio" name="report_type" id="worker" value="worker_choose">
-    </label>
 
-    <div>
-      <!-- <label class="date-form__label date-form__label--master">Введите мастера смены
-        <input class="date-form__input " type="text" pattern="[A-Za-zА-Яа-яЁё]" name="master">
-      </label> -->
-      <label class="date-form__label date-form__label--worker visually-hidden">Введите работника смены
-        <input class="date-form__input" type="text" pattern="[A-Za-zА-Яа-яЁё]" name="worker">
-      </label>
-    </div>
+    <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="idle" value="idle">
+    <label class="date-form__label" for="idle">Отчет по простоям</label>
+
+    <input class="date-form__input date-form__input--radio date-form__input--radio-master visually-hidden" type="radio" name="report_type" id="master-radio" value="master_choose">
+    <label class="date-form__label" for="master-radio"> Отчет смен мастеров</label>
+
+    <input class="date-form__input date-form__input--radio date-form__input--radio-worker visually-hidden" type="radio" name="report_type" id="worker-radio" value="worker_choose">
+    <label class="date-form__label" for="worker-radio"> Отчет смен работников</label>
+
+    <input class="date-form__input date-form__input--master" type="text" pattern="^[А-Яа-яЁё]+$" name="master" id="master-input" placeholder="Введите фамилию мастера">
+    <label class="date-form__label visually-hidden" for="master-input">Введите мастера смены</label>
+
+    <input class="date-form__input date-form__input--worker" type="text" pattern="^[А-Яа-яЁё]+$" name="worker" id="worker-input" placeholder="Введите фамилию работника">
+    <label class="date-form__label visually-hidden" for="worker-input">Введите работника смены</label>
 
   </fieldset>
+
   <fieldset class="date-form__main">
     <legend class="date-form__legend">Выберите диапазон для составления отчета</legend>
     <label for="date-from">С

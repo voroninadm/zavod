@@ -46,24 +46,42 @@ if ($DB_connect_laminator3->connect_error) {
   die("Ошибка подключения к базе Laminator3: " . $DB_connect_laminator3->connect_error);
 };
 
-
 $date_from = $_POST["date-from"];
 $date_to = $_POST["date-to"];
+
 
 $date_start = date_create($date_from);
 $date_start = date_format($date_start, 'd.m.Y');
 $date_finish = date_create($date_to);
 $date_finish = date_format($date_finish, 'd.m.Y');
 
-$print_idle_types = ['electro', 'mechanical', 'no_human', 'no_work', 'no_raw'];
-$lam_idle_types = ['electro', 'mechanical', 'tech_service', 'no_human', 'no_work', 'no_raw'];
+$report_type = $_POST["report_type"];
 
-$miraflex1 = get_machine_report($DB_connect_miraflex1, $date_from, $date_to, $print_idle_types);
-$miraflex2 = get_machine_report($DB_connect_miraflex2, $date_from, $date_to, $print_idle_types);
-$lemo = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
-$fisher4 = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
-$fisher5 = get_machine_report($DB_connect_fisher5, $date_from, $date_to, $print_idle_types);
-$fisher6 = get_machine_report($DB_connect_fisher6, $date_from, $date_to, $print_idle_types);
-$laminator1 = get_machine_report($DB_connect_laminator1, $date_from, $date_to, $lam_idle_types);
-$laminator2 = get_machine_report($DB_connect_laminator2, $date_from, $date_to, $lam_idle_types);
-$laminator3 = get_machine_report($DB_connect_laminator3, $date_from, $date_to, $lam_idle_types);
+//idle reports
+if ($report_type === 'idle') {
+  $print_idle_types = ['electro', 'mechanical', 'no_human', 'no_work', 'no_raw'];
+  $lam_idle_types = ['electro', 'mechanical', 'tech_service', 'no_human', 'no_work', 'no_raw'];
+
+  $miraflex1 = get_machine_report($DB_connect_miraflex1, $date_from, $date_to, $print_idle_types);
+  $miraflex2 = get_machine_report($DB_connect_miraflex2, $date_from, $date_to, $print_idle_types);
+  $lemo = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
+  $fisher4 = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
+  $fisher5 = get_machine_report($DB_connect_fisher5, $date_from, $date_to, $print_idle_types);
+  $fisher6 = get_machine_report($DB_connect_fisher6, $date_from, $date_to, $print_idle_types);
+  $laminator1 = get_machine_report($DB_connect_laminator1, $date_from, $date_to, $lam_idle_types);
+  $laminator2 = get_machine_report($DB_connect_laminator2, $date_from, $date_to, $lam_idle_types);
+  $laminator3 = get_machine_report($DB_connect_laminator3, $date_from, $date_to, $lam_idle_types);
+}
+
+//master reports
+if ($report_type === 'master_choose') {
+  $name = $_POST['master'];
+
+  $work_mfx1 = get_master_work($DB_connect_miraflex1, $date_from, $date_to, $name);
+}
+
+
+//worker reports
+if ($report_type === 'worker_choose') {
+  $name = $_POST["worker"];
+}
