@@ -7,6 +7,7 @@ rowData.forEach((row) => row.classList.add(hidingClass));
 
 filters.addEventListener('change', (evt) => {
   const target = evt.target.name;
-  tableBody.querySelector(`.row-data--${target}`).classList.toggle(hidingClass);
+  let rows = tableBody.querySelectorAll(`.row-data--${target}`);
+  rows.forEach(element => element.classList.toggle(hidingClass))
 });
 

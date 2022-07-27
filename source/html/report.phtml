@@ -7,19 +7,13 @@
     <legend class="date-form__legend">Выберите тип отчета</legend>
 
     <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="idle" value="idle">
-    <label class="date-form__label" for="idle">Отчет по простоям</label>
+    <label class="date-form__label date-form__label--radio" for="idle">Отчет по простоям</label>
 
-    <input class="date-form__input date-form__input--radio date-form__input--radio-master visually-hidden" type="radio" name="report_type" id="master-radio" value="master_choose">
-    <label class="date-form__label" for="master-radio"> Отчет смен мастеров</label>
+    <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="workout_print" value="workout_print">
+    <label class="date-form__label date-form__label--radio" for="workout_print"> Выработка печати </label>
 
-    <input class="date-form__input date-form__input--radio date-form__input--radio-worker visually-hidden" type="radio" name="report_type" id="worker-radio" value="worker_choose">
-    <label class="date-form__label" for="worker-radio"> Отчет смен работников</label>
-
-    <input class="date-form__input date-form__input--master" type="text" pattern="^[А-Яа-яЁё]+$" name="master" id="master-input" placeholder="Введите фамилию мастера">
-    <label class="date-form__label visually-hidden" for="master-input">Введите мастера смены</label>
-
-    <input class="date-form__input date-form__input--worker" type="text" pattern="^[А-Яа-яЁё]+$" name="worker" id="worker-input" placeholder="Введите фамилию работника">
-    <label class="date-form__label visually-hidden" for="worker-input">Введите работника смены</label>
+    <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="workout_lam" value="workout_lam">
+    <label class="date-form__label date-form__label--radio" for="workout_lam"> Выработка ламинация</label>
 
   </fieldset>
 

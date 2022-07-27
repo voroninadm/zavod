@@ -177,37 +177,13 @@ require_once './create_report_config.php';
       </tbody>
 
     </table>
-  <?php elseif ($report_type === 'master_choose'): ?>
+  <?php elseif ($report_type === 'workout_print'): ?>
 
-  <table class="table-sort">
-    <caption class="table-sort__caption">Смены мастера <?= $name ?> c <?= $date_start ?> по <?= $date_finish ?> </caption>
-    <thead class="table-sort__head">
-    <tr class="table-sort__row">
-      <th class="table-sort__header table-sort__header--sorted">Дата смены</th>
-      <th class="table-sort__header table-sort__header--sorted">№ смены</th>
-      <th class="table-sort__header table-sort__header--sorted">Номер ТКН</th>
-      <th class="table-sort__header table-sort__header--sorted">Начало&nbsp;работ</th>
-      <th class="table-sort__header table-sort__header--sorted">Окончание&nbsp;работ</th>
-      <th class="table-sort__header table-sort__header--sorted">Заказчик</th>
-      <th class="table-sort__header table-sort__header--sorted">Наименование заказа</th>
-    </tr>
-    </thead>
-    <tbody class="table-sort__body">
-    <tr>
-      <td colspan="7">Мирафлекс 1</td>
-    </tr>
-    <tr class="table-sort__row">
-      <?php foreach ($work_mfx1 as $qu): ?>
-      <tr>
-      <?php foreach ($qu as $item): ?>
-      <td><?= $item ?></td>
-      <?php endforeach; ?>
-      </tr>
-      <?php endforeach; ?>
+  <?php require_once 'tmp_workout_print.php' ?>
 
-    <?php elseif ($report_type === 'worker_choose'): ?>
-      <p>Отчет работника</p>
-    <?php endif; ?>
+  <?php elseif ($report_type === 'workout_lam'): ?>
+    <p>Отчет работника</p>
+  <?php endif; ?>
 
 </main>
 

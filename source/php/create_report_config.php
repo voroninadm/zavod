@@ -74,14 +74,9 @@ if ($report_type === 'idle') {
 }
 
 //master reports
-if ($report_type === 'master_choose') {
-  $name = $_POST['master'];
+if ($report_type === 'workout_print') {
+  $tech_print = ['correction_PN', 'correction_CMYK', 'electro', 'mechanical', 'aniloks', 'clean_machine', 'form_glue', 'rakel', 'clean_dry', 'clean_val'];
+  $titles = ['work_date', 'work_shift', 'operator1', 'operator2', 'operator3', 'operator_helper', 'tkn', 'material1', 'colors', 'width1', 'thickness1', 'workout_mass', 'prepare_hours', 'notes'];
 
-  $work_mfx1 = get_master_work($DB_connect_miraflex1, $date_from, $date_to, $name);
-}
-
-
-//worker reports
-if ($report_type === 'worker_choose') {
-  $name = $_POST["worker"];
+  $mfx1 = get_data($DB_connect_miraflex1, $date_from, $date_to, $titles, $tech_print);
 }
