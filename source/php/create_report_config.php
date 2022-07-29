@@ -55,7 +55,7 @@ $date_start = date_format($date_start, 'd.m.Y');
 $date_finish = date_create($date_to);
 $date_finish = date_format($date_finish, 'd.m.Y');
 
-$report_type = $_POST["report_type"];
+$report_type = $_POST["report_type"] ?? null;
 
 //idle reports
 if ($report_type === 'idle') {
@@ -73,10 +73,30 @@ if ($report_type === 'idle') {
   $laminator3 = get_machine_report($DB_connect_laminator3, $date_from, $date_to, $lam_idle_types);
 }
 
-//master reports
+//print workout report
 if ($report_type === 'workout_print') {
   $tech_print = ['correction_PN', 'correction_CMYK', 'electro', 'mechanical', 'aniloks', 'clean_machine', 'form_glue', 'rakel', 'clean_dry', 'clean_val'];
   $titles = ['work_date', 'work_shift', 'operator1', 'operator2', 'operator3', 'operator_helper', 'tkn', 'material1', 'colors', 'width1', 'thickness1', 'workout_mass', 'prepare_hours', 'notes'];
 
-  $mfx1 = get_data($DB_connect_miraflex1, $date_from, $date_to, $titles, $tech_print);
+  $miraflex1 = get_data($DB_connect_miraflex1, $date_from, $date_to, $titles, $tech_print);
+  $miraflex2 = get_data($DB_connect_miraflex2, $date_from, $date_to, $titles, $tech_print);
+  $lemo = get_data($DB_connect_lemo, $date_from, $date_to, $titles, $tech_print);
+  $fisher4 = get_data($DB_connect_fisher4, $date_from, $date_to, $titles, $tech_print);
+  $fisher5 = get_data($DB_connect_fisher5, $date_from, $date_to, $titles, $tech_print);
+  $fisher6 = get_data($DB_connect_fisher6, $date_from, $date_to, $titles, $tech_print);
 }
+
+//master reports
+if ($report_type === 'workout_lam') {
+
+  $prepare = ['prepare', 'prepare_shirt'];
+  $tech_lam = ['flushing','tech_clean','change_glue', 'electro', 'mechanical', 'tech_service', 'calibrating'];
+  $titles = ['work_date', 'work_shift', 'operator', 'tkn', 'material1', 'width1', 'thickness1', 'material2', 'width2', 'thickness2', 'material3', 'width3', 'thickness3', 'workout_m2', 'notes'];
+
+  $not_main_titles = array_merge($prepare, $tech_lam);
+  $laminator1 = get_data($DB_connect_laminator1, $date_from, $date_to, $titles, $not_main_titles);
+  $laminator2 = get_data($DB_connect_laminator2, $date_from, $date_to, $titles, $not_main_titles);
+  $laminator3 = get_data($DB_connect_laminator3, $date_from, $date_to, $titles, $not_main_titles);
+}
+
+

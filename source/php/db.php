@@ -41,19 +41,27 @@ function get_machine_report(mysqli $DB_connect, string $date_from, string $date_
  * @param mysqli $DB_connect
  * @param string $date_from
  * @param string $date_to
- * @param array $titles - массив с заголовками полей БД
+ * @param array $titles - заголовки полей БД
+ * @param array $tech - заголовки полей для суммирования
  * @return array
  */
 function get_data(mysqli $DB_connect, string $date_from, string $date_to, array $titles, array $tech): array
 {
   $titles = array_merge($titles, $tech);
   $titles = implode(',', $titles);
-  $sql = "SELECT $titles FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}'";
+  $sql = "SELECT $titles FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_date";
   $result = mysqli_query($DB_connect, $sql);
 
   return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+/**
+ * Выбираем сумму из заданных полей
+ * (На печатных - все тех.операции + корректировка красок)
+ * @param array $allTitles - полученные данные типа $key=>$value
+ * @param array $titles - заголовки для суммирования
+ * @return int|float
+ */
 function get_titles_sum(array $allTitles, array $titles): int|float
 {
   $sum = 0;

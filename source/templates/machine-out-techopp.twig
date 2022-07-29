@@ -1,5 +1,5 @@
-<script src="./js/JQuery.min.js"></script>
-<script src="./js/tablesorter.min.js"></script>
+<script src="/js/JQuery.min.js"></script>
+<script src="/js/tablesorter.min.js"></script>
 
 <section class="show-table">
   <table class="table-sort">
@@ -44,7 +44,7 @@
     <tbody>
       <tr class="table-sort__row">
         <?php
-          $query = mysqli_query($DB_connect_machine,"SELECT `work_date`, `customer`, `print_title`, `tkn`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro`, `mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes` FROM `primbase` ");
+          $query = mysqli_query($DB_connect_machine,"SELECT `work_date`, `customer`, `print_title`, `tkn`, `prepare_mass`, `prepare_hours`, `correction_PN`, `correction_CMYK`, `electro`, `mechanical`, `aniloks`, `clean_machine`, `form_glue`, `rakel`, `clean_dry`, `clean_val`, `speed`, `no_human`, `no_work`, `no_raw`, `diff_circulation`, `notes` FROM `primbase` ORDER BY work_date");
           $query = mysqli_fetch_all($query);
           foreach ($query as $qu) {
           ?>

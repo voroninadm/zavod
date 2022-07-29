@@ -163,7 +163,7 @@ export function copyAssets (done) {
     "./source/icons/**/*.svg",
     "./source/favicons/*",
     "./source/*.webmanifest",
-    "./source/php/*.php"
+    "./source/php/**/*.php"
   ], {
     base: "./source"
   })
