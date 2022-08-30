@@ -2,6 +2,8 @@
 
 {% block page__main %}
 
+<?php require_once './php/config.php'; ?>
+
 <form class="date-form" method="post" action="../php/create_report.php" autocomplete="off">
   <fieldset class="date-form__radio">
     <legend class="date-form__legend">Выберите тип отчета</legend>
@@ -14,6 +16,21 @@
 
     <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="workout_lam" value="workout_lam">
     <label class="date-form__label date-form__label--radio" for="workout_lam"> Выработка ламинация</label>
+
+      <input class="date-form__input date-form__input--user visually-hidden" name="user" type="text" id="user" list="users" placeholder="Выберите работника">
+      <datalist id="users">
+        <?php
+        $conn = new mysqli($servername, $username, $password, $dbmain);
+        $query = mysqli_query($conn, "SELECT login FROM operator ORDER BY login");
+        while ($row = mysqli_fetch_assoc($query)) {
+        ?>
+        <option value=<?=$row['login']?> ><?php } ?> </datalist>
+
+    <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="all_print" value="all_print">
+    <label class="date-form__label date-form__label--radio" for="all_print"> Вся печать </label>
+
+    <input class="date-form__input date-form__input--radio visually-hidden" type="radio" name="report_type" id="all_lam" value="all_lam">
+    <label class="date-form__label date-form__label--radio" for="all_lam"> Вся ламинация</label>
 
   </fieldset>
 
@@ -31,5 +48,19 @@
     <button type="reset">Сбросить значения</button>
   </fieldset>
 </form>
+
+<script>
+  const form = document.querySelector('.date-form');
+  const user = form.querySelector('.date-form__input--user');
+
+  form.addEventListener('change', (evt) => {
+    if(evt.target.id === 'workout_lam' || evt.target.id === 'workout_print' || evt.target === user ) {
+      user.classList.remove('visually-hidden');
+    } else if (evt.target.id === 'all_print' || evt.target.id === 'all_lam' || evt.target.id === 'idle') {
+      user.classList.add('visually-hidden');
+      user.value = '';
+    }
+  });
+</script>
 
 {% endblock %}

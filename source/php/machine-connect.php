@@ -2,12 +2,7 @@
 
 // Подключаемся к MySQ
 
-$servername = "192.168.11.4";
-$username = "lanuser";
-$password = "123";
-$dbmain = "ntlmain";
-
-
+require_once './php/config.php';
 // Подключаемся
 
 if (isset($db_machine)) {

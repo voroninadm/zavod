@@ -10,4 +10,3 @@ filters.addEventListener('change', (evt) => {
   let rows = tableBody.querySelectorAll(`.row-data--${target}`);
   rows.forEach(element => element.classList.toggle(hidingClass))
 });
-

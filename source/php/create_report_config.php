@@ -1,10 +1,11 @@
 <?php
 
 require_once './db.php';
+require_once './config.php';
 
-$servername = "192.168.11.4";
-$username = "lanuser";
-$password = "123";
+/**
+ * @var config $servername
+ */
 
 $DB_connect_miraflex1 = new mysqli($servername, $username, $password, 'miraflex1');
 $DB_connect_miraflex2 = new mysqli($servername, $username, $password, 'miraflex2');
@@ -56,6 +57,7 @@ $date_finish = date_create($date_to);
 $date_finish = date_format($date_finish, 'd.m.Y');
 
 $report_type = $_POST["report_type"] ?? null;
+$user = $_POST["user"] ?? null;
 
 //idle reports
 if ($report_type === 'idle') {
@@ -76,27 +78,43 @@ if ($report_type === 'idle') {
 //print workout report
 if ($report_type === 'workout_print') {
   $tech_print = ['correction_PN', 'correction_CMYK', 'electro', 'mechanical', 'aniloks', 'clean_machine', 'form_glue', 'rakel', 'clean_dry', 'clean_val'];
-  $titles = ['work_date', 'work_shift', 'operator1', 'operator2', 'operator3', 'operator_helper', 'tkn', 'material1', 'colors', 'width1', 'thickness1', 'workout_mass', 'prepare_hours', 'notes'];
+  $titles = ['work_date', 'work_shift', 'operator1', 'operator2', 'operator3', 'tkn', 'material1', 'colors', 'width1', 'thickness1', 'workout_mass', 'workout_m2','workout_length', 'prepare_hours', 'notes'];
 
-  $miraflex1 = get_data($DB_connect_miraflex1, $date_from, $date_to, $titles, $tech_print);
-  $miraflex2 = get_data($DB_connect_miraflex2, $date_from, $date_to, $titles, $tech_print);
-  $lemo = get_data($DB_connect_lemo, $date_from, $date_to, $titles, $tech_print);
-  $fisher4 = get_data($DB_connect_fisher4, $date_from, $date_to, $titles, $tech_print);
-  $fisher5 = get_data($DB_connect_fisher5, $date_from, $date_to, $titles, $tech_print);
-  $fisher6 = get_data($DB_connect_fisher6, $date_from, $date_to, $titles, $tech_print);
+  $miraflex1 = get_data($DB_connect_miraflex1, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
+  $miraflex2 = get_data($DB_connect_miraflex2, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
+  $lemo = get_data($DB_connect_lemo, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
+  $fisher4 = get_data($DB_connect_fisher4, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
+  $fisher5 = get_data($DB_connect_fisher5, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
+  $fisher6 = get_data($DB_connect_fisher6, $date_from, $date_to, $titles, $tech_print, $user, $report_type);
 }
 
-//master reports
+//laminator workout reports
 if ($report_type === 'workout_lam') {
 
   $prepare = ['prepare', 'prepare_shirt'];
   $tech_lam = ['flushing','tech_clean','change_glue', 'electro', 'mechanical', 'tech_service', 'calibrating'];
-  $titles = ['work_date', 'work_shift', 'operator', 'tkn', 'material1', 'width1', 'thickness1', 'material2', 'width2', 'thickness2', 'material3', 'width3', 'thickness3', 'workout_m2', 'notes'];
+  $titles = ['work_date', 'work_shift', 'operator', 'tkn', 'material1', 'material2', 'material3', 'workout_m2', 'notes'];
 
   $not_main_titles = array_merge($prepare, $tech_lam);
-  $laminator1 = get_data($DB_connect_laminator1, $date_from, $date_to, $titles, $not_main_titles);
-  $laminator2 = get_data($DB_connect_laminator2, $date_from, $date_to, $titles, $not_main_titles);
-  $laminator3 = get_data($DB_connect_laminator3, $date_from, $date_to, $titles, $not_main_titles);
+  $laminator1 = get_data($DB_connect_laminator1, $date_from, $date_to, $titles, $not_main_titles, $user, $report_type);
+  $laminator2 = get_data($DB_connect_laminator2, $date_from, $date_to, $titles, $not_main_titles, $user, $report_type);
+  $laminator3 = get_data($DB_connect_laminator3, $date_from, $date_to, $titles, $not_main_titles, $user, $report_type);
 }
 
+//all works print
+if ($report_type === 'all_print') {
+  $miraflex1 = get_all_works($DB_connect_miraflex1, $date_from, $date_to);
+  $miraflex2 = get_all_works($DB_connect_miraflex2, $date_from, $date_to);
+  $lemo = get_all_works($DB_connect_lemo, $date_from, $date_to);
+  $fisher4 = get_all_works($DB_connect_fisher4, $date_from, $date_to);
+  $fisher5 = get_all_works($DB_connect_fisher5, $date_from, $date_to);
+  $fisher6 = get_all_works($DB_connect_fisher6, $date_from, $date_to);
+}
+
+//all works lam
+if ($report_type === 'all_lam') {
+  $laminator1 = get_all_works($DB_connect_laminator1, $date_from, $date_to);
+  $laminator2 = get_all_works($DB_connect_laminator2, $date_from, $date_to);
+  $laminator3 = get_all_works($DB_connect_laminator3, $date_from, $date_to);
+}
 

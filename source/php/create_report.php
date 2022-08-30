@@ -48,6 +48,13 @@ require_once './create_report_config.php';
   <?php elseif ($report_type === 'workout_lam'): ?>
     <?php require_once './templates/tmp_workout_lam.php' ?>
 
+  <?php elseif ($report_type === 'all_print'): ?>
+    <?php require_once './templates/tmp_all_print.php' ?>
+
+  <?php elseif ($report_type === 'all_lam'): ?>
+    <?php require_once './templates/tmp_all_lam.php' ?>
+
+
   <?php elseif ($report_type === null): ?>
     <p>Не выбран тип отчета.</p>
     <p>Пожалуйста, перейдите на страницу отчетов и выберите тип отчета</p>

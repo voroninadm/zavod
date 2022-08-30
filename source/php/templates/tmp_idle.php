@@ -33,13 +33,13 @@
   <thead class="table-sort__head">
   <tr class="table-sort__row ">
     <th class="table-sort__header"></th>
-    <th class="table-sort__header table-sort__header--sorted">Электрика</th>
-    <th class="table-sort__header table-sort__header--sorted">Механика</th>
-    <th class="table-sort__header table-sort__header--sorted">Техническое обслуживание</th>
-    <th class="table-sort__header table-sort__header--sorted">Персонал</th>
-    <th class="table-sort__header table-sort__header--sorted">Заказы</th>
-    <th class="table-sort__header table-sort__header--sorted">Сырье</th>
-    <th class="table-sort__header table-sort__header--sorted">ИТОГО</th>
+    <th class="table-sort__header">Электрика</th>
+    <th class="table-sort__header">Механика</th>
+    <th class="table-sort__header">Техническое обслуживание</th>
+    <th class="table-sort__header">Персонал</th>
+    <th class="table-sort__header">Заказы</th>
+    <th class="table-sort__header">Сырье</th>
+    <th class="table-sort__header">ИТОГО</th>
   </tr>
   </thead>
   <tbody class="table-sort__body">

@@ -19,28 +19,20 @@
   <caption class="table-sort__caption">Отчет по выработке ламинации c <?= $date_start ?> по <?= $date_finish ?> </caption>
   <thead class="table-sort__head">
   <tr class="table-sort__row">
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">№ смены</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Машинист</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Номер ТКН</th>
-    <th class="table-sort__header" colspan="3">Материал 1</th>
-    <th class="table-sort__header" colspan="3">Материал 2</th>
-    <th class="table-sort__header" colspan="3">Материал дуплекс</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Выработка, м<sup>2</sup></th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Приправка, ч</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Тех.операции, ч</th>
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">Примечания</th>
+    <th class="table-sort__header" rowspan="2">Дата смены</th>
+    <th class="table-sort__header" rowspan="2">№ смены</th>
+    <th class="table-sort__header" rowspan="2">Машинист</th>
+    <th class="table-sort__header" rowspan="2">Номер ТКН</th>
+    <th class="table-sort__header" colspan="3">Материалы</th>
+    <th class="table-sort__header" rowspan="2">Выработка, м<sup>2</sup></th>
+    <th class="table-sort__header" rowspan="2">Приправка, ч</th>
+    <th class="table-sort__header" rowspan="2">Тех.операции, ч</th>
+    <th class="table-sort__header" rowspan="2">Примечания</th>
   </tr>
   <tr class="table-sort__row table-sort__row--small">
-    <th class="table-sort__header table-sort__header--sorted">тип</th>
-    <th class="table-sort__header table-sort__header--sorted">ширина</th>
-    <th class="table-sort__header table-sort__header--sorted">толщина</th>
-    <th class="table-sort__header table-sort__header--sorted">тип</th>
-    <th class="table-sort__header table-sort__header--sorted">ширина</th>
-    <th class="table-sort__header table-sort__header--sorted">толщина</th>
-    <th class="table-sort__header table-sort__header--sorted">тип</th>
-    <th class="table-sort__header table-sort__header--sorted">ширина</th>
-    <th class="table-sort__header table-sort__header--sorted">толщина</th>
+    <th class="table-sort__header">Материал 1</th>
+    <th class="table-sort__header">Материал 2</th>
+    <th class="table-sort__header">Материал дуплекс</th>
   </tr>
   </thead>
   <tbody class="table-sort__body">
@@ -54,14 +46,8 @@
       <td><?= $row['operator'] ?></td>
       <td><?= $row['tkn'] ?></td>
       <td><?= $row['material1'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
       <td><?= $row['material2'] ?></td>
-      <td><?= $row['width2'] ?></td>
-      <td><?= $row['thickness2'] ?></td>
       <td><?= $row['material3'] ?></td>
-      <td><?= $row['width3'] ?></td>
-      <td><?= $row['thickness3'] ?></td>
       <td><?= $row['workout_m2'] ?></td>
       <td><?= get_titles_sum($row, $prepare)  ?></td>
       <td><?= get_titles_sum($row, $tech_lam) ?></td>
@@ -79,14 +65,8 @@
       <td><?= $row['operator'] ?></td>
       <td><?= $row['tkn'] ?></td>
       <td><?= $row['material1'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
       <td><?= $row['material2'] ?></td>
-      <td><?= $row['width2'] ?></td>
-      <td><?= $row['thickness2'] ?></td>
       <td><?= $row['material3'] ?></td>
-      <td><?= $row['width3'] ?></td>
-      <td><?= $row['thickness3'] ?></td>
       <td><?= $row['workout_m2'] ?></td>
       <td><?= get_titles_sum($row, $prepare)  ?></td>
       <td><?= get_titles_sum($row, $tech_lam) ?></td>
@@ -104,14 +84,8 @@
       <td><?= $row['operator'] ?></td>
       <td><?= $row['tkn'] ?></td>
       <td><?= $row['material1'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
       <td><?= $row['material2'] ?></td>
-      <td><?= $row['width2'] ?></td>
-      <td><?= $row['thickness2'] ?></td>
       <td><?= $row['material3'] ?></td>
-      <td><?= $row['width3'] ?></td>
-      <td><?= $row['thickness3'] ?></td>
       <td><?= $row['workout_m2'] ?></td>
       <td><?= get_titles_sum($row, $prepare)  ?></td>
       <td><?= get_titles_sum($row, $tech_lam) ?></td>

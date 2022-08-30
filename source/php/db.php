@@ -43,13 +43,24 @@ function get_machine_report(mysqli $DB_connect, string $date_from, string $date_
  * @param string $date_to
  * @param array $titles - заголовки полей БД
  * @param array $tech - заголовки полей для суммирования
+ * @param string|null $user
  * @return array
  */
-function get_data(mysqli $DB_connect, string $date_from, string $date_to, array $titles, array $tech): array
+function get_data(mysqli $DB_connect, string $date_from, string $date_to, array $titles, array $tech, string $user = null, string $reportType): array
 {
   $titles = array_merge($titles, $tech);
   $titles = implode(',', $titles);
-  $sql = "SELECT $titles FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_date";
+  if (!empty($user)) {
+    if ($reportType === 'workout_print') {
+      $sql = "SELECT $titles FROM primbase WHERE '{$user}' IN (operator1, operator2, operator3)
+            AND (work_date BETWEEN '{$date_from}' AND '{$date_to}') ORDER BY work_date";
+    } elseif ($reportType === 'workout_lam') {
+      $sql = "SELECT $titles FROM primbase WHERE '{$user}' IN (operator)
+            AND (work_date BETWEEN '{$date_from}' AND '{$date_to}') ORDER BY work_date";
+    }
+  } else {
+    $sql = "SELECT $titles FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_date";
+  }
   $result = mysqli_query($DB_connect, $sql);
 
   return mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -65,12 +76,27 @@ function get_data(mysqli $DB_connect, string $date_from, string $date_to, array 
 function get_titles_sum(array $allTitles, array $titles): int|float
 {
   $sum = 0;
-  foreach ($allTitles as $key => $value)
-  {
+  foreach ($allTitles as $key => $value) {
     if (in_array($key, $titles)) {
       $sum += $value;
     }
   }
 
   return $sum;
+}
+
+// для вывода всех работ
+
+/**
+ * @param mysqli $DB_connect
+ * @param string $date_from
+ * @param string $date_to
+ * @return array
+ */
+function get_all_works(mysqli $DB_connect, string $date_from, string $date_to): array
+{
+  $sql = "SELECT * FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_date";
+  $result = mysqli_query($DB_connect, $sql);
+
+  return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }

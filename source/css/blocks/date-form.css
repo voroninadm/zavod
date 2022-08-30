@@ -6,7 +6,8 @@
   margin: 0 auto;
 
   &__radio {
-    display: flex;
+    display: grid;
+  grid-template-columns: repeat(5, 1fr);
     justify-content: space-around;
     justify-items: center;
     padding-top: 20px;
@@ -41,6 +42,7 @@
     column-gap: 20px;
     align-items: center;
     cursor: pointer;
+    text-align: center;
   }
 
   &__label--radio {
@@ -68,6 +70,11 @@
     &--radio {
       width: 20px;
       box-shadow: none;
+    }
+
+    &--user {
+      grid-row: 2;
+      grid-column: 3;
     }
 
     &--radio:checked + label {
