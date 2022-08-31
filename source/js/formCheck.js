@@ -12,6 +12,10 @@ const workoutCirculation = mainInputForm.querySelector('[name="workout_mass"]');
 const diffCirculation = mainInputForm.querySelector('[name="diff_circulation"]');
 const PERCENTS = 5;
 
+const dateStart = mainInputForm.querySelector('[name="work_start"]');
+const dateFinish = mainInputForm.querySelector('[name="work_finish"]');
+const workFact = mainInputForm.querySelector('[name="work_fact"]');
+
 //validate required inputs on submit button click
 btnSubmit.addEventListener('click', () => {
   for (let i = 0; i < inputReq.length; i++) {
@@ -101,7 +105,29 @@ const waste = {
   }
 };
 
+const calcDateSum = () => {
+  let t, e;
+  dateStart.addEventListener("change", () => {
+      (t = new Date(dateStart.value)), (workFact.value = ((e - t) / 36e5).toFixed(2));
+  }),
+      dateFinish.addEventListener("change", () => {
+          (e = new Date(dateFinish.value)), (workFact.value = ((e - t) / 36e5).toFixed(2));
+      });
+};
+
+const calcDateSumInput = () => {
+  let t, e;
+  dateStart.addEventListener("input", () => {
+      (t = new Date(dateStart.value)), (workFact.value = ((e - t) / 36e5).toFixed(2));
+  }),
+      dateFinish.addEventListener("input", () => {
+          (e = new Date(dateFinish.value)), (workFact.value = ((e - t) / 36e5).toFixed(2));
+      });
+};
+
 //==call form functions
 calcM2OnChange();
 calcDiffCirculation();
 waste.sumValueCalc();
+calcDateSum();
+calcDateSumInput();

@@ -2,8 +2,10 @@
 
 // Подключаемся к MySQ
 
-require_once './php/config.php';
-// Подключаемся
+$servername = "10.1.2.76";
+$username = "lanuser";
+$password = "P@ssw0rd";
+$dbmain = "ntlmain";
 
 if (isset($db_machine)) {
   $DB_connect = new mysqli($servername, $username, $password, $dbmain);
