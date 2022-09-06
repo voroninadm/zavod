@@ -4,7 +4,7 @@
 
 $servername = "10.1.2.76";
 $username = "lanuser";
-$password = "P@ssw0rd";git
+$password = "P@ssw0rd";
 $dbmain = "ntlmain";
 
 if (isset($db_machine)) {
