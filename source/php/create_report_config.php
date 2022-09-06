@@ -67,7 +67,7 @@ if ($report_type === 'idle') {
   $miraflex1 = get_machine_report($DB_connect_miraflex1, $date_from, $date_to, $print_idle_types);
   $miraflex2 = get_machine_report($DB_connect_miraflex2, $date_from, $date_to, $print_idle_types);
   $lemo = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
-  $fisher4 = get_machine_report($DB_connect_lemo, $date_from, $date_to, $print_idle_types);
+  $fisher4 = get_machine_report($DB_connect_fisher4, $date_from, $date_to, $print_idle_types);
   $fisher5 = get_machine_report($DB_connect_fisher5, $date_from, $date_to, $print_idle_types);
   $fisher6 = get_machine_report($DB_connect_fisher6, $date_from, $date_to, $print_idle_types);
   $laminator1 = get_machine_report($DB_connect_laminator1, $date_from, $date_to, $lam_idle_types);

@@ -97,7 +97,7 @@
   <?php foreach ($miraflex1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex1">
       <?php foreach ($row as $data): ?>
-      <td><?= $data ?></td>
+      <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
@@ -108,7 +108,7 @@
   <?php foreach ($miraflex2 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex2">
       <?php foreach ($row as $data): ?>
-        <td><?= $data ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
@@ -119,7 +119,7 @@
   <?php foreach ($lemo as $row) : ?>
     <tr class="table-sort__row row-data row-data--lemo">
       <?php foreach ($row as $data): ?>
-        <td><?= $data ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
@@ -130,7 +130,7 @@
   <?php foreach ($fisher4 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher4">
       <?php foreach ($row as $data): ?>
-        <td><?= $data ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
@@ -141,7 +141,7 @@
   <?php foreach ($fisher5 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher5">
       <?php foreach ($row as $data): ?>
-        <td><?= $data ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
@@ -152,7 +152,7 @@
   <?php foreach ($fisher6 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher6">
       <?php foreach ($row as $data): ?>
-        <td><?= $data ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
