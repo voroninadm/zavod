@@ -341,13 +341,13 @@
       </li>
       </li>
       <li class="form-block__item">
-        <p class="form-block__description">Материал 3 (дуплекс)</p>
+        <p class="form-block__description">Материал 3</p>
         <ul class="form-block__sublist">
           <li class="form-block__subitem">
-            <label class="visually-hidden" for="material-3">Дуплекс-материал</label>
+            <label class="visually-hidden" for="material-3">Материал</label>
             <select class="form-block__input" name="material3" id="material-3">
               <option value="Выберите первый материал" disabled>Выберите дуплекс-материал</option>
-              <?php $query = mysqli_query($DB_connect, "SELECT material FROM `mat_duplex` ORDER BY material");
+              <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                               while ($row = mysqli_fetch_assoc($query)) {
                                   ?>
               <option value=<?=$row['material'] ?>>

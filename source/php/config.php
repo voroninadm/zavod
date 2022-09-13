@@ -1,8 +1,8 @@
 <?php
 
-$servername = "10.1.2.76";
+$servername = "192.168.11.4";
 $username = "lanuser";
-$password = "P@ssw0rd";
+$password = "123";
 $dbmain = "ntlmain";
 
 ?>

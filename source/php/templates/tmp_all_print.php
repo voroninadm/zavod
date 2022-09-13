@@ -1,3 +1,5 @@
+<?php require_once 'report_functions.php' ?>
+
 <script src="../js/JQuery.min.js"></script>
 <script src="../js/tablesorter.min.js"></script>
 
@@ -96,65 +98,89 @@
   </tr>
   <?php foreach ($miraflex1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex1">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
-      <td><?= $data != 0 ? $data : '' ?></td>
+        <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--miraflex1">
+    <?= setAllPrint($miraflex1)?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--miraflex2" colspan="15"><b>Мирафлекс2</b></td>
   </tr>
   <?php foreach ($miraflex2 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex2">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--miraflex2">
+    <?= setAllPrint($miraflex2)?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--lemo" colspan="15"><b>LEMO</b></td>
   </tr>
   <?php foreach ($lemo as $row) : ?>
     <tr class="table-sort__row row-data row-data--lemo">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--lemo">
+    <?= setAllPrint($lemo)?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--fisher4" colspan="15"><b>Fisher & Krecke 4</b></td>
   </tr>
   <?php foreach ($fisher4 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher4">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--fisher4">
+    <?= setAllPrint($fisher4)?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--fisher5" colspan="15"><b>Fisher & Krecke 5</b></td>
   </tr>
   <?php foreach ($fisher5 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher5">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--fisher5">
+    <?= setAllPrint($fisher5)?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--fisher6" colspan="15"><b>Fisher & Krecke 6</b></td>
   </tr>
   <?php foreach ($fisher6 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher6">
+      <?php $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y') ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--fisher6">
+    <?= setAllPrint($fisher6)?>
+  </tr>
   </tbody>
 </table>

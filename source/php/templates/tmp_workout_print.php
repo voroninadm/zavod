@@ -71,6 +71,23 @@
       <td><?= get_titles_sum($row, $tech_print) ?></td>
       <td><?= $row['notes'] ?></td>
     </tr>
+    <br>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><?= $row['operator1'] ?></td>
+      <td><?= $row['operator2'] ?></td>
+      <td><?= $row['operator3'] ?></td>
+      <td><?= $row['tkn'] ?></td>
+      <td><?= $row['material1'] ?></td>
+      <td><?= $row['colors'] ?></td>
+      <td><?= $row['width1'] ?></td>
+      <td><?= $row['thickness1'] ?></td>
+      <td><?= $row['workout_mass'] ?></td>
+      <td><?= $row['workout_m2'] ?></td>
+      <td><?= $row['workout_length'] ?></td>
+      <td><?= $row['prepare_hours'] ?></td>
+    </tr>
   <?php endforeach; ?>
 
   <tr class="table-sort__row">

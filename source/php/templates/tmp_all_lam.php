@@ -1,3 +1,5 @@
+<?php require_once 'report_functions.php' ?>
+
 <script src="/js/JQuery.min.js"></script>
 <script src="/js/tablesorter.min.js"></script>
 
@@ -19,7 +21,6 @@
   <caption class="table-sort__caption">Все работы по печати c <?= $date_start ?> по <?= $date_finish ?> </caption>
   <thead class="table-sort__head">
   <tr class="table-sort__row">
-    <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">№ смены</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">Мастер смены</th>
@@ -99,69 +100,7 @@
   </tr>
   <?php foreach ($laminator1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator1">
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['work_date'] ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['master'] ?></td>
-      <td><?= $row['operator'] ?></td>
-      <td><?= $row['operator_student'] != 0 ? $row['operator_student'] : '' ?></td>
-      <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
-      <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
-      <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= $row['work_start'] != 0 ? $row['work_start'] : '' ?></td>
-      <td><?= $row['work_finish'] != 0 ? $row['work_finish'] : '' ?></td>
-      <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
-      <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
-      <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
-      <td><?= $row['circulation'] != 0 ? $row['circulation'] : '' ?></td>
-      <td><?= $row['material1'] != 0 ? $row['material1'] : '' ?></td>
-      <td><?= $row['width1'] != 0 ? $row['width1'] : '' ?></td>
-      <td><?= $row['thickness1'] != 0 ? $row['thickness1'] : '' ?></td>
-      <td><?= $row['mat1count_plan'] != 0 ? $row['mat1count_plan'] : '' ?></td>
-      <td><?= $row['mat1count'] != 0 ? $row['mat1count'] : '' ?></td>
-      <td><?= $row['material2'] != 0 ? $row['material2'] : '' ?></td>
-      <td><?= $row['width2'] != 0 ? $row['width2'] : '' ?></td>
-      <td><?= $row['thickness2'] != 0 ? $row['thickness2'] : '' ?></td>
-      <td><?= $row['mat2count_plan'] != 0 ? $row['mat2count_plan'] : '' ?></td>
-      <td><?= $row['mat2count'] != 0 ? $row['mat2count'] : '' ?></td>
-      <td><?= $row['material3'] != 0 ? $row['material3'] : '' ?></td>
-      <td><?= $row['width3'] != 0 ? $row['width3'] : '' ?></td>
-      <td><?= $row['thickness3'] != 0 ? $row['thickness3'] : '' ?></td>
-      <td><?= $row['mat3count_plan'] != 0 ? $row['mat3count_plan'] : '' ?></td>
-      <td><?= $row['mat3count'] != 0 ? $row['mat3count'] : '' ?></td>
-      <td><?= $row['workout_mass'] != 0 ? $row['workout_mass'] : '' ?></td>
-      <td><?= $row['workout_length'] != 0 ? $row['workout_length'] : '' ?></td>
-      <td><?= $row['workout_m2'] != 0 ? $row['workout_m2'] : '' ?></td>
-      <td><?= $row['otk_mass'] != 0 ? $row['otk_mass'] : '' ?></td>
-      <td><?= $row['waste_plan'] != 0 ? $row['waste_plan'] : '' ?></td>
-      <td><?= $row['waste_print'] != 0 ? $row['waste_print'] : '' ?></td>
-      <td><?= $row['waste_lam'] != 0 ? $row['waste_lam'] : '' ?></td>
-      <td><?= $row['waste_sum'] != 0 ? $row['waste_sum'] : '' ?></td>
-      <td><?= $row['prepare'] != 0 ? $row['prepare'] : '' ?></td>
-      <td><?= $row['prepare_shirt'] != 0 ? $row['prepare_shirt'] : '' ?></td>
-      <td><?= $row['electro'] != 0 ? $row['electro'] : '' ?></td>
-      <td><?= $row['mechanical'] != 0 ? $row['mechanical'] : '' ?></td>
-      <td><?= $row['flushing'] != 0 ? $row['flushing'] : '' ?></td>
-      <td><?= $row['tech_clean'] != 0 ? $row['tech_clean'] : '' ?></td>
-      <td><?= $row['change_glue'] != 0 ? $row['change_glue'] : '' ?></td>
-      <td><?= $row['calibrating'] != 0 ? $row['calibrating'] : '' ?></td>
-      <td><?= $row['tech_service'] != 0 ? $row['tech_service'] : '' ?></td>
-      <td><?= $row['no_human'] != 0 ? $row['no_human'] : '' ?></td>
-      <td><?= $row['no_work'] != 0 ? $row['no_work'] : '' ?></td>
-      <td><?= $row['no_raw'] != 0 ? $row['no_raw'] : '' ?></td>
-      <td><?= $row['remain_perv'] != 0 ? $row['remain_perv'] : '' ?></td>
-      <td><?= $row['remain_sec'] != 0 ? $row['remain_sec'] : '' ?></td>
-      <td><?= $row['diff_circulation'] != 0 ? $row['diff_circulation'] : '' ?></td>
-      <td><?= $row['prepare_ok'] ?></td>
-      <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
-    </tr>
-  <?php endforeach; ?><tr class="table-sort__row">
-    <td class="table-sort__row row-data row-data--laminator2" colspan="15"><b>Ламинатор 2</b></td>
-  </tr>
-  <?php foreach ($laminator2 as $row) : ?>
-    <tr class="table-sort__row row-data row-data--laminator2">
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['work_date'] ?></td>
+      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
       <td><?= $row['work_shift'] ?></td>
       <td><?= $row['master'] ?></td>
       <td><?= $row['operator'] ?></td>
@@ -217,14 +156,81 @@
       <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--laminator1">
+    <?= setAllLam($laminator1) ?>
+  </tr>
+
+  <tr>
+    <td class="table-sort__row row-data row-data--laminator2" colspan="15"><b>Ламинатор 2</b></td>
+  </tr>
+  <?php foreach ($laminator2 as $row) : ?>
+    <tr class="table-sort__row row-data row-data--laminator2">
+      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
+      <td><?= $row['work_shift'] ?></td>
+      <td><?= $row['master'] ?></td>
+      <td><?= $row['operator'] ?></td>
+      <td><?= $row['operator_student'] != 0 ? $row['operator_student'] : '' ?></td>
+      <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
+      <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
+      <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
+      <td><?= $row['work_start'] != 0 ? $row['work_start'] : '' ?></td>
+      <td><?= $row['work_finish'] != 0 ? $row['work_finish'] : '' ?></td>
+      <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
+      <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
+      <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
+      <td><?= $row['circulation'] != 0 ? $row['circulation'] : '' ?></td>
+      <td><?= $row['material1'] != 0 ? $row['material1'] : '' ?></td>
+      <td><?= $row['width1'] != 0 ? $row['width1'] : '' ?></td>
+      <td><?= $row['thickness1'] != 0 ? $row['thickness1'] : '' ?></td>
+      <td><?= $row['mat1count_plan'] != 0 ? $row['mat1count_plan'] : '' ?></td>
+      <td><?= $row['mat1count'] != 0 ? $row['mat1count'] : '' ?></td>
+      <td><?= $row['material2'] != 0 ? $row['material2'] : '' ?></td>
+      <td><?= $row['width2'] != 0 ? $row['width2'] : '' ?></td>
+      <td><?= $row['thickness2'] != 0 ? $row['thickness2'] : '' ?></td>
+      <td><?= $row['mat2count_plan'] != 0 ? $row['mat2count_plan'] : '' ?></td>
+      <td><?= $row['mat2count'] != 0 ? $row['mat2count'] : '' ?></td>
+      <td><?= $row['material3'] != 0 ? $row['material3'] : '' ?></td>
+      <td><?= $row['width3'] != 0 ? $row['width3'] : '' ?></td>
+      <td><?= $row['thickness3'] != 0 ? $row['thickness3'] : '' ?></td>
+      <td><?= $row['mat3count_plan'] != 0 ? $row['mat3count_plan'] : '' ?></td>
+      <td><?= $row['mat3count'] != 0 ? $row['mat3count'] : '' ?></td>
+      <td><?= $row['workout_mass'] != 0 ? $row['workout_mass'] : '' ?></td>
+      <td><?= $row['workout_length'] != 0 ? $row['workout_length'] : '' ?></td>
+      <td><?= $row['workout_m2'] != 0 ? $row['workout_m2'] : '' ?></td>
+      <td><?= $row['otk_mass'] != 0 ? $row['otk_mass'] : '' ?></td>
+      <td><?= $row['waste_plan'] != 0 ? $row['waste_plan'] : '' ?></td>
+      <td><?= $row['waste_print'] != 0 ? $row['waste_print'] : '' ?></td>
+      <td><?= $row['waste_lam'] != 0 ? $row['waste_lam'] : '' ?></td>
+      <td><?= $row['waste_sum'] != 0 ? $row['waste_sum'] : '' ?></td>
+      <td><?= $row['prepare'] != 0 ? $row['prepare'] : '' ?></td>
+      <td><?= $row['prepare_shirt'] != 0 ? $row['prepare_shirt'] : '' ?></td>
+      <td><?= $row['electro'] != 0 ? $row['electro'] : '' ?></td>
+      <td><?= $row['mechanical'] != 0 ? $row['mechanical'] : '' ?></td>
+      <td><?= $row['flushing'] != 0 ? $row['flushing'] : '' ?></td>
+      <td><?= $row['tech_clean'] != 0 ? $row['tech_clean'] : '' ?></td>
+      <td><?= $row['change_glue'] != 0 ? $row['change_glue'] : '' ?></td>
+      <td><?= $row['calibrating'] != 0 ? $row['calibrating'] : '' ?></td>
+      <td><?= $row['tech_service'] != 0 ? $row['tech_service'] : '' ?></td>
+      <td><?= $row['no_human'] != 0 ? $row['no_human'] : '' ?></td>
+      <td><?= $row['no_work'] != 0 ? $row['no_work'] : '' ?></td>
+      <td><?= $row['no_raw'] != 0 ? $row['no_raw'] : '' ?></td>
+      <td><?= $row['remain_perv'] != 0 ? $row['remain_perv'] : '' ?></td>
+      <td><?= $row['remain_sec'] != 0 ? $row['remain_sec'] : '' ?></td>
+      <td><?= $row['diff_circulation'] != 0 ? $row['diff_circulation'] : '' ?></td>
+      <td><?= $row['prepare_ok'] ?></td>
+      <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
+    </tr>
+  <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--laminator2">
+    <?= setAllLam($laminator2) ?>
+  </tr>
 
   <tr class="table-sort__row">
     <td class="table-sort__row row-data row-data--laminator3" colspan="15"><b>Ламинатор 3</b></td>
   </tr>
   <?php foreach ($laminator3 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator3">
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['work_date'] ?></td>
+      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
       <td><?= $row['work_shift'] ?></td>
       <td><?= $row['master'] ?></td>
       <td><?= $row['operator'] ?></td>
@@ -280,6 +286,9 @@
       <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
     </tr>
   <?php endforeach; ?>
+  <tr class="table-sort__row row-data row-data--laminator3">
+    <?= setAllLam($laminator3) ?>
+  </tr>
 
 
   </tbody>

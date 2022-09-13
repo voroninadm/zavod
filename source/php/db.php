@@ -100,3 +100,13 @@ function get_all_works(mysqli $DB_connect, string $date_from, string $date_to): 
 
   return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
+
+//
+function getAverageSum ($column)
+{
+  $count = count($column);
+  if($count !==0) {
+    return array_sum($column) / count($column);
+  }
+}
