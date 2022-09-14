@@ -1,3 +1,5 @@
+<?php require_once 'report_functions.php'?>
+
 <script src="/js/JQuery.min.js"></script>
 <script src="/js/tablesorter.min.js"></script>
 
@@ -54,39 +56,7 @@
   </tr>
   <?php foreach ($miraflex1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex1">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
-    </tr>
-    <br>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -95,22 +65,7 @@
   </tr>
   <?php foreach ($miraflex2 as $row) : ?>
     <tr class="table-sort__row row-data row-data--miraflex2">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -119,22 +74,7 @@
   </tr>
   <?php foreach ($lemo as $row) : ?>
     <tr class="table-sort__row row-data row-data--lemo">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -143,22 +83,7 @@
   </tr>
   <?php foreach ($fisher4 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher4">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -167,22 +92,7 @@
   </tr>
   <?php foreach ($fisher5 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher5">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -191,22 +101,7 @@
   </tr>
   <?php foreach ($fisher6 as $row) : ?>
     <tr class="table-sort__row row-data row-data--fisher6">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator1'] ?></td>
-      <td><?= $row['operator2'] ?></td>
-      <td><?= $row['operator3'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['colors'] ?></td>
-      <td><?= $row['width1'] ?></td>
-      <td><?= $row['thickness1'] ?></td>
-      <td><?= $row['workout_mass'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= $row['workout_length'] ?></td>
-      <td><?= $row['prepare_hours'] ?></td>
-      <td><?= get_titles_sum($row, $tech_print) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= print_workout($row, $tech_print) ?>
     </tr>
   <?php endforeach; ?>
   </tbody>

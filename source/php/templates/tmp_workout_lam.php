@@ -1,3 +1,5 @@
+<?php require_once 'report_functions.php'?>
+
 <script src="/js/JQuery.min.js"></script>
 <script src="/js/tablesorter.min.js"></script>
 
@@ -41,17 +43,7 @@
   </tr>
   <?php foreach ($laminator1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator1">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['material2'] ?></td>
-      <td><?= $row['material3'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= get_titles_sum($row, $prepare)  ?></td>
-      <td><?= get_titles_sum($row, $tech_lam) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= lam_workout($row, $prepare, $tech_lam) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -60,17 +52,7 @@
   </tr>
   <?php foreach ($laminator2 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator2">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['material2'] ?></td>
-      <td><?= $row['material3'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= get_titles_sum($row, $prepare)  ?></td>
-      <td><?= get_titles_sum($row, $tech_lam) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= lam_workout($row, $prepare, $tech_lam) ?>
     </tr>
   <?php endforeach; ?>
 
@@ -79,17 +61,7 @@
   </tr>
   <?php foreach ($laminator3 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator3">
-      <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
-      <td><?= $row['work_shift'] ?></td>
-      <td><?= $row['operator'] ?></td>
-      <td><?= $row['tkn'] ?></td>
-      <td><?= $row['material1'] ?></td>
-      <td><?= $row['material2'] ?></td>
-      <td><?= $row['material3'] ?></td>
-      <td><?= $row['workout_m2'] ?></td>
-      <td><?= get_titles_sum($row, $prepare)  ?></td>
-      <td><?= get_titles_sum($row, $tech_lam) ?></td>
-      <td><?= $row['notes'] ?></td>
+      <?= lam_workout($row, $prepare, $tech_lam) ?>
     </tr>
   <?php endforeach; ?>
   </tbody>

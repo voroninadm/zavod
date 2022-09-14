@@ -1,7 +1,58 @@
 <?php
 
 /**
- * for all_print report
+ * tempolate for print workout report
+ * @param $row
+ * @param $tech_print
+ * @return string
+ */
+function print_workout($row, $tech_print)
+{ return '
+<td>' . date_format(date_create($row['work_date']), 'd.m.Y') . '</td>
+<td>' . $row['work_shift'] . '</td>
+<td>' . $row['operator1'] . '</td>
+<td>' . $row['operator2'] . '</td>
+<td>' . $row['operator3'] . '</td>
+<td>' . $row['tkn'] . '</td>
+<td>' . $row['material1'] . '</td>
+<td>' . $row['colors'] . '</td>
+<td>' . $row['width1'] . '</td>
+<td>' . $row['thickness1'] . '</td>
+<td>' . $row['workout_mass'] . '</td>
+<td>' . $row['workout_m2'] . '</td>
+<td>' . $row['workout_length'] . '</td>
+<td>' . $row['prepare_hours'] . '</td>
+<td>' . get_titles_sum($row, $tech_print) . '</td>
+<td>' . $row['notes'] . '</td>
+';
+}
+
+/**
+ * template for lamination machine report
+ * @param $row
+ * @param $prepare
+ * @param $tech_lam
+ * @return string
+ */
+function lam_workout($row, $prepare, $tech_lam)
+{ return '
+<td>' . date_format(date_create($row['work_date']), 'd.m.Y') . '</td>
+<td>' . $row['work_shift'] . '</td>
+<td>' . $row['operator'] . '</td>
+<td>' . $row['tkn'] . '</td>
+<td>' . $row['material1'] . '</td>
+<td>' . $row['material2'] . '</td>
+<td>' . $row['material3'] . '</td>
+<td>' . $row['workout_m2'] . '</td>
+<td>' . get_titles_sum($row, $prepare)  . '</td>
+<td>' . get_titles_sum($row, $tech_lam) . '</td>
+<td>' . $row['notes'] . '</td>
+';
+}
+
+
+/**
+ * for all_print report last string summarize
  * @param $machine
  * @return string
  */
@@ -60,7 +111,11 @@ function setAllPrint($machine)
 }
 
 
-
+/**
+ * for all_lam report last string summarize
+ * @param $machine
+ * @return string
+ */
 function setAllLam($machine)
 {
   return '
