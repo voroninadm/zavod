@@ -86,13 +86,13 @@ function setAllPrint($machine)
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'workout_m2')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'otk_mass')), 2) . '</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_print')), 2) . '</td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_raw')), 2) . '</td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_sum')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'prepare_mass')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'prepare_hours')), 2) . '</td>
-<td></td>
-<td></td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'correction_PN')), 2) . '</td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'correction_CMYK')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'electro')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'mechanical')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'aniloks')), 2) . '</td>
@@ -101,7 +101,7 @@ function setAllPrint($machine)
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'rakel')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'clean_dry')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'clean_val')), 2) . '</td>
-<td></td>
+<td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'speed')), 2) . '</td>
 <td></td>
 <td></td>
 <td></td>

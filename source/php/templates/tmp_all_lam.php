@@ -156,7 +156,7 @@
       <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--laminator1">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--laminator1">
     <?= setAllLam($laminator1) ?>
   </tr>
 
@@ -221,7 +221,7 @@
       <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--laminator2">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--laminator2">
     <?= setAllLam($laminator2) ?>
   </tr>
 
@@ -286,7 +286,7 @@
       <td><?= $row['notes'] != 0 ? $row['notes'] : '' ?></td>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--laminator3">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--laminator3">
     <?= setAllLam($laminator3) ?>
   </tr>
 

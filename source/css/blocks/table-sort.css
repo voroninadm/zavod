@@ -60,19 +60,7 @@
   font-size: smaller;
   background-color: rgba(71, 3, 3, 0.11);
 }
-/*
-::-webkit-scrollbar {
-  width: 5px;
-}
 
-::-webkit-scrollbar-button {
-  background: #5e5d5d;
+.table-sort__row--last {
+  background-color: rgba(255,0,0,0.05);
 }
-
-::-webkit-scrollbar-track-piece {
-  background: #e3e1e1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 0, 0.36);
-} */

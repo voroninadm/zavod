@@ -104,7 +104,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--miraflex1">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--miraflex1">
     <?= setAllPrint($miraflex1)?>
   </tr>
 
@@ -119,7 +119,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--miraflex2">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--miraflex2">
     <?= setAllPrint($miraflex2)?>
   </tr>
 
@@ -134,7 +134,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--lemo">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--lemo">
     <?= setAllPrint($lemo)?>
   </tr>
 
@@ -149,7 +149,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--fisher4">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--fisher4">
     <?= setAllPrint($fisher4)?>
   </tr>
 
@@ -164,7 +164,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--fisher5">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--fisher5">
     <?= setAllPrint($fisher5)?>
   </tr>
 
@@ -179,7 +179,7 @@
       <?php endforeach; ?>
     </tr>
   <?php endforeach; ?>
-  <tr class="table-sort__row row-data row-data--fisher6">
+  <tr class="table-sort__row table-sort__row--last row-data row-data--fisher6">
     <?= setAllPrint($fisher6)?>
   </tr>
   </tbody>
