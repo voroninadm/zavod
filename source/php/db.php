@@ -95,7 +95,7 @@ function get_titles_sum(array $allTitles, array $titles): int|float
  */
 function get_all_works(mysqli $DB_connect, string $date_from, string $date_to): array
 {
-  $sql = "SELECT * FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_date";
+  $sql = "SELECT * FROM primbase WHERE work_date BETWEEN '{$date_from}' AND '{$date_to}' ORDER BY work_start";
   $result = mysqli_query($DB_connect, $sql);
 
   return mysqli_fetch_all($result, MYSQLI_ASSOC);

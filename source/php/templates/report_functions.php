@@ -134,6 +134,7 @@ function setAllLam($machine)
   <td></td>
   <td></td>
   <td></td>
+  <td></td>
   <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'width1')), 2) . '</td>
   <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'thickness1')), 2) . '</td>
   <td></td>

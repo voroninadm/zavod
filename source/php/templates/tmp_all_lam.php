@@ -21,6 +21,7 @@
   <caption class="table-sort__caption">Все работы по печати c <?= $date_start ?> по <?= $date_finish ?> </caption>
   <thead class="table-sort__head">
   <tr class="table-sort__row">
+    <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">№ смены</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">Мастер смены</th>
@@ -100,6 +101,7 @@
   </tr>
   <?php foreach ($laminator1 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator1">
+      <td><?= $row['id'] ?></td>
       <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
       <td><?= $row['work_shift'] ?></td>
       <td><?= $row['master'] ?></td>
@@ -108,8 +110,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= $row['work_start'] != 0 ? $row['work_start'] : '' ?></td>
-      <td><?= $row['work_finish'] != 0 ? $row['work_finish'] : '' ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
@@ -165,6 +167,7 @@
   </tr>
   <?php foreach ($laminator2 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator2">
+      <td><?= $row['id'] ?></td>
       <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
       <td><?= $row['work_shift'] ?></td>
       <td><?= $row['master'] ?></td>
@@ -173,8 +176,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= $row['work_start'] != 0 ? $row['work_start'] : '' ?></td>
-      <td><?= $row['work_finish'] != 0 ? $row['work_finish'] : '' ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
@@ -230,6 +233,7 @@
   </tr>
   <?php foreach ($laminator3 as $row) : ?>
     <tr class="table-sort__row row-data row-data--laminator3">
+      <td><?= $row['id'] ?></td>
       <td><?= date_format(date_create($row['work_date']), 'd.m.Y') ?></td>
       <td><?= $row['work_shift'] ?></td>
       <td><?= $row['master'] ?></td>
@@ -238,8 +242,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= $row['work_start'] != 0 ? $row['work_start'] : '' ?></td>
-      <td><?= $row['work_finish'] != 0 ? $row['work_finish'] : '' ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>

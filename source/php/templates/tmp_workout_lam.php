@@ -21,7 +21,7 @@
   <caption class="table-sort__caption">Отчет по выработке ламинации c <?= $date_start ?> по <?= $date_finish ?> </caption>
   <thead class="table-sort__head">
   <tr class="table-sort__row">
-    <th class="table-sort__header" rowspan="2">Дата смены</th>
+    <th class="table-sort__header" rowspan="2">Дата смены</th>яя
     <th class="table-sort__header" rowspan="2">№ смены</th>
     <th class="table-sort__header" rowspan="2">Машинист</th>
     <th class="table-sort__header" rowspan="2">Номер ТКН</th>
