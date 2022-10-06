@@ -110,8 +110,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
-      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
@@ -176,8 +176,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
-      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>
@@ -242,8 +242,8 @@
       <td><?= $row['operator_helper'] != 0 ? $row['operator_helper'] : '' ?></td>
       <td><?= $row['tkn'] != 0 ? $row['tkn'] : '' ?></td>
       <td><?= $row['work_plan'] != 0 ? $row['work_plan'] : '' ?></td>
-      <td><?= date_format(date_create($row['work_start']), 'd.m.y H:i') ?></td>
-      <td><?= date_format(date_create($row['work_finish']), 'd.m.y H:i') ?></td>
+      <td><?= date_format(date_create($row['work_start']), 'H:i') ?></td>
+      <td><?= date_format(date_create($row['work_finish']), 'H:i') ?></td>
       <td><?= $row['work_fact'] != 0 ? $row['work_fact'] : '' ?></td>
       <td><?= $row['customer'] != 0 ? $row['customer'] : '' ?></td>
       <td><?= $row['print_title'] != 0 ? $row['print_title'] : '' ?></td>

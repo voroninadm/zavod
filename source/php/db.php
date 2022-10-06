@@ -105,8 +105,13 @@ function get_all_works(mysqli $DB_connect, string $date_from, string $date_to): 
 //
 function getAverageSum ($column)
 {
-  $count = count($column);
-  if($count !==0) {
-    return array_sum($column) / count($column);
+  $count = 0;
+  foreach ($column as $value) {
+    if ($value != 0 ){
+      $count ++;
+    }
+  }
+  if($count != 0) {
+    return array_sum($column) / $count;
   }
 }

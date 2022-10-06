@@ -100,8 +100,8 @@
     <tr class="table-sort__row row-data row-data--miraflex1">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
@@ -119,8 +119,8 @@
     <tr class="table-sort__row row-data row-data--miraflex2">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
@@ -138,8 +138,8 @@
     <tr class="table-sort__row row-data row-data--lemo">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
@@ -157,8 +157,8 @@
     <tr class="table-sort__row row-data row-data--fisher4">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
@@ -176,8 +176,8 @@
     <tr class="table-sort__row row-data row-data--fisher5">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
@@ -195,8 +195,8 @@
     <tr class="table-sort__row row-data row-data--fisher6">
       <?php
       $row['work_date'] = date_format(date_create($row['work_date']), 'd.m.Y');
-      $row['work_start'] = date_format(date_create($row['work_start']), 'd.m.y H:i');
-      $row['work_finish'] = date_format(date_create($row['work_finish']), 'd.m.y H:i')
+      $row['work_start'] = date_format(date_create($row['work_start']), 'H:i');
+      $row['work_finish'] = date_format(date_create($row['work_finish']), 'H:i')
       ?>
       <?php foreach ($row as $data): ?>
         <td><?= $data != 0 ? $data : '' ?></td>
