@@ -48,8 +48,8 @@ if ($DB_connect_laminator3->connect_error) {
   die("Ошибка подключения к базе Laminator3: " . $DB_connect_laminator3->connect_error);
 };
 
-$date_from = $_POST["date-from"];
-$date_to = $_POST["date-to"];
+$date_from = $_GET["date-from"];
+$date_to = $_GET["date-to"];
 
 
 $date_start = date_create($date_from);
@@ -57,8 +57,8 @@ $date_start = date_format($date_start, 'd.m.Y');
 $date_finish = date_create($date_to);
 $date_finish = date_format($date_finish, 'd.m.Y');
 
-$report_type = $_POST["report_type"] ?? null;
-$user = $_POST["user"] ?? null;
+$report_type = $_GET["report_type"] ?? null;
+$user = $_GET["user"] ?? null;
 
 //idle reports
 if ($report_type === 'idle') {

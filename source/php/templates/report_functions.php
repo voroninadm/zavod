@@ -76,6 +76,7 @@ function setAllPrint($machine)
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'colors')), 2) . '</td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'width1')), 2) . '</td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'thickness1')), 2) . '</td>
@@ -119,6 +120,7 @@ function setAllPrint($machine)
 function setAllLam($machine)
 {
   return '
+  <td></td>
   <td></td>
   <td></td>
   <td></td>

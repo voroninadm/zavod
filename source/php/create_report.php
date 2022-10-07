@@ -39,6 +39,7 @@ require_once './create_report_config.php';
 
 <main class="page__main">
 
+
   <?php if ($report_type === 'idle'): ?>
     <?php require_once './templates/tmp_idle.php' ?>
 
