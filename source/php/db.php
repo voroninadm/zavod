@@ -115,3 +115,11 @@ function getAverageSum ($column)
     return array_sum($column) / $count;
   }
 }
+
+function getTask ($DB_connect, $taskId)
+{
+  $sql = "SELECT * FROM primbase WHERE id='{$taskId}'";
+  $result = mysqli_query($DB_connect, $sql);
+
+  return mysqli_fetch_assoc($result);
+}
