@@ -199,7 +199,7 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="customer">Заказчик</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" name="customer" type="text" id="customer" list="customers" placeholder="Выберите заказчика" required>
+              <input class="form-block__input" name="customer" type="text" id="customer" list="customers" value="<?= $task['customer'] ?>" required>
               <datalist id="customers">
                 <?php $query = mysqli_query($DB_connect, "SELECT customer FROM `client` ORDER BY customer");
                 while ($row = mysqli_fetch_assoc($query)) {
@@ -215,7 +215,7 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="print_title">Наименование заказа</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" name="print_title" type="text" id="print_title" list="titles" placeholder="Выберите заказ" required>
+              <input class="form-block__input" name="print_title" type="text" id="print_title" list="titles" value="<?= $task['print_title'] ?>" required>
               <datalist id="titles">
                 <?php $query = mysqli_query($DB_connect, "SELECT order_title FROM `client_order` ORDER BY order_title  ");
                 while ($row = mysqli_fetch_assoc($query)) {
@@ -231,7 +231,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="tkn">Номер ТКН</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="text" name="tkn" id="tkn" pattern="[0-9а-я]+" required>
+              <input class="form-block__input" type="text" name="tkn" id="tkn"
+                     value="<?= $task['tkn'] ?>" pattern="[0-9а-я]+"  required>
             </li>
           </ul>
         </li>
@@ -240,7 +241,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="circulation">Тираж <small>(план выработки)</small></label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="circulation" id="circulation" min="0" placeholder="кг" required>
+              <input class="form-block__input" type="number" name="circulation" id="circulation"
+                     value="<?= $task['circulation'] ?>" title="кг" min="0"  required>
             </li>
           </ul>
         </li>
@@ -249,7 +251,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="work_plan">Планируемое время</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="work_plan" id="work_plan" maxlength="3" min="0" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="work_plan" id="work_plan"
+                     value="<?= $task['work_plan'] ?>" title="часов" maxlength="3" min="0"  required>
             </li>
           </ul>
         </li>
@@ -258,7 +261,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="work_start">Начало работ</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="datetime-local" name="work_start" id="work_start" required>
+              <input class="form-block__input" type="datetime-local" name="work_start" id="work_start"
+                     value="<?= $task['work_start'] ?>" required>
             </li>
           </ul>
         </li>
@@ -267,7 +271,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="work_finish">Окончание работ</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="datetime-local" name="work_finish" id="work_finish" required>
+              <input class="form-block__input" type="datetime-local" name="work_finish" id="work_finish"
+                     value="<?= $task['work_finish'] ?>" required>
             </li>
           </ul>
         </li>
@@ -277,7 +282,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="work_fact">Фактическое время</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input form-block__input--readonly" type="number" name="work_fact" id="work_fact" placeholder="часов" readonly>
+              <input class="form-block__input" type="number" name="work_fact" id="work_fact"
+                     value="<?= $task['work_fact'] ?>" title="часов">
             </li>
           </ul>
         </li>
@@ -298,7 +304,7 @@ $task = getTask($conn, $taskId);
                   <?php $query = mysqli_query($DB_connect, "SELECT material FROM `matbase` ORDER BY material");
                   while ($row = mysqli_fetch_assoc($query)) {
                     ?>
-                    <option value=<?=$row['material'] ?>>
+                    <option value=<?=$row['material'] ?> <?= $row['material'] == $task['material1'] ? 'selected' : '' ?>>
                       <?= $row['material'] ?>
                     </option>
                   <? } ?>
@@ -307,19 +313,23 @@ $task = getTask($conn, $taskId);
               </li>
               <li class="form-block__subitem">
                 <label class="visually-hidden" for="matcount-1-plan">Количество сырья плановое</label>
-                <input class="form-block__input" type="number" name="mat1count_plan" id="matcount-1-plan" placeholder="планируемое количество, кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="mat1count_plan" id="matcount-1-plan"
+                       value="<?= $task['mat1count_plan'] ?>" title="Количество сырья плановое, кг" step="0.01" required>
               </li>
               <li class="form-block__subitem">
                 <label class="visually-hidden" for="matcount-1">Количество сырья</label>
-                <input class="form-block__input" type="number" name="mat1count" id="matcount-1" placeholder="фактическое количество, кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="mat1count" id="matcount-1"
+                       value="<?= $task['mat1count'] ?>" title="Количество сырья фактическое, кг" step="0.01" required>
               </li>
               <li class="form-block__subitem">
                 <label class="visually-hidden" for="width1">Ширина</label>
-                <input class="form-block__input" type="number" name="width1" id="width1" placeholder="ширина, мм" step="0.01" required>
+                <input class="form-block__input" type="number" name="width1" id="width1"
+                       value="<?= $task['width1'] ?>" title="Ширина, мм" step="0.01" required>
               </li>
               <li class="form-block__subitem">
                 <label class="visually-hidden" for="thickness1">Толщина</label>
-                <input class="form-block__input" type="number" name="thickness1" id="thickness1" placeholder="толщина, мкм" step="0.01" required>
+                <input class="form-block__input" type="number" name="thickness1" id="thickness1"
+                       value="<?= $task['thickness1'] ?>" title="Толщина, мкм" step="0.01" required>
               </li>
             </ul>
           </li>
@@ -404,16 +414,20 @@ $task = getTask($conn, $taskId);
             <label class="form-block__label" for="workout">Выработка</label>
             <ul class="form-block__sublist">
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="workout_mass" id="workout" placeholder="кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="workout_mass" id="workout"
+                       value="<?= $task['workout_mass'] ?>" title="кг" step="0.01" required>
               </li>
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="workout_length" id="workout" placeholder="пог.м." step="0.01" required>
+                <input class="form-block__input" type="number" name="workout_length" id="workout"
+                       value="<?= $task['workout_length'] ?>" title="погонные метры" step="0.01" required>
               </li>
               <li class="form-block__subitem">
-                <input class="form-block__input form-block__input--readonly" type="number" name="workout_m2" id="workout" placeholder="м2" step="0.01" readonly>
+                <input class="form-block__input" type="number" name="workout_m2" id="workout"
+                       value="<?= $task['workout_m2'] ?>" title="квадратные метры" step="0.01">
               </li>
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="otk_mass" id="workout" placeholder="на ОТК, кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="otk_mass" id="workout"
+                       value="<?= $task['otk_mass'] ?>" title="выработка на ОТК" step="0.01" required>
               </li>
             </ul>
           </li>
@@ -423,23 +437,29 @@ $task = getTask($conn, $taskId);
             <label class="form-block__label" for="waste">Отходы</label>
             <ul class="form-block__sublist">
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="waste_plan" id="waste" placeholder="план, кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="waste_plan" id="waste"
+                       value="<?= $task['waste_plan'] ?>" title="план, кг" step="0.01" required>
               </li>
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="waste_print" id="waste" placeholder="печати, кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="waste_print" id="waste"
+                       value="<?= $task['waste_print'] ?>" title="печати, кг" step="0.01" required>
               </li>
               <?php if ($machineType == "print"): ?>
               <li class="form-block__subitem">
-                <input class="form-block__input" type="number" name="waste_raw" id="waste" placeholder="сырья , кг" step="0.01" required>
+                <input class="form-block__input" type="number" name="waste_raw" id="waste"
+                       value="<?= $task['waste_raw'] ?>" title="сырья , кг" step="0.01" required>
               </li>
               <?php endif; ?>
+
               <?php if ($machineType == "lamination"): ?>
               <li class="form-block__subitem">
                 <input class="form-block__input" type="number" name="waste_lam" id="waste" placeholder="ламинации , кг" step="0.01" required>
               </li>
               <?php endif; ?>
+
               <li class="form-block__subitem">
-                <input class="form-block__input form-block__input--readonly" type="number" name="waste_sum" id="waste" placeholder="итоговые , кг" step="0.01" readonly>
+                <input class="form-block__input" type="number" name="waste_sum" id="waste"
+                       value="<?= $task['waste_sum'] ?>" title="итоговые , кг" step="0.01">
               </li>
             </ul>
           </li>
@@ -449,7 +469,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="colors">Количество красок</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="colors" id="colors" placeholder="от 1 до 10" min="1" max="10" required>
+              <input class="form-block__input" type="number" name="colors" id="colors"
+                     value="<?= $task['colors'] ?>" title="от 0 до 10" min="0" max="10" required>
             </li>
           </ul>
         </li>
@@ -465,19 +486,23 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="electro_mechanical">Эл/мех часть</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="electro" id="electro_mechanical" step="0.01" placeholder="электрика, часов" required>
+              <input class="form-block__input" type="number" name="electro" id="electro_mechanical"
+                     value="<?= $task['electro'] ?>" step="0.01" title="электрика, часов" required>
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="mechanical" id="electro_mechanical" step="0.01" placeholder="механика, часов" required>
+              <input class="form-block__input" type="number" name="mechanical" id="electro_mechanical"
+                     value="<?= $task['mechanical'] ?>" step="0.01" title="механика, часов" required>
             </li>
           </ul>
         </li>
+
         <?php if ($machineType == "print"): ?>
         <li class="form-block__item">
           <label class="form-block__label" for="aniloks">Подбор анилоксов</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="aniloks" id="aniloks" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="aniloks" id="aniloks"
+                     value="<?= $task['aniloks'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -486,7 +511,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="clean_machine">Мытье машины</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_machine" id="clean_machine" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="clean_machine" id="clean_machine"
+                     value="<?= $task['clean_machine'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -495,7 +521,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="form_glue">Переклейка форм</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="form_glue" id="form_glue" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="form_glue" id="form_glue"
+                     value="<?= $task['form_glue'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -504,7 +531,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="rakel">Замена ракеля</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="rakel" id="rakel" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="rakel" id="rakel"
+                     value="<?= $task['rakel'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -513,7 +541,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="clean_dry">Чистка сушки</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_dry" id="clean_dry" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="clean_dry" id="clean_dry"
+                     value="<?= $task['clean_dry'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -522,7 +551,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="clean_val">Чистка валов</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="clean_val" id="clean_val" step="0.01" placeholder="часов" required>
+              <input class="form-block__input" type="number" name="clean_val" id="clean_val"
+                     value="<?= $task['clean_val'] ?>" step="0.01" title="часов" required>
             </li>
           </ul>
         </li>
@@ -531,10 +561,12 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="prepare">Приправка</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_mass" id="prepare" placeholder="кг" step="0.01" required>
+              <input class="form-block__input" type="number" name="prepare_mass" id="prepare"
+                     value="<?= $task['prepare_mass'] ?>" title="кг" step="0.01" required>
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="prepare_hours" id="prepare" placeholder="часов" step="0.01" required>
+              <input class="form-block__input" type="number" name="prepare_hours" id="prepare"
+                     value="<?= $task['prepare_hours'] ?>" title="часов" step="0.01" required>
             </li>
           </ul>
         </li>
@@ -543,10 +575,12 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="color_correction">Коррекция красок</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="correction_PN" id="color_correction" placeholder="PN" step="0.01" required>
+              <input class="form-block__input" type="number" name="correction_PN" id="color_correction"
+                     value="<?= $task['correction_PN'] ?>" title="PN" step="0.01" required>
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="correction_CMYK" id="color_correction" placeholder="CMYK" step="0.01" required>
+              <input class="form-block__input" type="number" name="correction_CMYK" id="color_correction"
+                     value="<?= $task['correction_CMYK'] ?>" title="CMYK" step="0.01" required>
             </li>
           </ul>
         </li>
@@ -555,7 +589,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="speed">Скорость печати</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="speed" id="speed" step="0.01" placeholder="м/мин" required>
+              <input class="form-block__input" type="number" name="speed" id="speed"
+                     value="<?= $task['speed'] ?>" step="0.01" title="м/мин" required>
             </li>
           </ul>
         </li>
@@ -656,13 +691,16 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="no_">Часы отсутствия</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_human" id="no_" placeholder="людей" step="0.01" required>
+              <input class="form-block__input" type="number" name="no_human" id="no_"
+                     value="<?= $task['no_human'] ?>" title="людей" step="0.01" required>
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_work" id="no_" placeholder="заказов" step="0.01" required>
+              <input class="form-block__input" type="number" name="no_work" id="no_"
+                     value="<?= $task['no_work'] ?>" title="заказов" step="0.01" required>
             </li>
             <li class="form-block__subitem">
-              <input class="form-block__input" type="number" name="no_raw" id="no_" placeholder="сырья" step="0.01" required>
+              <input class="form-block__input" type="number" name="no_raw" id="no_"
+                     value="<?= $task['no_raw'] ?>" title="сырья" step="0.01" required>
             </li>
           </ul>
         </li>
@@ -671,7 +709,8 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="diff_circulation">Разница тиража</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <input class="form-block__input form-block__input--readonly" type="number" name="diff_circulation" id="diff_circulation" placeholder="кг" readonly>
+              <input class="form-block__input" type="number" name="diff_circulation" id="diff_circulation"
+                     value="<?= $task['diff_circulation'] ?>" title="кг">
             </li>
           </ul>
         </li>
@@ -680,16 +719,16 @@ $task = getTask($conn, $taskId);
           <label class="form-block__label" for="notes">Примечание</label>
           <ul class="form-block__sublist">
             <li class="form-block__subitem">
-              <textarea class="form-block__input form-block__input--textarea" name="notes" id="notes" placeholder=". . . "></textarea>
+              <textarea class="form-block__input form-block__input--textarea" name="notes" id="notes"><?= $task['notes'] ?></textarea>
             </li>
           </ul>
         </li>
       </ul>
     </fieldset>
 
-<!--0
+
     <div class="form-footer">
-      <button class="form-footer__main-button" type="submit">Внести данные</button>
+      <button class="form-footer__main-button" type="submit">Изменить задачу</button>
     </div>
   </form>
 <!--  <script src="./js/formCheck.min.js"></script>-->
