@@ -19,7 +19,7 @@ $task = getTask($conn, $taskId);
 
 <article>
 
-  <form class="form form-block__form page__centerer" action="../php/machine-create-work.php" method="POST">
+  <form class="form form-block__form page__centerer" action="/php/task-update.php" method="POST">
     <h1 class="visually-hidden">Основная таблица ввода работ</h1>
 
     <fieldset class="form-block form-block--work">
@@ -31,6 +31,8 @@ $task = getTask($conn, $taskId);
             <li class="form-block__subitem">
               <input class="form-block__input" type="text" name="machineType" id="machineType" value="<?= $machineType ?>">
               <input class="form-block__input" type="text" name="db_machine" id="db_machine" value="<?= $machine ?>">
+              <input class="form-block__input" type="text" name="task_id" id="task_id" value="<?= $taskId ?>">
+              <input class="form-block__input" type="text" name="search_url" id="search_url" value="<?= $_SERVER['HTTP_REFERER'] ?>">
             </li>
           </ul>
         </li>
