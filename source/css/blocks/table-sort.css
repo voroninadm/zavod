@@ -49,6 +49,11 @@
     }
   }
 
+  &__update {
+    display: block;
+    margin-bottom: 10px;
+   }
+
   td {
     border: 1px solid black;
     /* padding: 3px; */

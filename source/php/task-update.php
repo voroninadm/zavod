@@ -8,7 +8,6 @@ $conn = new mysqli($servername, $username, $password, $db_machine);
 $task_id = $_POST['task_id'];
 $search_url = $_POST['search_url'];
 
-
 if (isset($machineType)) {
   if ($machineType == "print") {
 
@@ -115,65 +114,125 @@ if (isset($machineType)) {
       echo "Error updating record: " . $conn->error;
     }
   }
-//  } if ($machineType == "lamination") {
-//
-//    $work_date = $_POST["work_date"];
-//    $work_shift = $_POST["work_shift"];
-//    $master = $_POST["master"];
-//    $operator = $_POST["operator"];
-//    $operator_student = $_POST["operator_student"];
-//    $operator_helper = $_POST["operator_helper"];
-//    $tkn = $_POST["tkn"];
-//    $work_plan = $_POST["work_plan"];
-//    $work_start = $_POST["work_start"];
-//    $work_finish = $_POST["work_finish"];
-//    $work_fact = $_POST["work_fact"];
-//    $customer = $_POST["customer"];
-//    $print_title = $_POST["print_title"];
-//    $circulation = $_POST["circulation"];
-//    $material1 = $_POST["material1"];
-//    $material2 = $_POST["material2"];
-//    $material3 = $_POST["material3"];
-//    $width1 = $_POST["width1"];
-//    $width2 = $_POST["width2"];
-//    $width3 = $_POST["width3"];
-//    $thickness1 = $_POST["thickness1"];
-//    $thickness2 = $_POST["thickness2"];
-//    $thickness3 = $_POST["thickness3"];
-//    $mat1count_plan = $_POST["mat1count_plan"];
-//    $mat2count_plan = $_POST["mat2count_plan"];
-//    $mat3count_plan = $_POST["mat3count_plan"];
-//    $mat1count = $_POST["mat1count"];
-//    $mat2count = $_POST["mat2count"];
-//    $mat3count = $_POST["mat3count"];
-//    $workout_mass = $_POST["workout_mass"];
-//    $workout_length = $_POST["workout_length"];
-//    $workout_m2 = $_POST["workout_m2"];
-//    $otk_mass = $_POST["otk_mass"];
-//    $waste_plan = $_POST["waste_plan"];
-//    $waste_print = $_POST["waste_print"];
-//    $waste_lam = $_POST["waste_lam"];
-//    $waste_sum = $_POST["waste_sum"];
-//    $prepare = $_POST["prepare"];
-//    $prepare_shirt = $_POST["prepare_shirt"];
-//    $flushing = $_POST["flushing"];
-//    $tech_clean = $_POST["tech_clean"];
-//    $change_glue = $_POST["change_glue"];
-//    $electro = $_POST["electro"];
-//    $mechanical = $_POST["mechanical"];
-//    $tech_service = $_POST["tech_service"];
-//    $calibrating = $_POST["calibrating"];
-//    $no_human = $_POST["no_human"];
-//    $no_work = $_POST["no_work"];
-//    $no_raw = $_POST["no_raw"];
-//    $remain_perv = $_POST["remain_perv"];
-//    $remain_sec = $_POST["remain_sec"];
-//    $diff_circulation = $_POST["diff_circulation"];
-//    $prepare_ok = $_POST["prepare_ok"];
-//    $notes = $_POST["notes"];
-//
-//    $post = mysqli_query($DB_connect_machine, "INSERT INTO `primbase` (`id`, `work_date`, `work_shift`, `master`, `operator`, `operator_student`, `operator_helper`, `tkn`, `work_plan`, `work_start`, `work_finish`, `work_fact`, `customer`, `print_title`, `circulation`, `material1`, `material2`, `material3`, `width1`, `width2`, `width3`, `thickness1`, `thickness2`, `thickness3`, `mat1count_plan`, `mat2count_plan`, `mat3count_plan`, `mat1count`, `mat2count`, `mat3count`, `workout_mass`, `workout_length`, `workout_m2`, `otk_mass`, `waste_plan`, `waste_print`, `waste_lam`, `waste_sum`, `prepare`, `prepare_shirt`, `flushing`, `tech_clean`, `change_glue`, `electro`, `mechanical`, `tech_service`, `calibrating`, `no_human`, `no_work`, `no_raw`, `remain_perv`, `remain_sec`, `diff_circulation`, `prepare_ok`, `notes`) VALUES (NULL, '$work_date', '$work_shift', '$master', '$operator', '$operator_student', '$operator_helper', '$tkn', '$work_plan', '$work_start', '$work_finish', '$work_fact', '$customer', '$print_title', '$circulation', '$material1', '$material2', '$material3', '$width1', '$width2', '$width3', '$thickness1', '$thickness2', '$thickness3', '$mat1count_plan', '$mat2count_plan', '$mat3count_plan', '$mat1count', '$mat2count', '$mat3count', '$workout_mass', '$workout_length', '$workout_m2', '$otk_mass', '$waste_plan', '$waste_print' , '$waste_lam' , '$waste_sum', '$prepare', '$prepare_shirt', '$flushing', '$tech_clean', '$change_glue', '$electro', '$mechanical', '$tech_service', '$calibrating', '$no_human', '$no_work', '$no_raw', '$remain_perv', '$remain_sec', '$diff_circulation', '$prepare_ok', '$notes')");
-//  }
+  } if ($machineType == "lamination") {
+
+    $work_date = $_POST["work_date"];
+    $work_shift = $_POST["work_shift"];
+    $master = $_POST["master"];
+    $operator = $_POST["operator"];
+    $operator_student = $_POST["operator_student"];
+    $operator_helper = $_POST["operator_helper"];
+    $tkn = $_POST["tkn"];
+    $work_plan = $_POST["work_plan"];
+    $work_start = $_POST["work_start"];
+    $work_finish = $_POST["work_finish"];
+    $work_fact = $_POST["work_fact"];
+    $customer = $_POST["customer"];
+    $print_title = $_POST["print_title"];
+    $circulation = $_POST["circulation"];
+    $material1 = $_POST["material1"];
+    $material2 = $_POST["material2"];
+    $material3 = $_POST["material3"];
+    $width1 = $_POST["width1"];
+    $width2 = $_POST["width2"];
+    $width3 = $_POST["width3"];
+    $thickness1 = $_POST["thickness1"];
+    $thickness2 = $_POST["thickness2"];
+    $thickness3 = $_POST["thickness3"];
+    $mat1count_plan = $_POST["mat1count_plan"];
+    $mat2count_plan = $_POST["mat2count_plan"];
+    $mat3count_plan = $_POST["mat3count_plan"];
+    $mat1count = $_POST["mat1count"];
+    $mat2count = $_POST["mat2count"];
+    $mat3count = $_POST["mat3count"];
+    $workout_mass = $_POST["workout_mass"];
+    $workout_length = $_POST["workout_length"];
+    $workout_m2 = $_POST["workout_m2"];
+    $otk_mass = $_POST["otk_mass"];
+    $waste_plan = $_POST["waste_plan"];
+    $waste_print = $_POST["waste_print"];
+    $waste_lam = $_POST["waste_lam"];
+    $waste_sum = $_POST["waste_sum"];
+    $prepare = $_POST["prepare"];
+    $prepare_shirt = $_POST["prepare_shirt"];
+    $flushing = $_POST["flushing"];
+    $tech_clean = $_POST["tech_clean"];
+    $change_glue = $_POST["change_glue"];
+    $electro = $_POST["electro"];
+    $mechanical = $_POST["mechanical"];
+    $tech_service = $_POST["tech_service"];
+    $calibrating = $_POST["calibrating"];
+    $no_human = $_POST["no_human"];
+    $no_work = $_POST["no_work"];
+    $no_raw = $_POST["no_raw"];
+    $remain_perv = $_POST["remain_perv"];
+    $remain_sec = $_POST["remain_sec"];
+    $diff_circulation = $_POST["diff_circulation"];
+    $prepare_ok = $_POST["prepare_ok"];
+    $notes = $_POST["notes"];
+
+    $sql = "UPDATE `primbase` SET
+                      `work_date`  = '{$work_date}',
+                      `work_shift` = '{$work_shift}',
+                      `master` = '{$master}',
+                      `operator` = '{$operator}',
+                      `operator_student` = '{$operator_student}',
+                      `operator_helper` = '{$operator_helper}',
+                      `tkn` = '{$tkn}',
+                      `work_plan` = '{$work_plan}',
+                      `work_start` = '{$work_start}',
+                      `work_finish` = '{$work_finish}',
+                      `work_fact` = '{$work_fact}',
+                      `customer` = '{$customer}',
+                      `print_title` = '{$print_title}',
+                      `circulation` = '{$circulation}',
+                      `material1` = '{$material1}',
+                      `material2` = '{$material2}',
+                      `material3` = '{$material3}',
+                      `width1` = '{$width1}',
+                      `width2` = '{$width2}',
+                      `width3` = '{$width3}',
+                      `thickness1` = '{$thickness1}',
+                      `thickness2` = '{$thickness2}',
+                      `thickness3` = '{$thickness3}',
+                      `mat1count_plan` = '{$mat1count_plan}',
+                      `mat2count_plan` = '{$mat2count_plan}',
+                      `mat3count_plan` = '{$mat3count_plan}',
+                      `mat1count` = '{$mat1count}',
+                      `mat2count` = '{$mat2count}',
+                      `mat3count` = '{$mat3count}',
+                      `workout_mass` = '{$workout_mass}',
+                      `workout_length` = '{$workout_length}',
+                      `workout_m2` = '{$workout_m2}',
+                      `otk_mass` = '{$otk_mass}',
+                      `waste_plan` = '{$waste_plan}',
+                      `waste_print` = '{$waste_print}',
+                      `waste_lam` = '{$waste_lam}',
+                      `waste_sum` = '{$waste_sum}',
+                      `prepare` = '{$prepare}',
+                      `prepare_shirt` = '{$prepare_shirt}',
+                      `flushing` = '{$flushing}',
+                      `tech_clean` = '{$tech_clean}',
+                      `change_glue` = '{$change_glue}',
+                      `electro` = '{$electro}',
+                      `mechanical` = '{$mechanical}',
+                      `tech_service` = '{$tech_service}',
+                      `calibrating` = '{$calibrating}',
+                      `no_human` = '{$no_human}',
+                      `no_work` = '{$no_work}',
+                      `no_raw` = '{$no_raw}',
+                      `remain_perv` = '{$remain_perv}',
+                      `remain_sec` = '{$remain_sec}',
+                      `diff_circulation` = '{$diff_circulation}',
+                      `prepare_ok` = '{$prepare_ok}',
+                      `notes` = '{$notes}' WHERE id='{$task_id}'";
+
+    if ($conn->query($sql)) {
+      header("Location: {$search_url}");
+    } else {
+      echo "Error updating record: " . $conn->error;
+    };
+
 } else {
   echo("Переменная машины не задана!");
 }
