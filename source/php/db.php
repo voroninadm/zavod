@@ -123,3 +123,42 @@ function getTask ($DB_connect, $taskId)
 
   return mysqli_fetch_assoc($result);
 }
+
+
+//===== USERS
+
+function check_user(mysqli $conn, string $login): bool
+{
+  $login = mysqli_real_escape_string($conn, $login);
+  $sql = "SELECT login FROM master WHERE login = '$login'";
+  $result = mysqli_query($conn, $sql);
+
+  if (!$result) {
+    echo '<script type="text/javascript">alert("Неподходящая пара логин-пароль");</script>';
+  }
+
+  return (bool)mysqli_fetch_assoc($result);
+}
+
+function check_auth_user(mysqli $conn, string $login): array
+{
+  $sql = "SELECT * FROM master WHERE login = '{$login}'";
+  $result = mysqli_query($conn, $sql);
+
+  if (!$result) {
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+  }
+  return mysqli_fetch_assoc($result);
+}
+
+function check_open_session (array $session): array|null
+{
+  if ($session) {
+    return [
+      'login' => $session['user']['login'],
+      'id' => $session['user']['id'],
+    ];
+  }
+  return null;
+}

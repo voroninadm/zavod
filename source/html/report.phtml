@@ -1,8 +1,11 @@
+
 {% extends "../templates/layout.twig" %}
 
 {% block page__main %}
 
-<?php require_once './php/config.php'; ?>
+<?php
+require_once './php/config.php';
+?>
 
 <form class="date-form" method="get" action="../php/create_report.php" autocomplete="off">
   <fieldset class="date-form__radio">

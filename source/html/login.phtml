@@ -1,0 +1,25 @@
+{% extends "../templates/layout.twig" %}
+
+{% block page__main %}
+
+<section class="login">
+  <img class="logo" src="./icons/NTL_logo.svg" alt="NTL_logo" width="90">
+  <h1 class="login__title">Электронный журнал смен</h1>
+  <form method="post" action="/php/login.php" autocomplete="off">
+    <ul class="login-list reset-list">
+      <li class="login-list__item">
+        <label class="login-list__label" for="login">Имя пользователя</label>
+        <input class="login-list__input" type="text" id="login" name="login" required>
+      </li>
+      <li class="login-list__item">
+        <label class="login-list__label" for="password">Пароль</label>
+        <input class="login-list__input" type="password" id="password" name="password" required>
+      </li>
+    </ul>
+    <div class="login-footer">
+      <button class="login-footer__button" type="submit">Войти</button>
+    </div>
+  </form>
+</section>
+
+{% endblock %}

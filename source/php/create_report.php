@@ -1,5 +1,9 @@
 <?php
+
 require_once './create_report_config.php';
+require_once './db.php';
+require_once './user_init.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +35,9 @@ require_once './create_report_config.php';
       </li>
       <li class="header-nav__item">
         <a class="header-nav__link header-nav__link--mainpage" href="../index.html">На главную</a>
+      </li>
+      <li class="header-nav__item">
+        <a class="header-nav__link" href="/login.phtml">Войти</a>
       </li>
     </ul>
   </nav>
