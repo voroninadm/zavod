@@ -19,7 +19,7 @@ $DB_connect = new mysqli($servername, $username, $password, $dbmain);
     $user = check_auth_user($DB_connect, $login);
 
     if ($user) {
-      if ($password == $user['password']) {
+      if (password_verify($password ,$user['password'])) {
         $_SESSION['user'] = $user;
       }
 
