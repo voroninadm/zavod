@@ -21,7 +21,9 @@
   <caption class="table-sort__caption">Все работы по печати c <?= $date_start ?> по <?= $date_finish ?> </caption>
   <thead class="table-sort__head">
   <tr class="table-sort__row">
+    <?php if (isset($current_user)) :?>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2"></th>
+    <?php endif; ?>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">№</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">Дата смены</th>
     <th class="table-sort__header table-sort__header--sorted" rowspan="2">№ смены</th>
