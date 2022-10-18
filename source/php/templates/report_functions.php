@@ -76,7 +76,6 @@ function setAllPrint($machine)
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'colors')), 2) . '</td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'width1')), 2) . '</td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'thickness1')), 2) . '</td>
@@ -103,9 +102,9 @@ function setAllPrint($machine)
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'clean_dry')), 2) . '</td>
 <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'clean_val')), 2) . '</td>
 <td>μ:&nbsp;' . round(getAverageSum(array_column($machine, 'speed')), 2) . '</td>
-<td></td>
-<td></td>
-<td></td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_human')), 2) . '</td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_work')), 2) . '</td>
+<td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_raw')), 2) . '</td>
 <td></td>
 <td></td>
 ';
@@ -120,7 +119,6 @@ function setAllPrint($machine)
 function setAllLam($machine)
 {
   return '
-  <td></td>
   <td></td>
   <td></td>
   <td></td>
@@ -168,9 +166,9 @@ function setAllLam($machine)
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'change_glue')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'calibrating')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'tech_service')), 2) . '</td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_human')), 2) . '</td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_work')), 2) . '</td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'no_raw')), 2) . '</td>
   <td></td>
   <td></td>
   <td></td>
