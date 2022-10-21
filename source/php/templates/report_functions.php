@@ -154,9 +154,9 @@ function setAllLam($machine)
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'workout_m2')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'otk_mass')), 2) . '</td>
   <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_print')), 2) . '</td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_lam')), 2) . '</td>
+  <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'waste_sum')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'prepare')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'prepare_shirt')), 2) . '</td>
   <td>∑:&nbsp;' . round(array_sum(array_column($machine, 'electro')), 2) . '</td>
