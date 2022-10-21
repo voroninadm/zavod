@@ -2,9 +2,9 @@
 
 // Подключаемся к MySQ
 
-$servername = "192.168.11.4";
+$servername = "10.1.2.76";
 $username = "lanuser";
-$password = "123";
+$password = "P@ssw0rd";
 $dbmain = "ntlmain";
 
 if (isset($db_machine)) {
@@ -19,3 +19,4 @@ if (isset($db_machine)) {
 if ($DB_connect->connect_error) {
   die("Ошибка подключения к главной базе: " . $DB_connect->connect_error);
 };
+
