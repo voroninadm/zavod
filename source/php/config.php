@@ -5,3 +5,4 @@ $username = "lanuser";
 $password = "P@ssw0rd";
 $dbmain = "ntlmain";
 
+?>

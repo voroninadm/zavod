@@ -20,3 +20,4 @@ if ($DB_connect->connect_error) {
   die("Ошибка подключения к главной базе: " . $DB_connect->connect_error);
 };
 
+?>
